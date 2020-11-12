@@ -1,0 +1,56 @@
+apiVersion: v1
+entries:
+  qumine-ingress:
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: QuMine Ingress
+    apiVersion: v1
+    appVersion: v0.6.0
+    created: "2020-11-12T19:14:35.152965828Z"
+    description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname inside of kubernetes
+    digest: 1ecea7c6951405864a306868f31a4e366ef946ba8bf5f5fa59d61a40bacc8d76
+    home: https://ingress.qumine.io/
+    icon: https://raw.githubusercontent.com/qumine/charts/master/charts/qumine-ingress/icon.png
+    keywords:
+    - qumine
+    - qumine-ingress
+    - minecraft
+    - minecraft-server
+    - ingress
+    kubeVersion: '>=v1.14.0'
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: qumine-ingress
+    sources:
+    - https://github.com/qumine/qumine-ingress
+    urls:
+    - https://github.com/QuMine/charts/releases/download/qumine-ingress-0.6.0/qumine-ingress-0.6.0.tgz
+    version: 0.6.0
+  qumine-server:
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: QuMine Server
+    apiVersion: v1
+    appVersion: v0.0.1
+    created: "2020-11-12T19:14:35.316394061Z"
+    description: Kubernetes minecraft server
+    digest: bd8bc345ba4ac7c75f91aa5dabf73f0ffd8d5a27ba1a2ade99bd8a721bd467ea
+    home: https://server.qumine.io/
+    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
+    keywords:
+    - qumine
+    - qumine-server
+    - minecraft
+    - minecraft-server
+    kubeVersion: '>=v1.14.0'
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: qumine-server
+    sources:
+    - https://github.com/qumine/qumine-server
+    urls:
+    - https://github.com/QuMine/charts/releases/download/qumine-server-0.0.1/qumine-server-0.0.1.tgz
+    version: 0.0.1
+generated: "2020-11-12T19:14:34.941394008Z"
