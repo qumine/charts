@@ -1,0 +1,276 @@
+categories:
+- games
+questions:
+- variable: defaultImage
+  show_if: "minecraftServer.eula"
+  default: true
+  description: Use default Docker image
+  label: Use Default Image
+  type: boolean
+  group: QuMine / Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image
+    default: itzg/minecraft-server
+    description: QuMine-Server image name
+    type: string
+    label: QuMine-Server image name
+  - variable: imageTag
+    default: latest
+    description: QuMine-Server image tag
+    type: string
+    label: QuMine-Server image tag
+
+- variable: resources.requests.cpu
+  show_if: "minecraftServer.eula"
+  default: 250m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: QuMine / Resources
+- variable: resources.limits.cpu
+  show_if: "minecraftServer.eula"
+  default: 500m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: QuMine / Resources
+- variable: resources.requests.memory
+  show_if: "minecraftServer.eula"
+  default: 512Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: QuMine / Resources
+- variable: resources.limits.memory
+  show_if: "minecraftServer.eula"
+  default: 1Gi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: QuMine / Resources
+
+- variable: persistence.dataDir.enabled
+  show_if: "minecraftServer.eula"
+  default: true
+  description: Enabled persistent volume
+  type: boolean
+  required: true
+  label: Persistence Enabled
+  group: QuMine / Persistence
+  show_subquestion_if: true
+  subquestions:
+  - variable: persistence.dataDir.existingClaim 
+    default: ""
+    description: "If not empty, uses the specified existing PVC instead of creating new one"
+    type: pvc
+    label: Use Existing Persistent Volume Claim
+  - variable: persistence.dataDir.Size
+    show_if: "persistence.dataDir.existingClaim != ''"
+    default: 10Gi
+    description: Size for DataDir
+    type: string
+    label: Size for DataDir
+  - variable: persistence.storageClass
+    show_if: "persistence.dataDir.existingClaim != ''"
+    default: ""
+    description: "If undefined or null, uses the default StorageClass. Default to null"
+    type: storageclass
+    label: Default StorageClass for DataDir
+  - variable: persistence.retainPersistentVolumeClaim
+    show_if: "persistence.dataDir.existingClaim != ''"
+    default: false
+    description: "If true keeps the pvc on deletion of the app"
+    type: boolean
+    label: Keep PVC
+
+- variable: qumine.ingress.enabled
+  show_if: "minecraftServer.eula"
+  default: false
+  description: Enable QuMine-Ingress Integration
+  type: boolean
+  required: true
+  label: Ingress Enabled
+  group: QuMine / Integrations
+- variable: qumine.ingress.hostname
+  show_if: "minecraftServer.eula&&qumine.ingress.enabled=true"
+  description: The hostname to use for the ingress
+  type: string
+  required: true
+  label: Ingress hostname
+  group: QuMine / Integrations
+- variable: metrics.enabled
+  show_if: "minecraftServer.eula"
+  default: false
+  description: Enable metrics exporting, required https://github.com/sladkoff/minecraft-prometheus-exporter
+  type: boolean
+  required: true
+  label: Metrics Exporter
+  group: QuMine / Integrations
+
+- variable: minecraftServer.memory
+  show_if: "minecraftServer.eula"
+  default: "1024M"
+  description: JVM Memory
+  type: string
+  required: true
+  label: JVM Memory
+  group: QuMine / JVM Settings
+- variable: minecraftServer.jvmOpts
+  show_if: "minecraftServer.eula"
+  description: JVM options
+  type: string
+  required: false
+  label: VM options
+  group: QuMine / JVM Settings
+- variable: minecraftServer.useAikarFlags
+  show_if: "minecraftServer.eula"
+  default: false
+  description: Enable Aikars optimal JVM flags
+  type: boolean
+  required: false
+  label: Use Aikar Flags
+  group: QuMine / JVM Settings
+- variable: minecraftServer.useLargePages
+  show_if: "minecraftServer.eula"
+  default: false
+  description: Enable large pages support
+  type: boolean
+  required: false
+  label: Use Large Pages
+  group: QuMine / JVM Settings
+
+- variable: minecraftServer.whitelist
+  show_if: "minecraftServer.eula"
+  description: A comma-separated list of players who should be whitelisted. (if empty whitelist is disabled)
+  type: string
+  required: false
+  label: Whitelist
+  group: QuMine / Players
+- variable: minecraftServer.ops
+  show_if: "minecraftServer.eula"
+  description: A comma-separated list of players who should be operated.
+  type: string
+  required: false
+  label: Operators
+  group: QuMine / Players
+
+- variable: minecraftServer.motd
+  show_if: "minecraftServer.eula"
+  default: Minecraft Server powered by QuMine
+  description: MOTD
+  type: string
+  required: true
+  label: Server MOTD
+  group: QuMine / General Settings
+- variable: minecraftServer.icon
+  show_if: "minecraftServer.eula"
+  default: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
+  description: Server icon URL for server list.
+  type: string
+  required: true
+  label: Server Icon
+  group: QuMine / General Settings
+- variable: minecraftServer.onlineMode
+  show_if: "minecraftServer.eula"
+  default: true
+  description: Check accounts agains Mojang Account service.
+  type: boolean
+  required: true
+  label: Online mode
+  group: QuMine / General Settings
+- variable: minecraftServer.maxPlayers
+  show_if: "minecraftServer.eula"
+  default: 20
+  description: Maximum Number of connected players
+  type: int
+  required: true
+  label: MAX Players
+  group: QuMine / General Settings
+- variable: minecraftServer.gameMode
+  show_if: "minecraftServer.eula"
+  default: survival
+  options: 
+  - creative
+  - survival
+  - adventure
+  - spectator
+  description: Server Gamemode
+  type: enum
+  required: true
+  label: Gamemode
+  group: QuMine / General Settings
+- variable: minecraftServer.difficulty
+  show_if: "minecraftServer.eula"
+  default: easy
+  options: 
+  - peaceful
+  - easy
+  - normal
+  - hard
+  description: Server Difficulty
+  type: enum
+  required: true
+  label: Difficulty
+  group: QuMine / General Settings
+
+- variable: minecraftServer.type
+  show_if: "minecraftServer.eula"
+  default: VANILLA
+  options: 
+  - VANILLA
+  - PAPER
+  - TUINITY
+  - MAGMA
+  - MOHIST
+  - CATSERVER
+  - FTB
+  - CURSEFORGE
+  - SPONGEVANILLA
+  - FABRIC
+  description: Minecraft Server Type
+  type: enum
+  required: true
+  label: Server Type
+  group: QuMine / Server Type
+- variable: minecraftServer.version
+  show_if: "minecraftServer.eula"
+  default: LATEST
+  description: Minecraft Server Version
+  type: string
+  required: true
+  label: Server Version
+  group: QuMine / Server Type
+- variable: minecraftServer.ftbServerMod
+  show_if: "minecraftServer.eula&&minecraftServer.type=FTB"
+  description: FTB Modpack URL
+  type: string
+  required: true
+  label: FTB Modpack URL
+  group: QuMine / Server Type
+- variable: minecraftServer.cfServerMod
+  show_if: "minecraftServer.eula&&minecraftServer.type=CURSEFORGE"
+  description: CurseForge MOD URL
+  type: string
+  required: true
+  label: CurseForge MOD URL
+  group: QuMine / Server Type
+- variable: minecraftServer.ftbLegacyJavaFixer
+  show_if: "minecraftServer.eula&&minecraftServer.type=FTB||minecraftServer.eula&&minecraftServer.type=CURSEFORGE"
+  default: false
+  description: Set to true if running Feed The Beast and get an error like "unable to launch forgemodloader"
+  type: boolean
+  required: true
+  label: FTB Legacy Java Fixer
+
+- variable: minecraftServer.eula
+  default: false
+  description: Accept Minecraft's EULA
+  type: boolean
+  required: true
+  label: EULA
+  group: QuMine / Eula

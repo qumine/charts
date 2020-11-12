@@ -1,0 +1,22 @@
+{{- if .Values.qumine.metrics.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "qumine.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "qumine.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  endpoints:
+  - targetPort: metrics
+    honorLabels: true
+  selector:
+    matchLabels:
+      app: {{ template "qumine.name" . }}
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+{{- end -}}

@@ -1,0 +1,102 @@
+categories:
+- games
+- gameserver
+questions:
+- variable: defaultImage
+  default: true
+  description: Use default Docker image
+  label: Use Default Image
+  type: boolean
+  group: QuMine-Ingress / Container Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image
+    default: qumine/qumine-ingress
+    description: QuMine-Ingress image name
+    type: string
+    label: QuMine-Ingress image name
+  - variable: imageTag
+    default: v0.6.0
+    description: QuMine-Ingress image tag
+    type: string
+    label: QuMine-Ingress image tag
+
+- variable: resources.requests.cpu
+  default: 125m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: QuMine-Ingress / Resources
+- variable: resources.limits.cpu
+  default: 250m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: QuMine-Ingress / Resources
+- variable: resources.requests.memory
+  default: 256Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: QuMine-Ingress / Resources
+- variable: resources.limits.memory
+  default: 512Mi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: QuMine-Ingress / Resources
+
+- variable: qumine.deployment.enabled
+  default: false
+  description: Use a deployment instead of a daemonset.
+  type: boolean
+  required: true
+  label: Use a deployment instead of a daemonset.
+  group: QuMine-Ingress / Deployment
+- variable: qumine.deployment.replicas
+  show_if: "qumine.deployment.enabled=true"
+  default: 1
+  description: The amount of replicas for the deployment
+  type: int
+  required: true
+  label: Replica count
+  group: QuMine-Ingress / Deployment
+- variable: qumine.deployment.serviceType
+  show_if: "qumine.deployment.enabled=true"
+  description: The service type for the ingress
+  type: enum
+  options:
+    - "LoadBalancer"
+    - "NodePort"
+    - "ClusterIP"
+  default: "LoadBalancer"
+  required: true
+  label: The service type for the ingress
+  group: QuMine-Ingress / Deployment
+
+- variable: qumine.debug
+  default: false
+  description: Enable debugging
+  type: boolean
+  required: true
+  label: Debug Mode
+  group: QuMine-Ingress / General
+- variable: qumine.port
+  default: 25565
+  description: Port for the server
+  type: int
+  required: true
+  label: Server Port
+  group: QuMine-Ingress / General
+
+- variable: qumine.metrics.enabled
+  default: false
+  description: Enable the Prometheus metrics
+  type: boolean
+  required: true
+  label: Enable Metrics
+  group: QuMine-Ingress / Metrics

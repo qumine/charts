@@ -1,0 +1,32 @@
+image: qumine/qumine-ingress
+imageTag: v0.6.0
+
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 125m
+  limits:
+    memory: 256Mi
+    cpu: 250m
+
+nodeSelector:
+
+tolerations:
+
+affinity:
+
+qumine:
+  deployment:
+    enabled: true
+    replicas: 1
+    serviceType: "LoadBalancer"
+    loadBalancerIP:
+    #loadBalancerSourceRanges:
+    #externalTrafficPolicy: Cluster
+
+  debug: false
+
+  port: 25565
+
+  metrics:
+    enabled: false
