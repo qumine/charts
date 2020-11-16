@@ -41,8 +41,12 @@ spec:
       - name: install-metrics-plugin
         image: alpine
         imagePullPolicy: Always
-        command:
-        - mkdir -p /data/plugins && wget -O /data/plugins/managed-metrics.jar https://github.com/sladkoff/minecraft-prometheus-exporter/releases/latest/download/minecraft-prometheus-exporter-2.2.0.jar
+        command: ["/bin/sh"]
+        args:
+        - -c
+        - >-
+            mkdir -p /data/plugins &&
+            wget -O /data/plugins/managed-metrics.jar https://github.com/sladkoff/minecraft-prometheus-exporter/releases/latest/download/minecraft-prometheus-exporter-2.2.0.jar
         volumeMounts:
         - name: datadir
           mountPath: /data
@@ -51,8 +55,12 @@ spec:
       - name: install-floodgate-plugin
         image: alpine
         imagePullPolicy: Always
-        command:
-        - mkdir -p /data/plugins && wget -O /data/plugins/managed-floodgate.jar https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar
+        command: ["/bin/sh"]
+        args:
+        - -c
+        - >-
+            mkdir -p /data/plugins &&
+            wget -O /data/plugins/managed-floodgate.jar https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar
         volumeMounts:
         - name: datadir
           mountPath: /data
