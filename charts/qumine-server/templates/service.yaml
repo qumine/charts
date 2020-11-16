@@ -37,7 +37,7 @@ spec:
     protocol: TCP
   {{- if .Values.metrics.enabled }}
   - name: metrics
-    port: 25565
+    port: 8080
     targetPort: metrics
     protocol: TCP
   {{- end }}
