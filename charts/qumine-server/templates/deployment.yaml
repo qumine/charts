@@ -242,7 +242,7 @@ spec:
         name: geysermc
         env:
         - name: BEDROCK_PORT
-          value: {{ .Values.qumine.geysermc.port }}
+          value: "{{ .Values.qumine.geysermc.port }}"
         - name: GEYSER_FLOODGATE_KEY_FILE
           value: /data/plugins/floodgate-bukkit/public-key.pem
         - name: REMOTE_ADDRESS
