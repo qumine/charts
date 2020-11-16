@@ -122,9 +122,9 @@ questions:
   group: QuMine / Integrations
 - variable: qumine.geysermc.port
   show_if: "minecraftServer.eula&&qumine.geysermc.enabled"
-  default: false
+  default: 19132
   description: GeyserMC Port
-  type: boolean
+  type: int
   required: true
   label: GeyserMC Port
   group: QuMine / Integrations
