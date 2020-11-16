@@ -39,20 +39,20 @@ spec:
       initContainers:
       {{- if .Values.qumine.metrics.enabled }}
       - name: install-metrics-plugin
-        image: busybox
+        image: alpine
         imagePullPolicy: Always
         command:
-        - wget -O /data/plugins/managed-metrics.jar https://github.com/sladkoff/minecraft-prometheus-exporter/releases/latest/download/minecraft-prometheus-exporter-2.2.0.jar
+        - mkdir -p /data/plugins && wget -O /data/plugins/managed-metrics.jar https://github.com/sladkoff/minecraft-prometheus-exporter/releases/latest/download/minecraft-prometheus-exporter-2.2.0.jar
         volumeMounts:
         - name: datadir
           mountPath: /data
       {{- end }}
       {{- if .Values.qumine.geysermc.enabled }}
       - name: install-floodgate-plugin
-        image: busybox
+        image: alpine
         imagePullPolicy: Always
         command:
-        - wget -O /data/plugins/managed-floodgate.jar https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar
+        - mkdir -p /data/plugins && wget -O /data/plugins/managed-floodgate.jar https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar
         volumeMounts:
         - name: datadir
           mountPath: /data

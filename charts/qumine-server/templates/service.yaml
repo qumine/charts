@@ -47,7 +47,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "minecraft.fullname" . }}-geysermc
+  name: "{{ template "minecraft.fullname" . }}-geysermc"
   labels:
     app: {{ template "minecraft.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -74,8 +74,8 @@ spec:
   ports:
   - name: geysermc
     port: {{ .Values.qumine.geysermc.port }}
-    targetPort: metrics
-    protocol: TCP
+    targetPort: geysermc
+    protocol: UDP
   selector:
     app: {{ template "minecraft.fullname" . }}
 {{- end -}}
