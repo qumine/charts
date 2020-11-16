@@ -73,7 +73,8 @@ spec:
   {{- end }}
   ports:
   - name: geysermc
-    targetPort: geysermc
+    port: {{ .Values.qumine.geysermc.port }}
+    targetPort: metrics
     protocol: TCP
   selector:
     app: {{ template "minecraft.fullname" . }}
