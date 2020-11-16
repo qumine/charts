@@ -1,5 +1,6 @@
 categories:
 - games
+- gameserver
 questions:
 - variable: defaultImage
   show_if: "minecraftServer.eula"
@@ -150,14 +151,14 @@ questions:
   type: string
   required: false
   label: Whitelist
-  group: QuMine / Players
+  group: QuMine / Initial Players
 - variable: minecraftServer.ops
   show_if: "minecraftServer.eula"
   description: A comma-separated list of players who should be operated.
   type: string
   required: false
   label: Operators
-  group: QuMine / Players
+  group: QuMine / Inital Players
 
 - variable: minecraftServer.motd
   show_if: "minecraftServer.eula"

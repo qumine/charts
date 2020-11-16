@@ -35,5 +35,11 @@ spec:
     port: 25565
     targetPort: minecraft
     protocol: TCP
+  {{- if .Values.metrics.enabled }}
+  - name: metrics
+    port: 25565
+    targetPort: metrics
+    protocol: TCP
+  {{- end }}
   selector:
     app: {{ template "minecraft.fullname" . }}
