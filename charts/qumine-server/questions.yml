@@ -158,7 +158,7 @@ questions:
   type: string
   required: false
   label: Operators
-  group: QuMine / Inital Players
+  group: QuMine / Initial Players
 
 - variable: minecraftServer.motd
   show_if: "minecraftServer.eula"
