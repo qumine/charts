@@ -10,7 +10,7 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   endpoints:
-  - targetPort: metrics
+  - port: metrics
   selector:
     matchLabels:
         app: {{ template "minecraft.fullname" . }}
