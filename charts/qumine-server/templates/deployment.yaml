@@ -37,7 +37,7 @@ spec:
         runAsUser: {{ .Values.securityContext.runAsUser }}
         fsGroup: {{ .Values.securityContext.fsGroup }}
       initContainers:
-      {{- if .Values.qumine.etrics.enabled }}
+      {{- if .Values.qumine.metrics.enabled }}
       - name: install-metrics-plugin
         image: busybox
         imagePullPolicy: Always
@@ -228,7 +228,7 @@ spec:
           containerPort: {{ .Values.minecraftServer.rcon.port }}
           protocol: TCP
         {{- end }}
-        {{- if .Values.qumine.etrics.enabled }}
+        {{- if .Values.qumine.metrics.enabled }}
         - name: metrics
           containerPort: 9225
           protocol: TCP
