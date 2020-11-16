@@ -30,9 +30,16 @@ spec:
         imagePullPolicy: Always
         resources:
 {{ toYaml .Values.resources | indent 12 }}
+        env:
+        {{- if .Values.qumine.debug }}
+        - name: DEBUG
+          value: "true"
+        {{- end }}
+        - name: PORT
+          value: {{ .Values.qumine.port }}
         args:
         {{- if .Values.qumine.debug }}
-          - --debug
+        - --debug
         {{- end }}
         ports:
         - name: ingress
