@@ -1,7 +1,7 @@
 apiVersion: v1
 name: qumine-server
-version: 0.0.2
-appVersion: v0.0.2
+version: 0.0.3
+appVersion: v0.0.3
 kubeVersion: ">=v1.14.0"
 description: Kubernetes minecraft server
 keywords:

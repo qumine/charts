@@ -179,6 +179,13 @@ qumine:
   ingress:
     enabled: false
     hostname: 
-
-metrics:
-  enabled: false
+  metrics:
+    enabled: false
+  geysermc:
+    enabled: false
+    port: 19132
+    serviceType: ClusterIP
+    loadBalancerIP:
+    # loadBalancerSourceRanges: []
+    ## Set the externalTrafficPolicy in the Service to either Cluster or Local
+    # externalTrafficPolicy: Cluster

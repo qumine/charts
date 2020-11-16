@@ -35,7 +35,7 @@ spec:
     port: 25565
     targetPort: minecraft
     protocol: TCP
-  {{- if .Values.metrics.enabled }}
+  {{- if .Values.qumine.metrics.enabled }}
   - name: metrics
     port: 8080
     targetPort: metrics
@@ -43,3 +43,38 @@ spec:
   {{- end }}
   selector:
     app: {{ template "minecraft.fullname" . }}
+{{- if .Values.qumine.geysermc.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "minecraft.fullname" . }}-geysermc
+  labels:
+    app: {{ template "minecraft.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+{{- if (or (eq .Values.qumine.geysermc.serviceType "ClusterIP") (empty .Values.qumine.geysermc.serviceType)) }}
+  type: ClusterIP
+{{- else if eq .Values.qumine.geysermc.serviceType "LoadBalancer" }}
+  type: {{ .Values.qumine.geysermc.serviceType }}
+  {{- if .Values.qumine.geysermc.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.qumine.geysermc.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.qumine.geysermc.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+{{ toYaml .Values.qumine.geysermc.loadBalancerSourceRanges | indent 4 }}
+  {{- end -}}
+{{- else }}
+  type: {{ .Values.qumine.geysermc.serviceType }}
+{{- end }}
+  {{- if .Values.qumine.geysermc.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.qumine.geysermc.externalTrafficPolicy }}
+  {{- end }}
+  ports:
+  - name: geysermc
+    targetPort: geysermc
+    protocol: TCP
+  selector:
+    app: {{ template "minecraft.fullname" . }}
+{{- end -}}

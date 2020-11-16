@@ -98,19 +98,47 @@ questions:
   label: Ingress Enabled
   group: QuMine / Integrations
 - variable: qumine.ingress.hostname
-  show_if: "minecraftServer.eula&&qumine.ingress.enabled=true"
+  show_if: "minecraftServer.eula&&qumine.ingress.enabled"
   description: The hostname to use for the ingress
   type: string
   required: true
   label: Ingress hostname
   group: QuMine / Integrations
-- variable: metrics.enabled
+- variable: qumine.metrics.enabled
   show_if: "minecraftServer.eula"
   default: false
-  description: Enable metrics exporting, required https://github.com/sladkoff/minecraft-prometheus-exporter
+  description: Enable metrics exporting (will install https://github.com/sladkoff/minecraft-prometheus-exporter plugin)
   type: boolean
   required: true
   label: Metrics Exporter
+  group: QuMine / Integrations
+- variable: qumine.geysermc.enabled
+  show_if: "minecraftServer.eula"
+  default: false
+  description: Enable geysermc (will install https://github.com/GeyserMC/Floodgate plugin)
+  type: boolean
+  required: true
+  label: GeyserMC
+  group: QuMine / Integrations
+- variable: qumine.geysermc.port
+  show_if: "minecraftServer.eula&&qumine.geysermc.enabled"
+  default: false
+  description: GeyserMC Port
+  type: boolean
+  required: true
+  label: GeyserMC Port
+  group: QuMine / Integrations
+- variable: qumine.geysermc.serviceType
+  show_if: "minecraftServer.eula&&qumine.geysermc.enabled"
+  default: "LoadBalancer"
+  options:
+    - "LoadBalancer"
+    - "NodePort"
+    - "ClusterIP"
+  description: GeyserMC ServiceType
+  type: enum
+  required: true
+  label: GeyserMC ServiceType
   group: QuMine / Integrations
 
 - variable: minecraftServer.memory

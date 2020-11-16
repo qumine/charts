@@ -36,6 +36,27 @@ spec:
       securityContext:
         runAsUser: {{ .Values.securityContext.runAsUser }}
         fsGroup: {{ .Values.securityContext.fsGroup }}
+      initContainers:
+      {{- if .Values.mqumine.etrics.enabled }}
+      - name: install-metrics-plugin
+        image: busybox
+        imagePullPolicy: Always
+        command:
+        - wget -O /data/plugins/managed-metrics.jar https://github.com/sladkoff/minecraft-prometheus-exporter/releases/latest/download/minecraft-prometheus-exporter-2.2.0.jar
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
+      {{- end }}
+      {{- if .Values.qumine.geysermc.enabled }}
+      - name: install-floodgate-plugin
+        image: busybox
+        imagePullPolicy: Always
+        command:
+        - wget -O /data/plugins/managed-floodgate.jar https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
+      {{- end }}
       containers:
       - name: {{ template "minecraft.fullname" . }}
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
@@ -207,7 +228,7 @@ spec:
           containerPort: {{ .Values.minecraftServer.rcon.port }}
           protocol: TCP
         {{- end }}
-        {{- if .Values.metrics.enabled }}
+        {{- if .Values.mqumine.etrics.enabled }}
         - name: metrics
           containerPort: 9225
           protocol: TCP
@@ -215,6 +236,27 @@ spec:
         volumeMounts:
         - name: datadir
           mountPath: /data
+      {{- if .Values.qumine.geysermc.enabled }}
+      - name: geysermc
+        image: docker.k8.network/library/geyser-mc:latest
+        name: geysermc
+        env:
+        - name: BEDROCK_PORT
+          value: {{ .Values.qumine.geysermc.port }}
+        - name: GEYSER_FLOODGATE_KEY_FILE
+          value: /data/plugins/floodgate-bukkit/public-key.pem
+        - name: REMOTE_ADDRESS
+          value: 127.0.0.1
+        - name: REMOTE_AUTH_TYPE
+          value: floodgate
+        ports:
+        - name: geysermc
+          containerPort: {{ .Values.qumine.geysermc.port }}
+          protocol: UDP
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
+      {{- end }}
       volumes:
       - name: datadir
       {{- if .Values.persistence.dataDir.enabled }}
