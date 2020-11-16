@@ -16,6 +16,8 @@ spec:
   selector:
     matchLabels:
       app: {{ template "qumine.name" . }}
+      release: "{{ .Release.Name }}"
+      metrics-port: true
   namespaceSelector:
     matchNames:
     - {{ .Release.Namespace }}

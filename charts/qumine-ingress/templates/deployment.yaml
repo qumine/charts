@@ -1,4 +1,4 @@
-{{- if .Values.qumine.deployment.enabled }}
+{{- if eq .Values.qumine.type "Deployment" }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -23,9 +23,6 @@ spec:
     metadata:
       labels:
         app: {{ template "qumine.name" . }}
-      annotations:
-        prometheus.io/scrape: 'true'
-        prometheus.io/port: '8080'
     spec:
       containers:
       - name: {{ template "qumine.fullname" . }}
@@ -41,6 +38,11 @@ spec:
         - name: ingress
           containerPort: {{ .Values.qumine.port }}
           protocol: TCP
+        {{- if .Values.qumine.metrics.enabled }}
+        - name: metrics
+          containerPort: 8080
+          protocol: TCP
+        {{- end }}
         readinessProbe:
           httpGet:
             path: /healthz

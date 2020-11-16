@@ -1,5 +1,5 @@
 image: qumine/qumine-ingress
-imageTag: v0.6.0
+imageTag: v0.6.1
 
 resources:
   requests:
@@ -16,14 +16,15 @@ tolerations:
 affinity:
 
 qumine:
+  type: "DaemonSet"
+  daemonset:
+    metricsPort: "8080"
   deployment:
-    enabled: true
     replicas: 1
     serviceType: "LoadBalancer"
     loadBalancerIP:
     #loadBalancerSourceRanges:
     #externalTrafficPolicy: Cluster
-
   debug: false
 
   port: 25565

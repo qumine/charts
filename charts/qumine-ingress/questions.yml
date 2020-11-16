@@ -7,7 +7,7 @@ questions:
   description: Use default Docker image
   label: Use Default Image
   type: boolean
-  group: QuMine-Ingress / Container Images
+  group: QuMine / Images
   show_subquestion_if: false
   subquestions:
   - variable: image
@@ -16,7 +16,7 @@ questions:
     type: string
     label: QuMine-Ingress image name
   - variable: imageTag
-    default: v0.6.0
+    default: v0.6.1
     description: QuMine-Ingress image tag
     type: string
     label: QuMine-Ingress image tag
@@ -27,76 +27,87 @@ questions:
   type: string
   required: true
   label: CPU Requests
-  group: QuMine-Ingress / Resources
+  group: QuMine / Resources
 - variable: resources.limits.cpu
   default: 250m
   description: CPU Limit
   type: string
   required: true
   label: CPU Limit
-  group: QuMine-Ingress / Resources
+  group: QuMine / Resources
 - variable: resources.requests.memory
   default: 256Mi
   description: Memory Requests
   type: string
   required: true
   label: Memory Requests
-  group: QuMine-Ingress / Resources
+  group: QuMine / Resources
 - variable: resources.limits.memory
   default: 512Mi
   description: Memory Limit
   type: string
   required: true
   label: Memory Limit
-  group: QuMine-Ingress / Resources
+  group: QuMine / Resources
 
-- variable: qumine.deployment.enabled
+- variable: qumine.metrics.enabled
   default: false
-  description: Use a deployment instead of a daemonset.
+  description: Enable metrics exporting
   type: boolean
   required: true
-  label: Use a deployment instead of a daemonset.
-  group: QuMine-Ingress / Deployment
+  label: Metrics Exporter
+  group: QuMine / Integrations
+- variable: qumine.daemonset.metricsPort
+  show_if: "qumine.metrics.enabled=true&qumine.deployment.type=DaemonSet"
+  default: 8080
+  description: Metrics Exporter Port (Daemonset) 
+  type: int
+  required: true
+  label: Metrics Exporter Port (Daemonset)
+  group: QuMine / Integrations
+
+- variable: qumine.deployment.type
+  default: DaemonSet
+  options:
+    - "DaemonSet"
+    - "Deployment"
+  description: The type of deployment to use
+  type: enum
+  required: true
+  label: Type of deployment
+  group: QuMine / Deployment
 - variable: qumine.deployment.replicas
-  show_if: "qumine.deployment.enabled=true"
+  show_if: "qumine.deployment.type=Deployment"
   default: 1
   description: The amount of replicas for the deployment
   type: int
   required: true
   label: Replica count
-  group: QuMine-Ingress / Deployment
+  group: QuMine / Deployment
 - variable: qumine.deployment.serviceType
-  show_if: "qumine.deployment.enabled=true"
-  description: The service type for the ingress
-  type: enum
+  show_if: "qumine.deployment.type=Deployment"
+  default: "LoadBalancer"
   options:
     - "LoadBalancer"
     - "NodePort"
     - "ClusterIP"
-  default: "LoadBalancer"
+  description: The service type for the ingress
+  type: enum
   required: true
   label: The service type for the ingress
-  group: QuMine-Ingress / Deployment
+  group: QuMine / Type
 
-- variable: qumine.debug
-  default: false
-  description: Enable debugging
-  type: boolean
-  required: true
-  label: Debug Mode
-  group: QuMine-Ingress / General
 - variable: qumine.port
   default: 25565
   description: Port for the server
   type: int
   required: true
   label: Server Port
-  group: QuMine-Ingress / General
-
-- variable: qumine.metrics.enabled
+  group: QuMine / General
+- variable: qumine.debug
   default: false
-  description: Enable the Prometheus metrics
+  description: Enable debugging
   type: boolean
   required: true
-  label: Enable Metrics
-  group: QuMine-Ingress / Metrics
+  label: Debug Mode
+  group: QuMine / General

@@ -1,4 +1,4 @@
-{{- if eq .Values.qumine.deployment.enabled false}}
+{{- if eq .Values.qumine.type "DaemonSet" }}
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -22,9 +22,6 @@ spec:
     metadata:
       labels:
         app: qumine-ingress
-      annotations:
-        prometheus.io/scrape: 'true'
-        prometheus.io/port: '8080'
     spec:
       containers:
       - name: qumine-ingress
@@ -40,6 +37,11 @@ spec:
         - name: ingress
           containerPort: {{ .Values.qumine.port }}
           protocol: TCP
+        {{- if .Values.qumine.metrics.enabled }}
+        - name: metrics
+          containerPort: 8080
+          protocol: TCP
+        {{- end }}
         readinessProbe:
           httpGet:
             path: /healthz

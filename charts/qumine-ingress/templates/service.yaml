@@ -1,4 +1,4 @@
-{{- if .Values.qumine.deployment.enabled }}
+{{- if eq .Values.qumine.type "Deployment" }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -33,4 +33,27 @@ spec:
     protocol: TCP
   selector:
     app: {{ template "qumine.name" . }}
+    release: "{{ .Release.Name }}"
+{{- end -}}
+{{- if .Values.qumine.metrics.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "qumine.fullname" . }}
+  labels:
+    app: {{ template "qumine.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+    metrics-port: true
+spec:
+  type: ClusterIP
+  ports:
+  - name: metrics
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: {{ template "qumine.name" . }}
+    release: "{{ .Release.Name }}"
 {{- end -}}
