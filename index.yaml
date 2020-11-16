@@ -58,6 +58,31 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server
     apiVersion: v1
+    appVersion: v0.0.3
+    created: "2020-11-16T13:52:40.321999766Z"
+    description: Kubernetes minecraft server
+    digest: ef0960543365f2b28e1225efb95b4ea1b04c6882211f8f39ffa4229363de5d8c
+    home: https://server.qumine.io/
+    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
+    keywords:
+    - qumine
+    - qumine-server
+    - minecraft
+    - minecraft-server
+    kubeVersion: '>=v1.14.0'
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: qumine-server
+    sources:
+    - https://github.com/qumine/qumine-server
+    urls:
+    - https://github.com/QuMine/charts/releases/download/qumine-server-0.0.3/qumine-server-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: QuMine Server
+    apiVersion: v1
     appVersion: v0.0.2
     created: "2020-11-16T13:08:35.013327993Z"
     description: Kubernetes minecraft server
