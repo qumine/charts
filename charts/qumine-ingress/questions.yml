@@ -58,7 +58,7 @@ questions:
   label: Metrics Exporter
   group: QuMine / Integrations
 - variable: qumine.daemonset.metricsPort
-  show_if: "qumine.metrics.enabled=true&qumine.deployment.type=DaemonSet"
+  show_if: "qumine.metrics.enabled=true&&qumine.deployment.type=DaemonSet"
   default: 8080
   description: Metrics Exporter Port (Daemonset) 
   type: int
