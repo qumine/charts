@@ -37,7 +37,7 @@ spec:
     protocol: TCP
   {{- if .Values.qumine.metrics.enabled }}
   - name: metrics
-    port: 8080
+    port: 9225
     targetPort: metrics
     protocol: TCP
   {{- end }}
