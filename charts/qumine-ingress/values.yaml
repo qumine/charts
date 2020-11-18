@@ -1,20 +1,6 @@
 image: qumine/qumine-ingress
 imageTag: v0.6.1
 
-resources:
-  requests:
-    memory: 128Mi
-    cpu: 125m
-  limits:
-    memory: 256Mi
-    cpu: 250m
-
-nodeSelector:
-
-tolerations:
-
-affinity:
-
 qumine:
   type: "DaemonSet"
   daemonset:
@@ -28,6 +14,60 @@ qumine:
   debug: false
 
   port: 25565
+
+nodeSelector:
+
+tolerations:
+
+affinity:
+
+## ServiceAccount parameters
+## https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+##
+serviceAccount:
+  create: true
+  ## Service Account for pods
+  ##
+  name:
+  ## Annotations for the Service Account
+  ##
+  annotations: {}
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  limits:
+    cpu: 50m
+    memory: 50Mi
+  requests:
+    memory: 25Mi
+    cpu: 25m
+
+## Liveness Probe. The block is directly forwarded into the deployment, so you can use whatever livenessProbe configuration you want.
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+##
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 2
+  successThreshold: 1
+## Readiness Probe. The block is directly forwarded into the deployment, so you can use whatever readinessProbe configuration you want.
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+##
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
 
 ## Prometheus Exporter / Metrics
 ##

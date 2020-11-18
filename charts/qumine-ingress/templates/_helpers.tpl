@@ -101,7 +101,7 @@ imagePullSecrets:
 {{- end -}}
 
 {/*
-Return the ExternalDNS service account name
+Return the QuMine service account name
 */}}
 {{- define "qumine.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
