@@ -16,6 +16,7 @@ spec:
     metadata:
       labels: {{ include "qumine.labels" . | nindent 8 }}
     spec:
+{{- include "external-dns.imagePullSecrets" . | indent 6 }}
       containers:
       - name: qumine-ingress
         image: "{{ template "qumine.image" . }}"
