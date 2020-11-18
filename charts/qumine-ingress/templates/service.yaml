@@ -1,8 +1,10 @@
 {{- if eq .Values.qumine.type "Deployment" }}
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ template "qumine.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     app: {{ template "qumine.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -36,10 +38,12 @@ spec:
     release: "{{ .Release.Name }}"
 {{- end -}}
 {{- if .Values.qumine.metrics.enabled }}
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: "{{ template "qumine.fullname" . }}-metrics"
+  namespace: {{ .Release.Namespace }}
   labels:
     app: {{ template "qumine.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
