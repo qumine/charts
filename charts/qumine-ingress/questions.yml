@@ -50,20 +50,20 @@ questions:
   label: Memory Limit
   group: QuMine / Resources
 
-- variable: qumine.metrics.enabled
+- variable: metrics.enabled
   default: false
-  description: Enable metrics exporting
+  description: Enable metrics
   type: boolean
   required: true
-  label: Metrics Exporter
+  label: Enable Metrics
   group: QuMine / Integrations
-- variable: qumine.daemonset.metricsPort
-  show_if: "qumine.metrics.enabled=true&&qumine.deployment.type=DaemonSet"
-  default: 8080
-  description: Metrics Exporter Port (Daemonset) 
-  type: int
+- variable: metrics.serviceMonitor.enabled
+  show_if: "metrics.enabled"
+  default: false
+  description: Enable Prometheus ServiceMonitor
+  type: boolean
   required: true
-  label: Metrics Exporter Port (Daemonset)
+  label: Enable ServiceMonitor
   group: QuMine / Integrations
 
 - variable: qumine.type
