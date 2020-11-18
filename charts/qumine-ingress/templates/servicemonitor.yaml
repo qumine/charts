@@ -19,4 +19,5 @@ spec:
       - {{ .Release.Namespace }}
   selector:
     matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
+      metrics-service: "true"
 {{- end -}}

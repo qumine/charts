@@ -35,8 +35,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "qumine.fullname" . }}
+  name: "{{ template "qumine.fullname" . }}-metrics"
   labels: {{ include "qumine.labels" . | nindent 4 }}
+    metrics-service: "true"
 spec:
   type: ClusterIP
   ports:
