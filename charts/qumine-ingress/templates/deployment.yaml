@@ -1,35 +1,28 @@
 {{- if eq .Values.qumine.type "Deployment" }}
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "qumine.fullname" . }}
-  namespace: {{ .Release.Namespace }}
-  labels:
-    app: {{ template "qumine.name" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  labels: {{ include "qumine.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.qumine.deployment.replicas }}
   selector:
-    matchLabels:
-      app: {{ template "qumine.name" . }}
+    matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
   strategy:
     rollingUpdate:
       maxUnavailable: 1
     type: RollingUpdate
-  replicas: {{ .Values.qumine.deployment.replicas }}
   template:
     metadata:
-      labels:
-        app: {{ template "qumine.name" . }}
+      labels: {{ include "qumine.labels" . | nindent 8 }}
     spec:
       containers:
-      - name: {{ template "qumine.fullname" . }}
-        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
-        imagePullPolicy: Always
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+      - name: qumine-ingress
+        image: "{{ template "qumine.image" . }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        {{- if .Values.resources }}
+        resources: {{- toYaml .Values.resources | nindent 12 }}
+        {{- end }}
         env:
         {{- if .Values.qumine.debug }}
         - name: DEBUG
@@ -45,11 +38,6 @@ spec:
         - name: ingress
           containerPort: {{ .Values.qumine.port }}
           protocol: TCP
-        {{- if .Values.qumine.metrics.enabled }}
-        - name: metrics
-          containerPort: 8080
-          protocol: TCP
-        {{- end }}
         readinessProbe:
           httpGet:
             path: /healthz
@@ -77,5 +65,4 @@ spec:
       {{- end }}
       dnsPolicy: ClusterFirst
       serviceAccountName: {{ template "qumine.fullname" . }}
----
 {{- end -}}

@@ -4,12 +4,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ template "qumine.fullname" . }}
-  namespace: {{ .Release.Namespace }}
-  labels:
-    app: {{ template "qumine.name" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  labels: {{ include "qumine.labels" . | nindent 4 }}
 spec:
 {{- if (or (eq .Values.qumine.deployment.serviceType "ClusterIP") (empty .Values.qumine.deployment.serviceType)) }}
   type: ClusterIP
@@ -33,23 +28,15 @@ spec:
     port: {{ .Values.qumine.port }}
     targetPort: ingress
     protocol: TCP
-  selector:
-    app: {{ template "qumine.name" . }}
-    release: "{{ .Release.Name }}"
+  selector: {{ include "qumine.matchLabels" . | nindent 4 }}
 {{- end -}}
 {{- if .Values.qumine.metrics.enabled }}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: "{{ template "qumine.fullname" . }}-metrics"
-  namespace: {{ .Release.Namespace }}
-  labels:
-    app: {{ template "qumine.name" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
-    metrics-port: "true"
+  name: {{ template "qumine.fullname" . }}
+  labels: {{ include "qumine.labels" . | nindent 4 }}
 spec:
   type: ClusterIP
   ports:
@@ -57,7 +44,5 @@ spec:
     port: 8080
     targetPort: 8080
     protocol: TCP
-  selector:
-    app: {{ template "qumine.name" . }}
-    release: "{{ .Release.Name }}"
+  selector: {{ include "qumine.matchLabels" . | nindent 4 }}
 {{- end -}}

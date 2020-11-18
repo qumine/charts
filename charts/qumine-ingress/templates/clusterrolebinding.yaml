@@ -1,19 +1,13 @@
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: {{ template "qumine.fullname" . }}
-  labels:
-    app: {{ template "qumine.name" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  labels: {{ include "qumine.labels" . | nindent 4 }}
 roleRef:
+  apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: {{ template "qumine.fullname" . }}
-  apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: ServiceAccount
-  name: {{ template "qumine.fullname" . }}
+  name: {{ template "qumine.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
----

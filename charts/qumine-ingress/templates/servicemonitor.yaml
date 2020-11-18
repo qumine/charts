@@ -1,23 +1,22 @@
-{{- if .Values.qumine.metrics.enabled }}
+{{- if and .Values.metrics.enabled .Values.metrics.serviceMonitor.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "qumine.fullname" . }}
-  namespace: {{ .Release.Namespace }}
-  labels:
-    app: {{ template "qumine.name" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  labels: {{ include "qumine.labels" . | nindent 4 }}
 spec:
   endpoints:
   - port: metrics
-  selector:
-    matchLabels:
-      app: {{ template "qumine.name" . }}
-      release: "{{ .Release.Name }}"
-      metrics-port: "true"
+    path: /metrics
+    {{- with .Values.metrics.serviceMonitor.interval }}
+    interval: {{ . }}
+    {{- end }}
+    {{- with .Values.metrics.serviceMonitor.scrapeTimeout }}
+    scrapeTimeout: {{ . }}
+    {{- end }}
   namespaceSelector:
     matchNames:
-    - {{ .Release.Namespace }}
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
 {{- end -}}
