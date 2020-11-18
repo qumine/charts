@@ -51,11 +51,11 @@ serviceAccount:
 ##
 resources:
   limits:
-    cpu: 50m
-    memory: 50Mi
+    cpu: 250m
+    memory: 512Mi
   requests:
-    memory: 25Mi
-    cpu: 25m
+    memory: 256Mi
+    cpu: 125m
 
 ## Liveness Probe. The block is directly forwarded into the deployment, so you can use whatever livenessProbe configuration you want.
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
@@ -63,7 +63,7 @@ resources:
 livenessProbe:
   httpGet:
     path: /healthz
-    port: http
+    port: 8080
   initialDelaySeconds: 10
   periodSeconds: 10
   timeoutSeconds: 5
@@ -75,7 +75,7 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /healthz
-    port: http
+    port: 8080
   initialDelaySeconds: 5
   periodSeconds: 10
   timeoutSeconds: 5
