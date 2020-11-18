@@ -36,7 +36,7 @@ spec:
           value: "true"
         {{- end }}
         - name: PORT
-          value: {{ .Values.qumine.port }}
+          value: "{{ .Values.qumine.port }}"
         args:
         {{- if .Values.qumine.debug }}
         - --debug
