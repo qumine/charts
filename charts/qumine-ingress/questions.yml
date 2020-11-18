@@ -77,7 +77,7 @@ questions:
   label: Type of deployment
   group: QuMine / Deployment
 - variable: qumine.deployment.replicas
-  show_if: "qumine.deployment.type=Deployment"
+  show_if: "qumine.type=Deployment"
   default: 1
   description: The amount of replicas for the deployment
   type: int
