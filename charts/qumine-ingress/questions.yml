@@ -95,7 +95,7 @@ questions:
   type: enum
   required: true
   label: The service type for the ingress
-  group: QuMine / Type
+  group: QuMine / Deployment
 
 - variable: qumine.port
   default: 25565
