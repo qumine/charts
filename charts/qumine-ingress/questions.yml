@@ -5,21 +5,26 @@ questions:
 - variable: defaultImage
   default: true
   description: Use default Docker image
-  label: Use Default Image
   type: boolean
-  group: QuMine / Images
+  label: Use Default Image
+  group: QuMine / Docker Images
   show_subquestion_if: false
   subquestions:
-  - variable: image
+  - variable: image.registry
+    default: docker.io
+    description: QuMine Image Registry
+    type: string
+    label: QuMine image name
+  - variable: image.repository
     default: qumine/qumine-ingress
-    description: QuMine-Ingress image name
+    description: QuMine Image Repository
     type: string
-    label: QuMine-Ingress image name
-  - variable: imageTag
-    default: v0.6.1
-    description: QuMine-Ingress image tag
+    label: QuMine image name
+  - variable: image.tag
+    default: 0.6.1
+    description: ExternalDNS image tag
     type: string
-    label: QuMine-Ingress image tag
+    label: QuMine Image Tag
 
 - variable: resources.requests.cpu
   default: 125m
