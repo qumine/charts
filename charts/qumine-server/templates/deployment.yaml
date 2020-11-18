@@ -46,7 +46,9 @@ spec:
         - -c
         - >-
             mkdir -p /data/plugins &&
-            wget -O /data/plugins/managed-metrics.jar https://github.com/sladkoff/minecraft-prometheus-exporter/releases/latest/download/minecraft-prometheus-exporter-2.2.0.jar
+            wget -O /data/plugins/managed-metrics.jar https://github.com/sladkoff/minecraft-prometheus-exporter/releases/latest/download/minecraft-prometheus-exporter-2.2.0.jar &&
+            mkdir -p /data/plugins/PrometheusExporter &&
+            echo -n "aG9zdDogMC4wLjAuMApwb3J0OiA5MjI1CmVuYWJsZV9tZXRyaWNzOgogIGVudGl0aWVzX3RvdGFsOiB0cnVlCiAgdmlsbGFnZXJzX3RvdGFsOiB0cnVlCiAgbG9hZGVkX2NodW5rc190b3RhbDogdHJ1ZQogIGp2bV9tZW1vcnk6IHRydWUKICBwbGF5ZXJzX29ubGluZV90b3RhbDogdHJ1ZQogIHBsYXllcnNfdG90YWw6IHRydWUKICB0cHM6IHRydWUKICBqdm1fdGhyZWFkczogdHJ1ZQogIGp2bV9nYzogdHJ1ZQogIHRpY2tfZHVyYXRpb25fbWVkaWFuOiB0cnVlCiAgdGlja19kdXJhdGlvbl9hdmVyYWdlOiB0cnVlCiAgdGlja19kdXJhdGlvbl9taW46IGZhbHNlCiAgdGlja19kdXJhdGlvbl9tYXg6IHRydWUKICBwbGF5ZXJfb25saW5lOiBmYWxzZQogIHBsYXllcl9zdGF0aXN0aWM6IGZhbHNlCg==" | base64 -d - > /data/plugins/PrometheusExporter/config.yaml
         volumeMounts:
         - name: datadir
           mountPath: /data

@@ -14,17 +14,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
           version: v3.4.0
 
-      - name: Run chart-releaser
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Release Chart
         uses: helm/chart-releaser-action@v1.1.0
         with:
           charts_repo_url: https://qumine.github.io/charts

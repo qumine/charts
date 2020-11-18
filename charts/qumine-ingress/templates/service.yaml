@@ -45,7 +45,7 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-    metrics-port: true
+    metrics-port: "true"
 spec:
   type: ClusterIP
   ports:

@@ -16,27 +16,28 @@ jobs:
         with:
           version: v3.4.0
 
-      - uses: actions/setup-python@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
           python-version: 3.7
 
-      - name: Set up chart-testing
+      - name: Set up Chart-Testing
         uses: helm/chart-testing-action@v2.0.0
 
-      - name: Run chart-testing (list-changed)
-        id: list-changed
+      - name: Check Changed
+        id: changed
         run: |
           changed=$(ct list-changed)
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
 
-      - name: Run chart-testing (lint)
+      - name: Lint Chart
         run: ct lint
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
-        if: steps.list-changed.outputs.changed == 'true'
+        if: steps.changed.outputs.changed == 'true'
 
-      - name: Run chart-testing (install)
+      - name: Install Chart
         run: ct install
