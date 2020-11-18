@@ -21,7 +21,7 @@ questions:
     type: string
     label: QuMine image name
   - variable: image.tag
-    default: 0.6.1
+    default: v0.6.1
     description: ExternalDNS image tag
     type: string
     label: QuMine Image Tag
