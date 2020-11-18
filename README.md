@@ -16,7 +16,7 @@ helm repo add qumine https://qumine.github.io/charts/
 You can then run `helm search repo qumine` to see the charts.
 
 ## Charts
-tt
+
 * [qumine-ingress](https://github.com/qumine/charts/tree/master/charts/qumine-ingress)
 * [qumine-server](https://github.com/qumine/charts/tree/master/charts/qumine-server)
 
