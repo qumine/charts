@@ -40,7 +40,7 @@ spec:
           containerPort: {{ .Values.qumine.port }}
           protocol: TCP
         readinessProbe: {{ toYaml .Values.readinessProbe | nindent 12 }}
-        ivenessProbe: {{ toYaml .Values.livenessProbe | nindent 12 }}
+        livenessProbe: {{ toYaml .Values.livenessProbe | nindent 12 }}
       {{- with .Values.affinity }}
       affinity:
 {{ toYaml . | indent 8 }}
