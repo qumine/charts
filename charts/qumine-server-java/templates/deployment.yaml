@@ -52,7 +52,7 @@ spec:
           value: {{ .Values.server.customURL }}
         {{- else }}
         - name: SERVER_VERSION
-          value: {{ .Values.server.type }}
+          value: {{ .Values.server.version }}
         {{- end }}
         - name: SERVER_WHITE_LIST
           value: {{ .Values.server.whitelist }}
