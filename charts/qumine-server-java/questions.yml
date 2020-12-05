@@ -118,7 +118,16 @@ questions:
   label: GeyserMC Service Port
   group: QuMine-Server / Integrations
 
-- variable: server.properties.mode
+- variable: plugins
+  if: "eula == true"
+  default: ""
+  description: Plugins to automatically install and update. (comma seperated)
+  type: multiline
+  required: true
+  label: Plugins
+  group: QuMine-Server / Plugins
+
+- variable: server.whitelist
   if: "eula == true"
   default: ""
   description: Players to add to the initial whitelist. (comma seperated)
@@ -126,7 +135,7 @@ questions:
   required: true
   label: Whitelist
   group: QuMine-Server / Initial Players
-- variable: server.properties.mode
+- variable: server.ops
   if: "eula == true"
   default: ""
   description: Players to add to the initial ops list. (comma seperated)
