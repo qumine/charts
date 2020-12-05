@@ -72,6 +72,7 @@ spec:
           containerPort: {{ .Values.metrics.service.port }}
         readinessProbe: {{ toYaml .Values.readinessProbe | nindent 10 }}
         livenessProbe: {{ toYaml .Values.livenessProbe | nindent 10 }}
+        startupProbe  : {{ toYaml .Values.startupProbe | nindent 10 }}
         {{- if .Values.securityContext }}
         securityContext: {{ toYaml .Values.securityContext | nindent 10 }}
         {{- end }}

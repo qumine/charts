@@ -412,7 +412,6 @@ livenessProbe:
   httpGet:
     path: /health/live
     port: http
-  initialDelaySeconds: 30
   periodSeconds: 5
   timeoutSeconds: 1
   failureThreshold: 5
@@ -425,11 +424,20 @@ readinessProbe:
   httpGet:
     path: /health/ready
     port: http
-  initialDelaySeconds: 30
   periodSeconds: 5
   timeoutSeconds: 1
   failureThreshold: 5
   successThreshold: 1
+
+## Readiness Probe. The block is directly forwarded into the deployment, so you can use whatever readinessProbe configuration you want.
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+##
+startupProbe:
+  httpGet:
+    path: /health/ready
+    port: http
+  periodSeconds: 5
+  failureThreshold: 24
 
 ## Configure extra volumes
 extraVolumes: []
