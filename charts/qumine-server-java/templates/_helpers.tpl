@@ -58,6 +58,16 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 {{- end -}}
 
+{{/* serviceAnnotations */}}
+{{- define "qumine.serviceAnnotations" -}}
+{{- if .Values.service.annotations }}
+{{ toYaml .Values.service.annotations }}
+{{- end }}
+{{- if .Values.ingress.podAnnotations }}
+ingress.qumine.io/hostname: {{ .Values.ingress.hostname | quote}}
+{{- end }}
+{{- end -}}
+
 {{/*
 Return the proper External DNS image name
 */}}

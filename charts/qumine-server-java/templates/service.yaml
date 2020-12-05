@@ -6,10 +6,10 @@ metadata:
   {{- if .Values.service.labels -}}
   {{ toYaml .Values.service.labels | nindent 4 }}
   {{- end }}
-  annotations: {{ toYaml .Values.service.annotations | nindent 4 }}
-  {{- if .Values.ingress.enabled }}
-    ingress.qumine.io/hostname: {{ .Values.ingress.hostname | quote}}
-  {{- end }}
+  annotations:
+    {{- if or .Values.serviceAnnotations .Values.ingress.enabled }}
+    {{- include "qumine.serviceAnnotations" . | trim | nindent 8 }}
+    {{- end }}
 spec:
   {{- if .Values.service.clusterIP }}
   clusterIP: {{ .Values.service.clusterIP }}
