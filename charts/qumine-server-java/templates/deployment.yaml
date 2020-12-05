@@ -32,48 +32,59 @@ spec:
       priorityClassName: {{ .Values.priorityClassName | quote }}
       {{- end }}
       containers:
-        - name: qumine
-          image: "{{ template "qumine.image" . }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-          args:
-            {{- range $key, $value := .Values.extraArgs }}
-             # Extra arguments
-              {{- if $value }}
-            - --{{ $key }}={{ $value }}
-              {{- else }}
-            - --{{ $key }}
-              {{- end }}
-            {{- end }}
-          env:
-            {{- range $key, $value := .Values.qumine.properties }}
-            - name: {{ $key | camelcase | upper}}
-              value: {{ $value }}
-            {{- end }}
-            {{- if .Values.extraEnv }}
-            # Extra environment variables
-            {{- toYaml .Values.extraEnv | nindent 12 }}
-            {{- end }}
-          ports:
-            - name: minecraft
-              containerPort: {{ .Values.service.port }}
-            - name: metrics
-              containerPort: {{ .Values.metrics.service.port }}
-            - name: geysermc
-              containerPort: {{ .Values.geysermc.service.port }}
-          readinessProbe: {{ toYaml .Values.readinessProbe | nindent 12 }}
-          livenessProbe: {{ toYaml .Values.livenessProbe | nindent 12 }}
-          {{- if .Values.securityContext }}
-          securityContext: {{ toYaml .Values.securityContext | nindent 12 }}
+      - name: qumine
+        image: "{{ template "qumine.image" . }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        args:
+        {{- range $key, $value := .Values.extraArgs }}
+          # Extra arguments
+          {{- if $value }}
+        - --{{ $key }}={{ $value }}
+          {{- else }}
+        - --{{ $key }}
           {{- end }}
-          {{- if .Values.resources }}
-          resources: {{- toYaml .Values.resources | nindent 12 }}
+        {{- end }}
+        env:
+        {{- range $key, $value := .Values.qumine.properties }}
+        - name: {{ $key | camelcase | upper}}
+          value: {{ $value }}
+        {{- end }}
+        {{- if .Values.extraEnv }}
+        {{- toYaml .Values.extraEnv | nindent 10 }}
+        {{- end }}
+        ports:
+        - name: minecraft
+          containerPort: {{ .Values.service.port }}
+        - name: metrics
+          containerPort: {{ .Values.metrics.service.port }}
+        - name: geysermc
+          containerPort: {{ .Values.geysermc.service.port }}
+        readinessProbe: {{ toYaml .Values.readinessProbe | nindent 10 }}
+        livenessProbe: {{ toYaml .Values.livenessProbe | nindent 10 }}
+        {{- if .Values.securityContext }}
+        securityContext: {{ toYaml .Values.securityContext | nindent 10 }}
+        {{- end }}
+        {{- if .Values.resources }}
+        resources: {{- toYaml .Values.resources | nindent 10 }}
+        {{- end }}
+        volumeMounts:
+        - name: data
+          mountPath: /data
+          {{- if .Values.extraVolumeMounts }}
+          {{- toYaml .Values.extraVolumeMounts | nindent 10 }}
           {{- end }}
-          volumeMounts:
-            {{- if .Values.extraVolumeMounts }}
-            # Extra volume mount(s)
-            {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
-            {{- end }}
       volumes:
+      - name: data
+        {{- if (eq .Values.persistence.type "EmptryDir") }}
+        emptyDir: {}
+        {{- else }}
+        persistentVolumeClaim:
+          {{- if (eq .Values.persistence.type "StorageClass") }}
+          claimName: {{ template "minecraft.fullname" . }}
+          {{- else }}
+          claimName: {{ .Values.persistence.volumeName }}
+          {{- end }}
+        {{- end }}
         {{- if .Values.extraVolumes }}
         # Extra volume(s)
         {{- toYaml .Values.extraVolumes | nindent 8 }}

@@ -24,12 +24,12 @@ spec:
   loadBalancerSourceRanges: {{ toYaml .Values.service.loadBalancerSourceRanges | nindent 4 }}
   {{- end }}
   ports:
-    - name: minecraft
-      port: {{ .Values.service.port }}
-      protocol: TCP
-      targetPort: minecraft
-      {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort)) }}
-      nodePort: {{ .Values.service.nodePort  }}
-      {{- end }}
+  - name: minecraft
+    port: {{ .Values.service.port }}
+    protocol: TCP
+    targetPort: minecraft
+    {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort)) }}
+    nodePort: {{ .Values.service.nodePort  }}
+    {{- end }}
   selector: {{ include "qumine.matchLabels" . | nindent 4 }}
   type: {{ .Values.service.type }}

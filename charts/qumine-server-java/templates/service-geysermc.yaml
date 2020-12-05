@@ -24,13 +24,13 @@ spec:
   loadBalancerSourceRanges: {{ toYaml .Values.geysermc.service.loadBalancerSourceRanges | nindent 4 }}
   {{- end }}
   ports:
-    - name: geysermc
-      port: {{ .Values.geysermc.service.port }}
-      protocol: UDP
-      targetPort: geysermc
-      {{- if and (eq .Values.geysermc.service.type "NodePort") (not (empty .Values.geysermc.service.nodePort)) }}
-      nodePort: {{ .Values.geysermc.service.nodePort  }}
-      {{- end }}
+  - name: geysermc
+    port: {{ .Values.geysermc.service.port }}
+    protocol: UDP
+    targetPort: geysermc
+    {{- if and (eq .Values.geysermc.service.type "NodePort") (not (empty .Values.geysermc.service.nodePort)) }}
+    nodePort: {{ .Values.geysermc.service.nodePort  }}
+    {{- end }}
   selector: {{ include "qumine.matchLabels" . | nindent 4 }}
   type: {{ .Values.service.type }}
 {{- end -}}

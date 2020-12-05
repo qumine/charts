@@ -12,17 +12,17 @@ metadata:
     {{- end }}
 spec:
   endpoints:
-    - port: http
-      path: /metrics
-      {{- with .Values.metrics.serviceMonitor.interval }}
-      interval: {{ . }}
-      {{- end }}
-      {{- with .Values.metrics.serviceMonitor.scrapeTimeout }}
-      scrapeTimeout: {{ . }}
-      {{- end }}
+  - port: http
+    path: /metrics
+    {{- with .Values.metrics.serviceMonitor.interval }}
+    interval: {{ . }}
+    {{- end }}
+    {{- with .Values.metrics.serviceMonitor.scrapeTimeout }}
+    scrapeTimeout: {{ . }}
+    {{- end }}
   namespaceSelector:
     matchNames:
-      - {{ .Release.Namespace }}
+    - {{ .Release.Namespace }}
   selector:
     matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
       metrics: "true"
