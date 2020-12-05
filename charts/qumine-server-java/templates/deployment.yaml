@@ -73,6 +73,27 @@ spec:
           {{- if .Values.extraVolumeMounts }}
           {{- toYaml .Values.extraVolumeMounts | nindent 10 }}
           {{- end }}
+      {{- if .Values.geysermc.enabled }}
+      - name: geysermc
+        image: docker.k8.network/library/geyser-mc:latest
+        name: geysermc
+        env:
+        - name: BEDROCK_PORT
+          value: "{{ .Values.geysermc.service.port }}"
+        - name: GEYSER_FLOODGATE_KEY_FILE
+          value: /data/plugins/floodgate-bukkit/public-key.pem
+        - name: REMOTE_ADDRESS
+          value: 127.0.0.1
+        - name: REMOTE_AUTH_TYPE
+          value: floodgate
+        ports:
+        - name: geysermc
+          containerPort: {{ .Values.geysermc.service.port }}
+          protocol: UDP
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      {{- end }}
       volumes:
       - name: data
         {{- if (eq .Values.persistence.type "EmptryDir") }}

@@ -7,8 +7,8 @@ metadata:
   {{ toYaml .Values.service.labels | nindent 4 }}
   {{- end }}
   annotations: {{ toYaml .Values.service.annotations | nindent 4 }}
-  {{- if .Values.qumine.ingress.enabled }}
-    ingress.qumine.io/hostname: {{ .Values.qumine.ingress.hostname }}
+  {{- if .Values.ingress.enabled }}
+    ingress.qumine.io/hostname: {{ .Values.ingress.hostname }}
   {{- end }}
 spec:
   {{- if .Values.service.clusterIP }}
