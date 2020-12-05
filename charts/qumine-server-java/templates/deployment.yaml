@@ -57,8 +57,6 @@ spec:
           containerPort: {{ .Values.service.port }}
         - name: metrics
           containerPort: {{ .Values.metrics.service.port }}
-        - name: geysermc
-          containerPort: {{ .Values.geysermc.service.port }}
         readinessProbe: {{ toYaml .Values.readinessProbe | nindent 10 }}
         livenessProbe: {{ toYaml .Values.livenessProbe | nindent 10 }}
         {{- if .Values.securityContext }}
