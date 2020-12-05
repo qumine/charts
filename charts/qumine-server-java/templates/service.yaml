@@ -6,8 +6,9 @@ metadata:
   {{- if .Values.service.labels -}}
   {{ toYaml .Values.service.labels | nindent 4 }}
   {{- end }}
-  {{- if .Values.service.annotations }}
   annotations: {{ toYaml .Values.service.annotations | nindent 4 }}
+  {{- if .Values.qumine.ingress.enabled }}
+    ingress.qumine.io/hostname: {{ .Values.qumine.ingress.hostname }}
   {{- end }}
 spec:
   {{- if .Values.service.clusterIP }}
