@@ -205,26 +205,26 @@ questions:
   label: Server Type
   group: QuMine-Server / Server
 - variable: server.version
-  show_if: "eula&&server.type!=custom"
+  show_if: "eula&&server.type!=CUSTOM"
   default: latest
   description: The version of the minecraft server to install
   type: string
   required: true
   label: Server Version
   group: QuMine-Server / Server
-- variable: eula
-  show_if: "eula&&server.type!=custom"
+- variable: server.forceUpdate
+  show_if: "eula&&server.type!=CUSTOM"
   default: false
   description: Force the server.jar to be downloaded all the time
   type: boolean
   required: true
   label: Force Update
   group: QuMine-Server / Server
-- variable: eula
-  show_if: "eula&&server.type==custom"
+- variable: qumine.customURL
+  show_if: "eula&&server.type=CUSTOM"
   description: The download URL for the custom server.jar to install
-  type: boolean
-  required: string
+  type: string
+  required: true
   label: Custom URL
   group: QuMine-Server / Server
 
