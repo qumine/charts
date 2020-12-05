@@ -61,7 +61,7 @@ questions:
 - variable: metrics.enabled
   if: "eula == true"
   default: false
-  description: Enable metrics
+  description: Enable metrics (will install https://github.com/sladkoff/minecraft-prometheus-exporter  plugin)
   type: boolean
   required: true
   label: Enable Metrics
