@@ -99,7 +99,7 @@ spec:
         {{- else }}
         persistentVolumeClaim:
           {{- if (eq .Values.persistence.type "StorageClass") }}
-          claimName: {{ template "minecraft.fullname" . }}
+          claimName: {{ template "qumine.fullname" . }}
           {{- else }}
           claimName: {{ .Values.persistence.volumeName }}
           {{- end }}
