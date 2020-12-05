@@ -389,9 +389,9 @@ service:
 ##  capabilities:
 ##    drop: ["ALL"]
 securityContext: {}
-podSecurityContext:
-  fsGroup: 1001
-  runAsUser: 1001
+podSecurityContext: {}
+##  fsGroup: 1001
+##  runAsUser: 1001
 ##  runAsNonRoot: true
 
 ## Configure resource requests and limits
