@@ -68,7 +68,7 @@ spec:
         ports:
         - name: minecraft
           containerPort: {{ .Values.service.port }}
-        - name: metrics
+        - name: http
           containerPort: {{ .Values.metrics.service.port }}
         readinessProbe: {{ toYaml .Values.readinessProbe | nindent 10 }}
         livenessProbe: {{ toYaml .Values.livenessProbe | nindent 10 }}
