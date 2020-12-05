@@ -46,8 +46,8 @@ spec:
         {{- end }}
         env:
         {{- range $key, $value := .Values.server.properties }}
-        - name: {{ $key | camelcase | upper}}
-          value: {{ $value }}
+        - name: {{ $key | snakecase | upper}}
+          value: {{ $value | quote }}
         {{- end }}
         {{- if .Values.extraEnv }}
         {{- toYaml .Values.extraEnv | nindent 10 }}

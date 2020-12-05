@@ -164,7 +164,6 @@ questions:
   default: ""
   description: Plugins to automatically install and update. (comma seperated)
   type: multiline
-  required: true
   label: Plugins
   group: QuMine-Server / Plugins
 
@@ -173,7 +172,6 @@ questions:
   default: ""
   description: Players to add to the initial whitelist. (comma seperated)
   type: string
-  required: true
   label: Whitelist
   group: QuMine-Server / Initial Players
 - variable: server.ops
@@ -181,7 +179,6 @@ questions:
   default: ""
   description: Players to add to the initial ops list. (comma seperated)
   type: string
-  required: true
   label: OPs
   group: QuMine-Server / Initial Players
 
@@ -224,10 +221,10 @@ questions:
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnAnimals
   if: "eula == true && server.properties.mode == \"ADVANCED\""
-  default: true
+  default: "true"
   options: 
-  - true
-  - false
+  - "true"
+  - "false"
   description: Determines if animals can spawn.
   type: enum
   required: true
@@ -235,10 +232,10 @@ questions:
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnMonsters
   if: "eula == true && server.properties.mode == \"ADVANCED\""
-  default: true
+  default: "true"
   options: 
-  - true
-  - false
+  - "true"
+  - "false"
   description: Determines if monsters can spawn.
   type: enum
   required: true
@@ -246,10 +243,10 @@ questions:
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnNpcs
   if: "eula == true && server.properties.mode == \"ADVANCED\""
-  default: true
+  default: "true"
   options: 
-  - true
-  - false
+  - "true"
+  - "false"
   description: Determines if villagers can spawn.
   type: enum
   required: true
@@ -265,10 +262,10 @@ questions:
   group: QuMine-Server / Server Properties
 - variable: server.properties.syncChunkWrites
   show_if: "eula && server.properties.mode=ADVANCED"
-  default: true
+  default: "true"
   options: 
-  - true
-  - false
+  - "true"
+  - "false"
   description: Enables synchronous chunk writes.
   type: enum
   required: true
@@ -276,10 +273,10 @@ questions:
   group: QuMine-Server / Server Properties
 - variable: server.properties.useNativeTransport
   if: "eula == true && server.properties.mode == \"ADVANCED\""
-  default: true
+  default: "true"
   options: 
-  - true
-  - false
+  - "true"
+  - "false"
   description: Linux server performance improvements
   type: enum
   required: true
@@ -295,9 +292,12 @@ questions:
   group: QuMine-Server / Server Properties
 - variable: server.properties.whiteList
   if: "eula == true"
-  default: "10"
+  default: "false"
+  options: 
+  - "true"
+  - "false"
   description: Enables a whitelist on the server
-  type: string
+  type: enum
   required: true
   label: whiteList
   group: QuMine-Server / Server Properties
