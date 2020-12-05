@@ -1,0 +1,237 @@
+categories:
+- games
+- game-server
+- minecraft
+- qumine-server
+- qumine
+questions:
+- variable: defaultImage
+  default: true
+  description: Use default Docker image
+  type: boolean
+  label: Use Default Image
+  group: QuMine-Server / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image.registry
+    default: docker.io
+    description: QuMine-Server Image Registry
+    type: string
+    label: QuMine-Server image name
+  - variable: image.repository
+    default: qumine/qumine-server-java
+    description: QuMine-Server Image Repository
+    type: string
+    label: QuMine-Server image name
+  - variable: image.tag
+    default: 0.0.2-rc1
+    description: QuMine-Server image tag
+    type: string
+    label: QuMine-Server Image Tag
+
+- variable: resources.requests.cpu
+  default: 250m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: QuMine-Server / Resources
+- variable: resources.limits.cpu
+  default: 1000m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: QuMine-Server / Resources
+- variable: resources.requests.memory
+  default: 1000Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: QuMine-Server / Resources
+- variable: resources.limits.memory
+  default: 2000Mi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: QuMine-Server / Resources
+
+- variable: metrics.enabled
+  show_if: "eula"
+  default: false
+  description: Enable metrics
+  type: boolean
+  required: true
+  label: Enable Metrics
+  group: QuMine-Server / Integrations
+- variable: metrics.serviceMonitor.enabled
+  show_if: "eula&&metrics.enabled"
+  default: false
+  description: Enable Prometheus ServiceMonitor
+  type: boolean
+  required: true
+  label: Enable ServiceMonitor
+  group: QuMine-Server / Integrations
+
+- variable: server.properties.mode
+  show_if: "eula"
+  default: SIMPLE
+  options: 
+  - SIMPLE
+  - ADVANCED
+  description: The type of minecraft server to install
+  type: enum
+  required: true
+  label: Configuration Mode
+  group: QuMine-Server / Server Properties
+- variable: server.properties.difficulty
+  show_if: "eula"
+  default: easy
+  options: 
+  - peaceful
+  - easy
+  - normal
+  - hard
+  description: Defines the difficulty
+  type: string
+  required: true
+  label: difficulty
+  group: QuMine-Server / Server
+- variable: server.properties.gamemode
+  show_if: "eula"
+  default: survival
+  options: 
+  - survival
+  - creative
+  - adventure
+  - spectator
+  description: Defines the mode of gameplay.
+  type: string
+  required: true
+  label: gamemode
+  group: QuMine-Server / Server
+- variable: server.properties.spawnAnimals
+  show_if: "eula&&server.properties.mode=ADVANCED"
+  default: true
+  options: 
+  - true
+  - false
+  description: Determines if animals can spawn.
+  type: string
+  required: true
+  label: spawn-animals
+  group: QuMine-Server / Server
+- variable: server.properties.spawnMonsters
+  show_if: "eula&&server.properties.mode=ADVANCED"
+  default: true
+  options: 
+  - true
+  - false
+  description: Determines if monsters can spawn.
+  type: string
+  required: true
+  label: spawn-monsters
+  group: QuMine-Server / Server
+- variable: server.properties.spawnNpcs
+  show_if: "eula&&server.properties.mode=ADVANCED"
+  default: true
+  options: 
+  - true
+  - false
+  description: Determines if villagers can spawn.
+  type: string
+  required: true
+  label: spawn-npcs
+  group: QuMine-Server / Server
+- variable: server.properties.spawnProtection
+  show_if: "eula&&server.properties.mode=ADVANCED"
+  default: "16"
+  description: Determines the side length of the square spawn protection area as 2x+1
+  type: string
+  required: true
+  label: spawn-protection
+  group: QuMine-Server / Server
+- variable: server.properties.syncChunkWrites
+  show_if: "eula&&server.properties.mode=ADVANCED"
+  default: true
+  options: 
+  - true
+  - false
+  description: Enables synchronous chunk writes.
+  type: string
+  required: true
+  label: sync-chunk-writes
+  group: QuMine-Server / Server
+- variable: server.properties.useNativeTransport
+  show_if: "eula&&server.properties.mode=ADVANCED"
+  default: true
+  options: 
+  - true
+  - false
+  description: Linux server performance improvements
+  type: string
+  required: true
+  label: use-native-transport
+  group: QuMine-Server / Server
+- variable: server.properties.viewDistance
+  show_if: "eula&&server.properties.mode=ADVANCED"
+  default: "10"
+  description: Sets the amount of world data the server sends the client, measured in chunks in each direction of the player
+  type: string
+  required: true
+  label: view-distance
+  group: QuMine-Server / Server
+- variable: server.properties.whiteList
+  show_if: "eula"
+  default: "10"
+  description: Enables a whitelist on the server
+  type: string
+  required: true
+  label: whiteList
+  group: QuMine-Server / Server
+
+- variable: server.type
+  show_if: "eula"
+  default: VANILLA
+  options: 
+  - VANILLA
+  - YATOPIA
+  - CUSTOM
+  description: The type of minecraft server to install
+  type: enum
+  required: true
+  label: Server Type
+  group: QuMine-Server / Server
+- variable: server.version
+  show_if: "eula&&server.type!=custom"
+  default: latest
+  description: The version of the minecraft server to install
+  type: string
+  required: true
+  label: Server Version
+  group: QuMine-Server / Server
+- variable: eula
+  show_if: "eula&&server.type!=custom"
+  default: false
+  description: Force the server.jar to be downloaded all the time
+  type: boolean
+  required: true
+  label: Force Update
+  group: QuMine-Server / Server
+- variable: eula
+  show_if: "eula&&server.type==custom"
+  description: The download URL for the custom server.jar to install
+  type: boolean
+  required: string
+  label: Custom URL
+  group: QuMine-Server / Server
+
+- variable: eula
+  default: false
+  description: Accept Minecraft's EULA (https://www.minecraft.net/en-us/eula)
+  type: boolean
+  required: true
+  label: Accept EULA
+  group: QuMine-Server / Eula

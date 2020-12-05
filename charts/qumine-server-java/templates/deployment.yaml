@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "qumine.fullname" . }}
+  labels: {{ include "qumine.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: {{ include "qumine.labels" . | nindent 8 }}
+      annotations:
+        {{- if or .Values.podAnnotations .Values.metrics.enabled }}
+        {{- include "qumine.podAnnotations" . | trim | nindent 8 }}
+        {{- end }}
+    spec:
+{{- include "qumine.imagePullSecrets" . | indent 6 }}
+      {{- if .Values.podSecurityContext }}
+      securityContext: {{ toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity: {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector: {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations: {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      {{- if .Values.priorityClassName }}
+      priorityClassName: {{ .Values.priorityClassName | quote }}
+      {{- end }}
+      containers:
+        - name: qumine
+          image: "{{ template "qumine.image" . }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          args:
+            {{- range $key, $value := .Values.extraArgs }}
+             # Extra arguments
+              {{- if $value }}
+            - --{{ $key }}={{ $value }}
+              {{- else }}
+            - --{{ $key }}
+              {{- end }}
+            {{- end }}
+          env:
+            {{- range $key, $value := .Values.qumine.properties }}
+            - name: {{ $key | camelcase | upper}}
+              value: {{ $value }}
+            {{- end }}
+            {{- if .Values.extraEnv }}
+            # Extra environment variables
+            {{- toYaml .Values.extraEnv | nindent 12 }}
+            {{- end }}
+          ports:
+            - name: minecraft
+              containerPort: {{ .Values.service.port }}
+            - name: metrics
+              containerPort: {{ .Values.metrics.service.port }}
+            - name: geysermc
+              containerPort: {{ .Values.geysermc.service.port }}
+          readinessProbe: {{ toYaml .Values.readinessProbe | nindent 12 }}
+          livenessProbe: {{ toYaml .Values.livenessProbe | nindent 12 }}
+          {{- if .Values.securityContext }}
+          securityContext: {{ toYaml .Values.securityContext | nindent 12 }}
+          {{- end }}
+          {{- if .Values.resources }}
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            {{- if .Values.extraVolumeMounts }}
+            # Extra volume mount(s)
+            {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
+            {{- end }}
+      volumes:
+        {{- if .Values.extraVolumes }}
+        # Extra volume(s)
+        {{- toYaml .Values.extraVolumes | nindent 8 }}
+        {{- end }}

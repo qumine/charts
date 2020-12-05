@@ -1,0 +1,36 @@
+{{- if .Values.metrics.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "qumine.fullname" . }}-metrics"
+  labels: {{ include "qumine.labels" . | nindent 4 }}
+  {{- if .Values.metrics.service.labels -}}
+  {{ toYaml .Values.metrics.service.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.metrics.service.annotations }}
+  annotations: {{ toYaml .Values.metrics.service.annotations | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.metrics.service.clusterIP }}
+  clusterIP: {{ .Values.metrics.service.clusterIP }}
+  {{- end }}
+  {{- if .Values.metrics.service.externalIPs }}
+  externalIPs: {{ toYaml .Values.metrics.service.externalIPs | nindent 4 }}
+  {{- end }}
+  {{- if .Values.metrics.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.metrics.service.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.metrics.service.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges: {{ toYaml .Values.metrics.service.loadBalancerSourceRanges | nindent 4 }}
+  {{- end }}
+  ports:
+    - name: metrics
+      port: {{ .Values.metrics.service.port }}
+      protocol: TCP
+      targetPort: metrics
+      {{- if and (eq .Values.metrics.service.type "NodePort") (not (empty .Values.metrics.service.nodePort)) }}
+      nodePort: {{ .Values.metrics.service.nodePort  }}
+      {{- end }}
+  selector: {{ include "qumine.matchLabels" . | nindent 4 }}
+  type: {{ .Values.metrics.service.type }}
+{{- end -}}
