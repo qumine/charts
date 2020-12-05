@@ -94,7 +94,7 @@ spec:
       {{- end }}
       volumes:
       - name: data
-        {{- if (eq .Values.persistence.type "EmptryDir") }}
+        {{- if (eq .Values.persistence.type "EmptyDir") }}
         emptyDir: {}
         {{- else }}
         persistentVolumeClaim:
