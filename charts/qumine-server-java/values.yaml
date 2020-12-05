@@ -43,7 +43,7 @@ server:
   # The version of server to download/start.
   forceUpdate: false
   # The version of server to download/start.
-  version: "latest"
+  customURL: "latest"
 
   properties:
     # Allows users to use flight on the server while in Survival mode, if they have a mod that provides flight installed.

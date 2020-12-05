@@ -45,8 +45,21 @@ spec:
           {{- end }}
         {{- end }}
         env:
+        - name: SERVER_TYPE
+          value: {{ .Values.server.type }}
+        {{- if (eq .Values.server.type "CUSTOM") }}
+        - name: SERVER_CUSTOM_URL
+          value: {{ .Values.server.customURL }}
+        {{- else }}
+        - name: SERVER_VERSION
+          value: {{ .Values.server.type }}
+        {{- end }}
+        - name: SERVER_WHITE_LIST
+          value: {{ .Values.server.whitelist }}
+        - name: SERVER_OPS
+          value: {{ .Values.server.ops }}
         {{- range $key, $value := .Values.server.properties }}
-        - name: {{ $key | snakecase | upper}}
+        - name: "SERVER_PROPERTIES_{{ $key | snakecase | upper}}"
           value: {{ $value | quote }}
         {{- end }}
         {{- if .Values.extraEnv }}
