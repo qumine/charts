@@ -113,7 +113,7 @@ questions:
   label: gamemode
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnAnimals
-  show_if: "eula&&server.properties.mode=ADVANCED"
+  show_if: "eula && server.properties.mode=ADVANCED"
   default: true
   options: 
   - true
@@ -124,7 +124,7 @@ questions:
   label: spawn-animals
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnMonsters
-  show_if: "eula&&server.properties.mode=ADVANCED"
+  show_if: "eula && server.properties.mode=ADVANCED"
   default: true
   options: 
   - true
@@ -135,7 +135,7 @@ questions:
   label: spawn-monsters
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnNpcs
-  show_if: "eula&&server.properties.mode=ADVANCED"
+  show_if: "eula && server.properties.mode=ADVANCED"
   default: true
   options: 
   - true
@@ -146,7 +146,7 @@ questions:
   label: spawn-npcs
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnProtection
-  show_if: "eula&&server.properties.mode=ADVANCED"
+  show_if: "eula && server.properties.mode=ADVANCED"
   default: "16"
   description: Determines the side length of the square spawn protection area as 2x+1
   type: string
@@ -154,7 +154,7 @@ questions:
   label: spawn-protection
   group: QuMine-Server / Server Properties
 - variable: server.properties.syncChunkWrites
-  show_if: "eula&&server.properties.mode=ADVANCED"
+  show_if: "eula && server.properties.mode=ADVANCED"
   default: true
   options: 
   - true
@@ -165,7 +165,7 @@ questions:
   label: sync-chunk-writes
   group: QuMine-Server / Server Properties
 - variable: server.properties.useNativeTransport
-  show_if: "eula&&server.properties.mode=ADVANCED"
+  show_if: "eula && server.properties.mode=ADVANCED"
   default: true
   options: 
   - true
@@ -176,7 +176,7 @@ questions:
   label: use-native-transport
   group: QuMine-Server / Server Properties
 - variable: server.properties.viewDistance
-  show_if: "eula&&server.properties.mode=ADVANCED"
+  show_if: "eula && server.properties.mode=ADVANCED"
   default: "10"
   description: Sets the amount of world data the server sends the client, measured in chunks in each direction of the player
   type: string
@@ -205,7 +205,7 @@ questions:
   label: Server Type
   group: QuMine-Server / Server
 - variable: server.version
-  show_if: "eula=true && !server.type=CUSTOM"
+  show_if: "eula=true && server.type!=CUSTOM"
   default: latest
   description: The version of the minecraft server to install
   type: string
@@ -213,7 +213,7 @@ questions:
   label: Server Version
   group: QuMine-Server / Server
 - variable: server.forceUpdate
-  show_if: "eula=true && !server.type=CUSTOM"
+  show_if: "eula=true && server.type!=CUSTOM"
   default: false
   description: Force the server.jar to be downloaded all the time
   type: boolean
