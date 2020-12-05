@@ -520,7 +520,7 @@ ingress:
   enabled: false
   hostname: ""
 
-geyermc:
+geysermc:
   enabled: false
   ## Kubernetes svc configutarion
   ##
