@@ -484,6 +484,10 @@ metrics:
     # selector:
     #   prometheus: my-prometheus
 
+ingress:
+  enabled: false
+  hostname: ""
+
 geyermc:
   enabled: false
   ## Kubernetes svc configutarion

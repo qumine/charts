@@ -74,6 +74,49 @@ questions:
   required: true
   label: Enable ServiceMonitor
   group: QuMine-Server / Integrations
+- variable: ingress.enabled
+  if: "eula == true"
+  default: false
+  description: Enable QuMine-Ingress Integration
+  type: boolean
+  required: true
+  label: Enable QuMine-Ingress
+  group: QuMine-Server / Integrations
+- variable: ingress.hostname
+  if: "eula == true && ingress.enabled == true"
+  description: The hostname to use for the ingress
+  type: string
+  required: true
+  label: Ingress hostname
+  group: QuMine-Server / Integrations
+- variable: geysermc.enabled
+  if: "eula == true"
+  default: false
+  description: Enable geysermc (will install https://github.com/GeyserMC/Floodgate plugin)
+  type: boolean
+  required: true
+  label: Enable GeyserMC
+  group: QuMine-Server / Integrations
+- variable: qumine.geysermc.serviceType
+  if: "eula == true && geysermc.enabled == true"
+  default: "ClusterIP"
+  options:
+    - "ClusterIP"
+    - "LoadBalancer"
+    - "NodePort"
+  description: GeyserMC ServiceType
+  type: enum
+  required: true
+  label: GeyserMC Service Type
+  group: QuMine-Server / Integrations
+- variable: qumine.service.port
+  if: "eula == true && geysermc.enabled == true"
+  default: 19132
+  description: GeyserMC Port
+  type: int
+  required: true
+  label: GeyserMC Service Port
+  group: QuMine-Server / Integrations
 
 - variable: server.properties.mode
   if: "eula == true"
