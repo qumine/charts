@@ -322,6 +322,9 @@ extraEnv: []
 ##
 replicas: 1
 
+# upgrade strategy (e.g. Recreate or RollingUpdate)
+strategy: Recreate
+
 ## Affinity for pod assignment (this value is evaluated as a template)
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 ##

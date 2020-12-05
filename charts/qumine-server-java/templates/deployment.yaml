@@ -5,6 +5,8 @@ metadata:
   labels: {{ include "qumine.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicas }}
+  strategy:
+    type: {{ .Values.strategyType }}
   selector:
     matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
   template:
