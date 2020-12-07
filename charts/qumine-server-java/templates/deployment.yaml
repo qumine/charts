@@ -6,7 +6,7 @@ metadata:
 spec:
   replicas: {{ .Values.replicas }}
   strategy:
-    type: {{ .Values.strategyType }}
+    type: {{ .Values.strategy }}
   selector:
     matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
   template:
