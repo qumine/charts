@@ -307,6 +307,9 @@ questions:
   default: VANILLA
   options: 
   - VANILLA
+  - PAPERMC
+  - TRAVERTINE
+  - WATERFALL
   - YATOPIA
   - CUSTOM
   description: The type of minecraft server to install
