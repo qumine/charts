@@ -119,3 +119,14 @@ imagePullSecrets:
 {{- end }}
 {{- end -}}
 {{- end -}}
+
+{{- define "qumine.plugins" -}}
+{{- $plugins := .Values.plugins -}}
+{{- if .Values.metrics.enabled }}
+{{- $plugins = print "gh://sladkoff/minecraft-prometheus-exporter," .Values.plugins -}}
+{{- end}}
+{{- if .Values.geysermc.enabled }}
+{{- $plugins = print "gh://geysermc/floodgate," .Values.plugins -}}
+{{- end}}
+{{- print $plugins -}}
+{{- end -}}

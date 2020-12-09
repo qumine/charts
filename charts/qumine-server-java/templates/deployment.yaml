@@ -56,6 +56,8 @@ spec:
         - name: SERVER_VERSION
           value: {{ .Values.server.version }}
         {{- end }}
+        - name: PLUGINS
+          value: "{{ template "qumine.plugins" . }}"
         - name: SERVER_WHITE_LIST
           value: {{ .Values.server.whitelist }}
         - name: SERVER_OPS
