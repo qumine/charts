@@ -60,8 +60,16 @@ spec:
           value: "{{ template "qumine.plugins" . }}"
         - name: SERVER_WHITE_LIST
           value: {{ .Values.server.whitelist }}
+        {{- if .Values.server.whitelistOverride }}
+        - name: SERVER_WHITE_LIST_OVERRIDE
+          value: "true"
+        {{- else }}
         - name: SERVER_OPS
           value: {{ .Values.server.ops }}
+        {{- if .Values.server.opsOverride }}
+        - name: SERVER_OPS_OVERRIDE
+          value: "true"
+        {{- else }}
         {{- range $key, $value := .Values.server.properties }}
         - name: "SERVER_PROPERTIES_{{ $key | snakecase | upper}}"
           value: {{ $value | quote }}
