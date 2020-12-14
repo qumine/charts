@@ -269,12 +269,12 @@ server:
 
   # Players to add to the initial whitelist.
   whitelist: ""
-  # Override the whitelist if they already exist.
+  # Override the whitelist.json if they already exist.
   whitelistOverride: false
 
   # Players to add to the initial ops list.
   ops: ""
-  # Override the ops if they already exist.
+  # Override the ops.json if they already exist.
   opsOverride: false
 
 ## Plugins to download. (comma-seperated list)

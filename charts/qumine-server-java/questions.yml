@@ -174,12 +174,26 @@ questions:
   type: string
   label: Whitelist
   group: QuMine-Server / Initial Players
+- variable: server.whitelistOverride
+  if: "eula == true"
+  default: false
+  description: Override the whitelist.json if it already exists
+  type: boolean
+  label: Whitelist Override
+  group: QuMine-Server / Initial Players
 - variable: server.ops
   if: "eula == true"
   default: ""
   description: Players to add to the initial ops list. (comma seperated)
   type: string
   label: OPs
+  group: QuMine-Server / Initial Players
+- variable: server.opsOverride
+  if: "eula == true"
+  default: false
+  description: Override the ops.json if it already exists
+  type: boolean
+  label: Ops Override
   group: QuMine-Server / Initial Players
 
 - variable: server.properties.mode
