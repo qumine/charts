@@ -134,10 +134,10 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
     apiVersion: v2
-    appVersion: v0.0.3-rc1
-    created: "2020-12-14T13:46:36.961446227Z"
+    appVersion: v0.0.3
+    created: "2020-12-17T17:43:00.704075604Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: 10da74daf876d33f9e4f890fcd9e76d73b88fc327377ca64a99f49b9213aa522
+    digest: 82d9e7111a0d2e8ad91585d087be858807f9daa66dd1f301be9f3073d3ea9d8b
     home: https://github.com/qumine/qumine-server-java
     icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
     keywords:
@@ -153,8 +153,8 @@ entries:
     sources:
     - https://github.com/qumine/qumine-server-java
     urls:
-    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.3-rc1/qumine-server-java-0.0.3-rc1.tgz
-    version: 0.0.3-rc1
+    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.3/qumine-server-java-0.0.3.tgz
+    version: 0.0.3
   - annotations:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
@@ -284,6 +284,31 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
     apiVersion: v2
+    appVersion: v0.0.3-rc1
+    created: "2020-12-14T13:46:36.961446227Z"
+    description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
+    digest: 10da74daf876d33f9e4f890fcd9e76d73b88fc327377ca64a99f49b9213aa522
+    home: https://github.com/qumine/qumine-server-java
+    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine-server
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: qumine-server-java
+    sources:
+    - https://github.com/qumine/qumine-server-java
+    urls:
+    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.3-rc1/qumine-server-java-0.0.3-rc1.tgz
+    version: 0.0.3-rc1
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: QuMine Server (Java)
+    apiVersion: v2
     appVersion: v0.0.2
     created: "2020-12-09T21:50:32.430597351Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
@@ -305,31 +330,6 @@ entries:
     urls:
     - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.2/qumine-server-java-0.0.2.tgz
     version: 0.0.2
-  - annotations:
-      catalog.cattle.io/certified: qumine
-      catalog.cattle.io/display-name: QuMine Server (Java)
-    apiVersion: v2
-    appVersion: v0.0.2-rc2
-    created: "2020-12-07T10:17:23.573620784Z"
-    description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: b33d5a70f9139bc7a7e49130c47db8cc77ef016f9fab04f6543a764f363546ee
-    home: https://github.com/qumine/qumine-server-java
-    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
-    keywords:
-    - games
-    - game-server
-    - minecraft
-    - qumine-server
-    - qumine
-    maintainers:
-    - email: dev@quhive.dev
-      name: QuHive
-    name: qumine-server-java
-    sources:
-    - https://github.com/qumine/qumine-server-java
-    urls:
-    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.2-rc2/qumine-server-java-0.0.2-rc2.tgz
-    version: 0.0.2-rc2
   - annotations:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
@@ -359,10 +359,10 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
     apiVersion: v2
-    appVersion: 0.0.2-rc1
-    created: "2020-12-05T16:47:25.766096613Z"
+    appVersion: v0.0.2-rc2
+    created: "2020-12-07T10:17:23.573620784Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: 3f590475294d118dbac58c12575247be4459687e17dd0ebf09eed9de565f893b
+    digest: b33d5a70f9139bc7a7e49130c47db8cc77ef016f9fab04f6543a764f363546ee
     home: https://github.com/qumine/qumine-server-java
     icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
     keywords:
@@ -378,16 +378,16 @@ entries:
     sources:
     - https://github.com/qumine/qumine-server-java
     urls:
-    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.2-rc1/qumine-server-java-0.0.2-rc1.tgz
-    version: 0.0.2-rc1
+    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.2-rc2/qumine-server-java-0.0.2-rc2.tgz
+    version: 0.0.2-rc2
   - annotations:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
     apiVersion: v2
     appVersion: 0.0.2-rc1
-    created: "2020-12-05T15:45:28.422540865Z"
+    created: "2020-12-05T16:55:25.992683199Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: d2eeffabbc6a29da6da0e505ccc0a97fd3941f8cbf8ffbb29a3d6899055041ca
+    digest: fd3dcfe474b0f1f7c13138a4c379bcb7d611cfba19dd7d82f6c5306cdec4847d
     home: https://github.com/qumine/qumine-server-java
     icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
     keywords:
@@ -585,9 +585,9 @@ entries:
       catalog.cattle.io/display-name: QuMine Server (Java)
     apiVersion: v2
     appVersion: 0.0.2-rc1
-    created: "2020-12-05T15:41:54.823484174Z"
+    created: "2020-12-05T15:45:28.422540865Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: a37c5ad679d0482af93c6b87aaec2f8858d6060d1537a32190e5c737630b3a74
+    digest: d2eeffabbc6a29da6da0e505ccc0a97fd3941f8cbf8ffbb29a3d6899055041ca
     home: https://github.com/qumine/qumine-server-java
     icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
     keywords:
@@ -685,9 +685,9 @@ entries:
       catalog.cattle.io/display-name: QuMine Server (Java)
     apiVersion: v2
     appVersion: 0.0.2-rc1
-    created: "2020-12-05T16:55:25.992683199Z"
+    created: "2020-12-05T15:41:54.823484174Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: fd3dcfe474b0f1f7c13138a4c379bcb7d611cfba19dd7d82f6c5306cdec4847d
+    digest: a37c5ad679d0482af93c6b87aaec2f8858d6060d1537a32190e5c737630b3a74
     home: https://github.com/qumine/qumine-server-java
     icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
     keywords:
@@ -1013,6 +1013,31 @@ entries:
     created: "2020-12-05T14:27:37.324046801Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
     digest: 577a8091f5c6cd7a5030918a41fbeceb9227371339cab7fb0286f96ec61ae99d
+    home: https://github.com/qumine/qumine-server-java
+    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine-server
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: qumine-server-java
+    sources:
+    - https://github.com/qumine/qumine-server-java
+    urls:
+    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.2-rc1/qumine-server-java-0.0.2-rc1.tgz
+    version: 0.0.2-rc1
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: QuMine Server (Java)
+    apiVersion: v2
+    appVersion: 0.0.2-rc1
+    created: "2020-12-05T16:47:25.766096613Z"
+    description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
+    digest: 3f590475294d118dbac58c12575247be4459687e17dd0ebf09eed9de565f893b
     home: https://github.com/qumine/qumine-server-java
     icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
     keywords:
