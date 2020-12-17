@@ -47,6 +47,10 @@ spec:
           {{- end }}
         {{- end }}
         env:
+        {{- if .Values.server.eula }}
+        - name: EULA
+          value: "true"
+        {{- end }}
         - name: SERVER_TYPE
           value: {{ .Values.server.type }}
         {{- if (eq .Values.server.type "CUSTOM") }}
