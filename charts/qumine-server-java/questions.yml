@@ -411,7 +411,7 @@ questions:
   label: level-name
   group: QuMine-Server / Server Properties
 - variable: server.properties.levelSeed
-  if: "server.eula  && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.properties.advanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: ""
   description: Sets a world seed for the player's world, as in Singleplayer. The world generates with a random seed if left blank
   type: string
