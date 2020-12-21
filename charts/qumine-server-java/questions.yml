@@ -168,28 +168,28 @@ questions:
   group: QuMine-Server / Plugins
 
 - variable: server.whitelist
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: ""
   description: Players to add to the initial whitelist. (comma seperated)
   type: string
   label: Whitelist
   group: QuMine-Server / Initial Players
 - variable: server.whitelistOverride
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: false
   description: Override the whitelist.json if it already exists
   type: boolean
   label: Whitelist Override
   group: QuMine-Server / Initial Players
 - variable: server.ops
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: ""
   description: Players to add to the initial ops list. (comma seperated)
   type: string
   label: OPs
   group: QuMine-Server / Initial Players
 - variable: server.opsOverride
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: false
   description: Override the ops.json if it already exists
   type: boolean
@@ -197,7 +197,7 @@ questions:
   group: QuMine-Server / Initial Players
 
 - variable: server.propertiesAdvanced
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: false
   description: Show advanced options
   type: boolean
@@ -205,7 +205,7 @@ questions:
   label: Advanced Options
   group: QuMine-Server / Server Properties
 - variable: server.properties.allowFlight
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
   options: 
   - "true"
@@ -216,7 +216,7 @@ questions:
   label: broadcast-console-to-ops
   group: QuMine-Server / Server Properties
 - variable: server.properties.allowNether
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -227,7 +227,7 @@ questions:
   label: allow-nether
   group: QuMine-Server / Server Properties
 - variable: server.properties.broadcastConsoleToOps
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -238,7 +238,7 @@ questions:
   label: broadcast-console-to-ops
   group: QuMine-Server / Server Properties
 - variable: server.properties.broadcastRconToOps
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -262,7 +262,7 @@ questions:
   label: difficulty
   group: QuMine-Server / Server Properties
 - variable: server.properties.enableCommandBlock
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
   options: 
   - "true"
@@ -273,7 +273,7 @@ questions:
   label: enable-command-block
   group: QuMine-Server / Server Properties
 - variable: server.properties.enableJmxMonitoring
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
   options: 
   - "true"
@@ -284,7 +284,7 @@ questions:
   label: enable-rcon
   group: QuMine-Server / Server Properties
 - variable: server.properties.enableRcon
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
   options: 
   - "true"
@@ -295,7 +295,7 @@ questions:
   label: enable-rcon
   group: QuMine-Server / Server Properties
 - variable: server.properties.enableStatus
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -306,7 +306,7 @@ questions:
   label: enable-status
   group: QuMine-Server / Server Properties
 - variable: server.properties.enableQuery
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
   options: 
   - "true"
@@ -317,7 +317,7 @@ questions:
   label: enable-query
   group: QuMine-Server / Server Properties
 - variable: server.properties.entityBroadcastRangePercentage
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "100"
   description: Controls how close entities need to be before being sent to clients
   type: string
@@ -325,7 +325,7 @@ questions:
   label: entity-broadcast-range-percentage
   group: QuMine-Server / Server Properties
 - variable: server.properties.enforceWhitelist
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -336,7 +336,7 @@ questions:
   label: enforce-whitelist
   group: QuMine-Server / Server Properties
 - variable: server.properties.forceGamemode
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -347,7 +347,7 @@ questions:
   label: force-gamemode
   group: QuMine-Server / Server Properties
 - variable: server.properties.functionPermissionLevel
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "4"
   options: 
   - "1"
@@ -646,7 +646,7 @@ questions:
   label: spawn-npcs
   group: QuMine-Server / Server Properties
 - variable: server.properties.spawnProtection
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "16"
   description: Determines the side length of the square spawn protection area as 2x+1
   type: string
@@ -654,7 +654,7 @@ questions:
   label: spawn-protection
   group: QuMine-Server / Server Properties
 - variable: server.properties.syncChunkWrites
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -665,7 +665,7 @@ questions:
   label: sync-chunk-writes
   group: QuMine-Server / Server Properties
 - variable: server.properties.textFilteringConfig
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: ""
   description: 
   type: string
@@ -673,7 +673,7 @@ questions:
   label: text-filtering-config
   group: QuMine-Server / Server Properties
 - variable: server.properties.useNativeTransport
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
