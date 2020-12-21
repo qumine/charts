@@ -197,7 +197,7 @@ questions:
   group: QuMine-Server / Initial Players
 
 - variable: server.propertiesAdvanced
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: false
   description: Show advanced options
   type: boolean
