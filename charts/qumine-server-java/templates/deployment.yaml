@@ -56,6 +56,11 @@ spec:
         {{- if (eq .Values.server.type "CUSTOM") }}
         - name: SERVER_CUSTOM_URL
           value: {{ .Values.server.customURL }}
+        {{- else if (eq .Values.server.type "STARTER") }}
+        - name: SERVER_STARTER_JAR_URL
+          value: {{ .Values.server.starterJarURL }}
+        - name: SERVER_STARTER_CONFIG_URL
+          value: {{ .Values.server.starterConfigURL }}
         {{- else }}
         - name: SERVER_VERSION
           value: {{ .Values.server.version }}

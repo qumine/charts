@@ -13,7 +13,7 @@
 image:
   registry: docker.io
   repository: qumine/qumine-server-java
-  tag: v0.0.3
+  tag: v0.0.4-rc1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -40,10 +40,14 @@ server:
   type: "VANILLA"
   # The version of server to download/start.
   version: "latest"
-  # The version of server to download/start.
+  # If the jar should be forced to downloaded.
   forceUpdate: false
   # The version of server to download/start.
   customURL: "latest"
+  # The url for the ServerStarter jar file.
+  starterJarURL: "https://github.com/Yoosk/ServerStarter/releases/download/v2.1.0/serverstarter-2.1.0.jar"
+  # The url for the ServerStarter server-setup-config file.
+  starterConfigURL: ""
 
   properties:
     # Allows users to use flight on the server while in Survival mode, if they have a mod that provides flight installed.

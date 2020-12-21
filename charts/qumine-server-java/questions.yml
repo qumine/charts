@@ -24,7 +24,7 @@ questions:
     type: string
     label: QuMine-Server image name
   - variable: image.tag
-    default: v0.0.3
+    default: v0.0.4-rc1
     description: QuMine-Server image tag
     type: string
     label: QuMine-Server Image Tag
@@ -160,7 +160,7 @@ questions:
   group: QuMine-Server / Persistence
 
 - variable: plugins
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: ""
   description: Plugins to automatically install and update. (comma seperated)
   type: multiline
@@ -168,28 +168,28 @@ questions:
   group: QuMine-Server / Plugins
 
 - variable: server.whitelist
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.properties.advanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: ""
   description: Players to add to the initial whitelist. (comma seperated)
   type: string
   label: Whitelist
   group: QuMine-Server / Initial Players
 - variable: server.whitelistOverride
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.properties.advanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: false
   description: Override the whitelist.json if it already exists
   type: boolean
   label: Whitelist Override
   group: QuMine-Server / Initial Players
 - variable: server.ops
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.properties.advanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: ""
   description: Players to add to the initial ops list. (comma seperated)
   type: string
   label: OPs
   group: QuMine-Server / Initial Players
 - variable: server.opsOverride
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.properties.advanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: false
   description: Override the ops.json if it already exists
   type: boolean
@@ -197,7 +197,7 @@ questions:
   group: QuMine-Server / Initial Players
 
 - variable: server.properties.advanced
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.properties.advanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: false
   description: Show advanced options
   type: boolean
@@ -249,7 +249,7 @@ questions:
   label: broadcast-rcon-to-ops
   group: QuMine-Server / Server Properties
 - variable: server.properties.difficulty
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: easy
   options: 
   - peaceful
@@ -360,7 +360,7 @@ questions:
   label: function-permissionlevel
   group: QuMine-Server / Server Properties
 - variable: server.properties.gamemode
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: survival
   options: 
   - survival
@@ -392,7 +392,7 @@ questions:
   label: generator-settings
   group: QuMine-Server / Server Properties
 - variable: server.properties.hardcore
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -419,7 +419,7 @@ questions:
   label: level-seed
   group: QuMine-Server / Server Properties
 - variable: server.properties.levelType
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "default"
   options: 
   - "default"
@@ -433,7 +433,7 @@ questions:
   label: level-type
   group: QuMine-Server / Server Properties
 - variable: server.properties.maxPlayers
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "20"
   description: The maximum number of players that can play on the server at the same time. Note that more players on the server consume more resources
   type: string
@@ -457,7 +457,7 @@ questions:
   label: max-world-size
   group: QuMine-Server / Server Properties
 - variable: server.properties.motd
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "A Minecraft Server"
   description: This is the message that is displayed in the server list of the client, below the name
   type: string
@@ -473,7 +473,7 @@ questions:
   label: network-compression-threshold
   group: QuMine-Server / Server Properties
 - variable: server.properties.onlineMode
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -516,7 +516,7 @@ questions:
   label: prevent-proxy-connections
   group: QuMine-Server / Server Properties
 - variable: server.properties.pvp
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
   options: 
   - "true"
@@ -684,7 +684,7 @@ questions:
   label: use-native-transport
   group: QuMine-Server / Server Properties
 - variable: server.properties.viewDistance
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "10"
   description: Sets the amount of world data the server sends the client, measured in chunks in each direction of the player
   type: string
@@ -692,7 +692,7 @@ questions:
   label: view-distance
   group: QuMine-Server / Server Properties
 - variable: server.properties.whiteList
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
   options: 
   - "true"
@@ -707,19 +707,20 @@ questions:
   if: "server.eula == true"
   default: VANILLA
   options: 
-  - VANILLA
+  - CUSTOM
   - PAPERMC
+  - STARTER
   - TRAVERTINE
+  - VANILLA
   - WATERFALL
   - YATOPIA
-  - CUSTOM
   description: The type of minecraft server to install
   type: enum
   required: true
   label: Server Type
   group: QuMine-Server / Server
 - variable: server.version
-  if: "server.eula == true && server.type != \"CUSTOM\""
+  if: "server.eula == true && (server.type != \"CUSTOM\" || server.type != \"STARTER\")"
   default: latest
   description: The version of the minecraft server to install
   type: string
@@ -727,7 +728,7 @@ questions:
   label: Server Version
   group: QuMine-Server / Server
 - variable: server.forceUpdate
-  if: "server.eula == true && server.type != \"CUSTOM\""
+  if: "server.eula == true && (server.type != \"CUSTOM\" || server.type != \"STARTER\")"
   default: false
   description: Force the server.jar to be downloaded all the time
   type: boolean
@@ -735,11 +736,26 @@ questions:
   label: Force Update
   group: QuMine-Server / Server
 - variable: server.customURL
-  if: "server.eula == true && server.type == \"CUSTOM\""
+  if: "server.eula == true && (server.type != \"CUSTOM\" || server.type != \"STARTER\")"
   description: The download URL for the custom server.jar to install
   type: string
   required: true
   label: Custom URL
+  group: QuMine-Server / Server
+- variable: server.starterJarURL
+  if: "server.eula == true && server.type == \"STARTER\""
+  default: https://github.com/Yoosk/ServerStarter/releases/download/v2.1.0/serverstarter-2.1.0.jar
+  description: The url for the ServerStarter jar file
+  type: string
+  required: true
+  label: Starter Jar URL
+  group: QuMine-Server / Server
+- variable: server.starterConfigURL
+  if: "server.eula == true && server.type == \"STARTER\""
+  description: The url for the ServerStarter server-setup-config file
+  type: string
+  required: true
+  label: Starter Config URL
   group: QuMine-Server / Server
 
 - variable: server.eula

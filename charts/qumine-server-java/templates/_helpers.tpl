@@ -123,10 +123,10 @@ imagePullSecrets:
 {{- define "qumine.plugins" -}}
 {{- $plugins := .Values.plugins -}}
 {{- if .Values.metrics.enabled }}
-{{- $plugins = print "gh://sladkoff/minecraft-prometheus-exporter," .Values.plugins -}}
+{{- $plugins = print "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.2.0/minecraft-prometheus-exporter-2.2.0.jar," .Values.plugins -}}
 {{- end}}
 {{- if .Values.geysermc.enabled }}
-{{- $plugins = print "gh://geysermc/floodgate," .Values.plugins -}}
+{{- $plugins = print "https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar," .Values.plugins -}}
 {{- end}}
 {{- print $plugins -}}
 {{- end -}}
