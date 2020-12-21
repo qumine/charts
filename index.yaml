@@ -159,56 +159,6 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
     apiVersion: v2
-    appVersion: v0.0.4-rc1
-    created: "2020-12-21T19:31:21.216514875Z"
-    description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: 4f1aa44ed61a52afb36531c1925e7bf75090a06ab0f1d282b4b4a45854fe1fda
-    home: https://github.com/qumine/qumine-server-java
-    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
-    keywords:
-    - games
-    - game-server
-    - minecraft
-    - qumine-server
-    - qumine
-    maintainers:
-    - email: dev@quhive.dev
-      name: QuHive
-    name: qumine-server-java
-    sources:
-    - https://github.com/qumine/qumine-server-java
-    urls:
-    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.4-rc1/qumine-server-java-0.0.4-rc1.tgz
-    version: 0.0.4-rc1
-  - annotations:
-      catalog.cattle.io/certified: qumine
-      catalog.cattle.io/display-name: QuMine Server (Java)
-    apiVersion: v2
-    appVersion: v0.0.4-rc1
-    created: "2020-12-21T19:32:57.735198354Z"
-    description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
-    digest: fc782c3b224757d3a776f1b2ba0fe14c907860547810660c743e3fa9e2e8bf25
-    home: https://github.com/qumine/qumine-server-java
-    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
-    keywords:
-    - games
-    - game-server
-    - minecraft
-    - qumine-server
-    - qumine
-    maintainers:
-    - email: dev@quhive.dev
-      name: QuHive
-    name: qumine-server-java
-    sources:
-    - https://github.com/qumine/qumine-server-java
-    urls:
-    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.4-rc1/qumine-server-java-0.0.4-rc1.tgz
-    version: 0.0.4-rc1
-  - annotations:
-      catalog.cattle.io/certified: qumine
-      catalog.cattle.io/display-name: QuMine Server (Java)
-    apiVersion: v2
     appVersion: v0.0.3
     created: "2020-12-17T17:52:19.471455042Z"
     description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
