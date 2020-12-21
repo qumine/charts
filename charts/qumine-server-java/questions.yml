@@ -720,7 +720,7 @@ questions:
   label: Server Type
   group: QuMine-Server / Server
 - variable: server.version
-  if: "server.eula == true && (server.type != \"CUSTOM\" || server.type != \"STARTER\")"
+  if: "server.eula == true && (server.type != \"CUSTOM\" && server.type != \"STARTER\")"
   default: latest
   description: The version of the minecraft server to install
   type: string
@@ -728,7 +728,7 @@ questions:
   label: Server Version
   group: QuMine-Server / Server
 - variable: server.forceUpdate
-  if: "server.eula == true && (server.type != \"CUSTOM\" || server.type != \"STARTER\")"
+  if: "server.eula == true && (server.type != \"CUSTOM\" && server.type != \"STARTER\")"
   default: false
   description: Force the server.jar to be downloaded all the time
   type: boolean
