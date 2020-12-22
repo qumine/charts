@@ -67,14 +67,14 @@ questions:
   label: BlueMap
   group: QuMine-Server / Integrations
 - variable: integrations.bluemap.hostname
-  if: "server.eula == true && integrations.geysermc.enabled == true"
+  if: "server.eula == true && integrations.bluemap.enabled == true"
   description: BlueMap Ingress Hostname (if empty no ingress)
   type: string
   required: true
   label: BlueMap Ingress Hostname
   group: QuMine-Server / Integrations
 - variable: integrations.bluemap.service.type
-  if: "server.eula == true && integrations.geysermc.enabled == true"
+  if: "server.eula == true && integrations.bluemap.enabled == true"
   default: "ClusterIP"
   options:
     - "ClusterIP"
@@ -86,7 +86,7 @@ questions:
   label: BlueMap Service Type
   group: QuMine-Server / Integrations
 - variable: integrations.bluemap.service.port
-  if: "server.eula == true && integrations.geysermc.enabled == true"
+  if: "server.eula == true && integrations.bluemap.enabled == true"
   default: 19132
   description: GeyserMC Port
   type: int
