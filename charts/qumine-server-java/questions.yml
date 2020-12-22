@@ -61,12 +61,19 @@ questions:
 - variable: integrations.bluemap.enabled
   if: "server.eula == true"
   default: false
-  description: Enable GeyserMC integration (will install https://github.com/GeyserMC/Floodgate plugin)
+  description: Enable BlueMap integration
   type: boolean
   required: true
-  label: Enable GeyserMC
+  label: BlueMap
   group: QuMine-Server / Integrations
-- variable: qumine.integrations.bluemap.service.type
+- variable: integrations.bluemap.hostname
+  if: "server.eula == true && integrations.geysermc.enabled == true"
+  description: BlueMap Ingress Hostname (if empty no ingress)
+  type: string
+  required: true
+  label: BlueMap Ingress Hostname
+  group: QuMine-Server / Integrations
+- variable: integrations.bluemap.service.type
   if: "server.eula == true && integrations.geysermc.enabled == true"
   default: "ClusterIP"
   options:
@@ -76,15 +83,15 @@ questions:
   description: GeyserMC ServiceType
   type: enum
   required: true
-  label: GeyserMC Service Type
+  label: BlueMap Service Type
   group: QuMine-Server / Integrations
-- variable: qumine.integrations.bluemap.service.port
+- variable: integrations.bluemap.service.port
   if: "server.eula == true && integrations.geysermc.enabled == true"
   default: 19132
   description: GeyserMC Port
   type: int
   required: true
-  label: GeyserMC Service Port
+  label: BlueMap Service Port
   group: QuMine-Server / Integrations
 - variable: integrations.qumineIngress.enabled
   if: "server.eula == true"
@@ -125,7 +132,7 @@ questions:
   required: true
   label: Enable GeyserMC
   group: QuMine-Server / Integrations
-- variable: qumine.integrations.geysermc.service.type
+- variable: integrations.geysermc.service.type
   if: "server.eula == true && integrations.geysermc.enabled == true"
   default: "ClusterIP"
   options:
@@ -137,7 +144,7 @@ questions:
   required: true
   label: GeyserMC Service Type
   group: QuMine-Server / Integrations
-- variable: qumine.integrations.geysermc.service.port
+- variable: integrations.geysermc.service.port
   if: "server.eula == true && integrations.geysermc.enabled == true"
   default: 19132
   description: GeyserMC Port
