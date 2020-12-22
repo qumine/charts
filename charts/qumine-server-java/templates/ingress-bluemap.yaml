@@ -4,19 +4,16 @@ kind: Ingress
 metadata:
   name: "{{ template "qumine.fullname" . }}"
   labels: {{ include "qumine.labels" . | nindent 4 }}
-  {{- if .Values.integrations.metrics.service.labels -}}
-  {{ toYaml .Values.integrations.metrics.service.labels | nindent 4 }}
-  {{- end }}
 spec:
   rules:
-  - host: {{ .Values.integrations.metrics.hostname }}
+  - host: {{ .Values.integrations.bluemap.hostname }}
     http:
       paths:
       - pathType: ImplementationSpecific
         backend:
           serviceName: "{{ template "qumine.fullname" . }}-metrics"
-          servicePort: {{ .Values.integrations.metrics.service.port }}
+          servicePort: {{ .Values.integrations.bluemap.service.port }}
   tls:
   - hosts:
-    - {{ .Values.integrations.metrics.hostname }}
+    - {{ .Values.integrations.bluemap.hostname }}
 {{- end -}}
