@@ -1,4 +1,4 @@
-{{- if and Values.integrations.bluemap.enabled (not (empty .Values.integrations.bluemap.hostname)) }}
+{{- if and .Values.integrations.bluemap.enabled (not (empty .Values.integrations.bluemap.hostname)) }}
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
