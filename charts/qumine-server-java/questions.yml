@@ -80,7 +80,7 @@ questions:
     - "ClusterIP"
     - "LoadBalancer"
     - "NodePort"
-  description: GeyserMC ServiceType
+  description: BlueMap Service Type
   type: enum
   required: true
   label: BlueMap Service Type
@@ -88,7 +88,7 @@ questions:
 - variable: integrations.bluemap.service.port
   if: "server.eula == true && integrations.bluemap.enabled == true"
   default: 19132
-  description: GeyserMC Port
+  description: BlueMap Service Port
   type: int
   required: true
   label: BlueMap Service Port
@@ -100,6 +100,13 @@ questions:
   type: boolean
   required: true
   label: Enable QuMine-Ingress
+  group: QuMine-Server / Integrations
+- variable: integrations.qumineIngress.hostname
+  if: "server.eula == true && integrations.qumineIngress.enabled == true"
+  description: QuMineIngress Hostname
+  type: string
+  required: true
+  label: QuMineIngress hostname
   group: QuMine-Server / Integrations
 - variable: integrations.metrics.enabled
   if: "server.eula == true"
@@ -117,13 +124,6 @@ questions:
   required: true
   label: Enable ServiceMonitor
   group: QuMine-Server / Integrations
-- variable: integrations.qumineIngress.hostname
-  if: "server.eula == true && integrations.qumineIngress.enabled == true"
-  description: The hostname to use for the ingress
-  type: string
-  required: true
-  label: Ingress hostname
-  group: QuMine-Server / Integrations
 - variable: integrations.geysermc.enabled
   if: "server.eula == true"
   default: false
@@ -139,7 +139,7 @@ questions:
     - "ClusterIP"
     - "LoadBalancer"
     - "NodePort"
-  description: GeyserMC ServiceType
+  description: GeyserMC Service Type
   type: enum
   required: true
   label: GeyserMC Service Type
@@ -147,7 +147,7 @@ questions:
 - variable: integrations.geysermc.service.port
   if: "server.eula == true && integrations.geysermc.enabled == true"
   default: 19132
-  description: GeyserMC Port
+  description: GeyserMC Service Port
   type: int
   required: true
   label: GeyserMC Service Port
