@@ -13,7 +13,7 @@ spec:
     metadata:
       labels: {{ include "qumine.labels" . | nindent 8 }}
       annotations:
-        {{- if or .Values.podAnnotations .Values.metrics.enabled }}
+        {{- if or .Values.podAnnotations .Values.integrations.metrics.enabled }}
         {{- include "qumine.podAnnotations" . | trim | nindent 8 }}
         {{- end }}
     spec:
@@ -89,8 +89,8 @@ spec:
         ports:
         - name: minecraft
           containerPort: {{ .Values.service.port }}
-        - name: http
-          containerPort: {{ .Values.metrics.service.port }}
+        - name: metrics
+          containerPort: {{ .Values.integrations.metrics.service.port }}
         readinessProbe: {{ toYaml .Values.readinessProbe | nindent 10 }}
         livenessProbe: {{ toYaml .Values.livenessProbe | nindent 10 }}
         startupProbe  : {{ toYaml .Values.startupProbe | nindent 10 }}
@@ -106,13 +106,31 @@ spec:
           {{- if .Values.extraVolumeMounts }}
           {{- toYaml .Values.extraVolumeMounts | nindent 10 }}
           {{- end }}
-      {{- if .Values.geysermc.enabled }}
+      {{- if .Values.integrations.bluemap.enabled }}
+      - name: bluemap
+        image: qumine/integrations-bluemap:latest
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        ports:
+        - name: bluemap
+          containerPort: {{ .Values.integrations.bluemap.service.port }}
+        resources: 
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 250m
+            memory: 250Mi
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      {{- end }}
+      {{- if .Values.integrations.geysermc.enabled }}
       - name: geysermc
         image: docker.k8.network/library/geyser-mc:latest
-        name: geysermc
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         env:
         - name: BEDROCK_PORT
-          value: "{{ .Values.geysermc.service.port }}"
+          value: "{{ .Values.integrations.geysermc.service.port }}"
         - name: GEYSER_FLOODGATE_KEY_FILE
           value: /data/plugins/floodgate-bukkit/public-key.pem
         - name: REMOTE_ADDRESS
@@ -121,8 +139,15 @@ spec:
           value: floodgate
         ports:
         - name: geysermc
-          containerPort: {{ .Values.geysermc.service.port }}
+          containerPort: {{ .Values.integrations.geysermc.service.port }}
           protocol: UDP
+        resources: 
+          limits:
+            cpu: 500m
+            memory: 1000Mi
+          requests:
+            cpu: 250m
+            memory: 500Mi
         volumeMounts:
         - name: data
           mountPath: /data

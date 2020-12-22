@@ -24,7 +24,7 @@ questions:
     type: string
     label: QuMine-Server image name
   - variable: image.tag
-    default: v0.0.4-rc1
+    default: v0.0.4-rc2
     description: QuMine-Server image tag
     type: string
     label: QuMine-Server Image Tag
@@ -58,47 +58,16 @@ questions:
   label: Memory Limit
   group: QuMine-Server / Resources
 
-- variable: metrics.enabled
+- variable: integrations.bluemap.enabled
   if: "server.eula == true"
   default: false
-  description: Enable metrics (will install https://github.com/sladkoff/minecraft-prometheus-exporter  plugin)
-  type: boolean
-  required: true
-  label: Enable Metrics
-  group: QuMine-Server / Integrations
-- variable: metrics.serviceMonitor.enabled
-  if: "server.eula == true && metrics.enabled == true"
-  default: false
-  description: Enable Prometheus ServiceMonitor
-  type: boolean
-  required: true
-  label: Enable ServiceMonitor
-  group: QuMine-Server / Integrations
-- variable: ingress.enabled
-  if: "server.eula == true"
-  default: false
-  description: Enable QuMine-Ingress Integration
-  type: boolean
-  required: true
-  label: Enable QuMine-Ingress
-  group: QuMine-Server / Integrations
-- variable: ingress.hostname
-  if: "server.eula == true && ingress.enabled == true"
-  description: The hostname to use for the ingress
-  type: string
-  required: true
-  label: Ingress hostname
-  group: QuMine-Server / Integrations
-- variable: geysermc.enabled
-  if: "server.eula == true"
-  default: false
-  description: Enable geysermc (will install https://github.com/GeyserMC/Floodgate plugin)
+  description: Enable GeyserMC integration (will install https://github.com/GeyserMC/Floodgate plugin)
   type: boolean
   required: true
   label: Enable GeyserMC
   group: QuMine-Server / Integrations
-- variable: qumine.geysermc.serviceType
-  if: "server.eula == true && geysermc.enabled == true"
+- variable: qumine.integrations.bluemap.service.type
+  if: "server.eula == true && integrations.geysermc.enabled == true"
   default: "ClusterIP"
   options:
     - "ClusterIP"
@@ -109,8 +78,67 @@ questions:
   required: true
   label: GeyserMC Service Type
   group: QuMine-Server / Integrations
-- variable: qumine.service.port
-  if: "server.eula == true && geysermc.enabled == true"
+- variable: qumine.integrations.bluemap.service.port
+  if: "server.eula == true && integrations.geysermc.enabled == true"
+  default: 19132
+  description: GeyserMC Port
+  type: int
+  required: true
+  label: GeyserMC Service Port
+  group: QuMine-Server / Integrations
+- variable: integrations.qumineIngress.enabled
+  if: "server.eula == true"
+  default: false
+  description: Enable QuMine-Ingress integration
+  type: boolean
+  required: true
+  label: Enable QuMine-Ingress
+  group: QuMine-Server / Integrations
+- variable: integrations.metrics.enabled
+  if: "server.eula == true"
+  default: false
+  description: Enable Prometheus/Metrics integration
+  type: boolean
+  required: true
+  label: Enable Metrics
+  group: QuMine-Server / Integrations
+- variable: integrations.metrics.serviceMonitor.enabled
+  if: "server.eula == true && integrations.metrics.enabled == true"
+  default: false
+  description: Enable Prometheus ServiceMonitor
+  type: boolean
+  required: true
+  label: Enable ServiceMonitor
+  group: QuMine-Server / Integrations
+- variable: integrations.qumineIngress.hostname
+  if: "server.eula == true && integrations.qumineIngress.enabled == true"
+  description: The hostname to use for the ingress
+  type: string
+  required: true
+  label: Ingress hostname
+  group: QuMine-Server / Integrations
+- variable: integrations.geysermc.enabled
+  if: "server.eula == true"
+  default: false
+  description: Enable GeyserMC integration (will install https://github.com/GeyserMC/Floodgate plugin)
+  type: boolean
+  required: true
+  label: Enable GeyserMC
+  group: QuMine-Server / Integrations
+- variable: qumine.integrations.geysermc.service.type
+  if: "server.eula == true && integrations.geysermc.enabled == true"
+  default: "ClusterIP"
+  options:
+    - "ClusterIP"
+    - "LoadBalancer"
+    - "NodePort"
+  description: GeyserMC ServiceType
+  type: enum
+  required: true
+  label: GeyserMC Service Type
+  group: QuMine-Server / Integrations
+- variable: qumine.integrations.geysermc.service.port
+  if: "server.eula == true && integrations.geysermc.enabled == true"
   default: 19132
   description: GeyserMC Port
   type: int

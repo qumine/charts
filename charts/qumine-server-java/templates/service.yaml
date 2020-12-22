@@ -7,7 +7,7 @@ metadata:
   {{ toYaml .Values.service.labels | nindent 4 }}
   {{- end }}
   annotations:
-    {{- if or .Values.serviceAnnotations .Values.ingress.enabled }}
+    {{- if or .Values.serviceAnnotations .Values.integrations.qumineIngress.enabled }}
     {{- include "qumine.serviceAnnotations" . | trim | nindent 8 }}
     {{- end }}
 spec:

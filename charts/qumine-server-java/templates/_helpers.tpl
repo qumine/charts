@@ -53,8 +53,8 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations }}
 {{- end }}
-{{- if .Values.metrics.podAnnotations }}
-{{ toYaml .Values.metrics.podAnnotations }}
+{{- if .Values.integrations.metrics.podAnnotations }}
+{{ toYaml .Values.integrations.metrics.podAnnotations }}
 {{- end }}
 {{- end -}}
 
@@ -63,8 +63,8 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Values.service.annotations }}
 {{ toYaml .Values.service.annotations }}
 {{- end }}
-{{- if .Values.ingress.enabled }}
-ingress.qumine.io/hostname: {{ .Values.ingress.hostname | quote}}
+{{- if .Values.integrations.qumineIngress.enabled }}
+integrations.qumineIngress.qumine.io/hostname: {{ .Values.integrations.qumineIngress.hostname | quote}}
 {{- end }}
 {{- end -}}
 
@@ -122,10 +122,10 @@ imagePullSecrets:
 
 {{- define "qumine.plugins" -}}
 {{- $plugins := .Values.plugins -}}
-{{- if .Values.metrics.enabled }}
+{{- if .Values.integrations.metrics.enabled }}
 {{- $plugins = print "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.2.0/minecraft-prometheus-exporter-2.2.0.jar," .Values.plugins -}}
 {{- end}}
-{{- if .Values.geysermc.enabled }}
+{{- if .Values.integrations.geysermc.enabled }}
 {{- $plugins = print "https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar," .Values.plugins -}}
 {{- end}}
 {{- print $plugins -}}
