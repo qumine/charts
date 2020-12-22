@@ -73,26 +73,6 @@ questions:
   required: true
   label: BlueMap Ingress Hostname
   group: QuMine-Server / Integrations
-- variable: integrations.bluemap.service.type
-  if: "server.eula == true && integrations.bluemap.enabled == true"
-  default: "ClusterIP"
-  options:
-    - "ClusterIP"
-    - "LoadBalancer"
-    - "NodePort"
-  description: BlueMap Service Type
-  type: enum
-  required: true
-  label: BlueMap Service Type
-  group: QuMine-Server / Integrations
-- variable: integrations.bluemap.service.port
-  if: "server.eula == true && integrations.bluemap.enabled == true"
-  default: 19132
-  description: BlueMap Service Port
-  type: int
-  required: true
-  label: BlueMap Service Port
-  group: QuMine-Server / Integrations
 - variable: integrations.qumineIngress.enabled
   if: "server.eula == true"
   default: false
