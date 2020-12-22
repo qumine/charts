@@ -4,6 +4,8 @@ kind: Ingress
 metadata:
   name: "{{ template "qumine.fullname" . }}-bluemap"
   labels: {{ include "qumine.labels" . | nindent 4 }}
+  annotations:
+    kubernetes.io/tls-acme: '"true"'
 spec:
   rules:
   - host: {{ .Values.integrations.bluemap.hostname }}
