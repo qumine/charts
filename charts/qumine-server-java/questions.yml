@@ -24,7 +24,7 @@ questions:
     type: string
     label: QuMine-Server image name
   - variable: image.tag
-    default: v0.0.4-rc2
+    default: v0.0.4
     description: QuMine-Server image tag
     type: string
     label: QuMine-Server Image Tag
@@ -57,6 +57,47 @@ questions:
   required: true
   label: Memory Limit
   group: QuMine-Server / Resources
+
+- variable: persistence.type
+  if: "server.eula == true"
+  default: "EmptyDir"
+  options:
+    - "EmptyDir"
+    - "StorageClass"
+    - "ExistingPVC"
+  description: Enabled persistent volume
+  type: enum
+  required: true
+  label: Persistence Enabled
+  group: QuMine-Server / Persistence
+- variable: persistence.storageClass
+  if: "server.eula == true && persistence.type == \"StorageClass\""
+  default: ""
+  description: "If undefined or null, uses the default StorageClass. Default to null"
+  type: storageclass
+  label: Default StorageClass for PVC
+  group: QuMine-Server / Persistence
+- variable: persistence.size
+  if: "server.eula == true && persistence.type == \"StorageClass\""
+  default: 10Gi
+  description: Size for PVC
+  type: string
+  label: Size for DataDir
+  group: QuMine-Server / Persistence
+- variable: persistence.retainPersistentVolumeClaim
+  if: "server.eula == true && persistence.type == \"StorageClass\""
+  default: false
+  description: "If true keeps the PVC on deletion of the app"
+  type: boolean
+  label: Retain PVC
+  group: QuMine-Server / Persistence
+- variable: persistence.volumeName 
+  if: "server.eula == true && persistence.type == \"ExistingPVC\""
+  default: ""
+  description: "If not empty, uses the specified existing PVC instead of creating new one"
+  type: pvc
+  label: Use Existing Persistent Volume Claim
+  group: QuMine-Server / Persistence
 
 - variable: integrations.bluemap.enabled
   if: "server.eula == true"
@@ -132,47 +173,6 @@ questions:
   required: true
   label: GeyserMC Service Port
   group: QuMine-Server / Integrations
-
-- variable: persistence.type
-  if: "server.eula == true"
-  default: "EmptyDir"
-  options:
-    - "EmptyDir"
-    - "StorageClass"
-    - "ExistingPVC"
-  description: Enabled persistent volume
-  type: enum
-  required: true
-  label: Persistence Enabled
-  group: QuMine-Server / Persistence
-- variable: persistence.storageClass
-  if: "server.eula == true && persistence.type == \"StorageClass\""
-  default: ""
-  description: "If undefined or null, uses the default StorageClass. Default to null"
-  type: storageclass
-  label: Default StorageClass for PVC
-  group: QuMine-Server / Persistence
-- variable: persistence.size
-  if: "server.eula == true && persistence.type == \"StorageClass\""
-  default: 10Gi
-  description: Size for PVC
-  type: string
-  label: Size for DataDir
-  group: QuMine-Server / Persistence
-- variable: persistence.retainPersistentVolumeClaim
-  if: "server.eula == true && persistence.type == \"StorageClass\""
-  default: false
-  description: "If true keeps the PVC on deletion of the app"
-  type: boolean
-  label: Retain PVC
-  group: QuMine-Server / Persistence
-- variable: persistence.volumeName 
-  if: "server.eula == true && persistence.type == \"ExistingPVC\""
-  default: ""
-  description: "If not empty, uses the specified existing PVC instead of creating new one"
-  type: pvc
-  label: Use Existing Persistent Volume Claim
-  group: QuMine-Server / Persistence
 
 - variable: plugins
   if: "server.eula == true && (server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
