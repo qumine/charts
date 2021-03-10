@@ -8,14 +8,13 @@ keywords:
 - games
 - game-server
 - minecraft
-- qumine-server
 - qumine
 sources:
 - https://github.com/qumine/minecraft-server
 maintainers:
 - name: QuHive
   email: dev@quhive.dev
-icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
+icon: https://github.com/QuMine/charts/raw/master/charts/minecraft-server/icon.png
 engine: gotpl
 annotations:
   catalog.cattle.io/certified: qumine
