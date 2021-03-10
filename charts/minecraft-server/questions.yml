@@ -19,7 +19,7 @@ questions:
     type: string
     label: QuMine-Server image name
   - variable: image.repository
-    default: qumine/qumine-server-java
+    default: qumine/minecraft-server
     description: QuMine-Server Image Repository
     type: string
     label: QuMine-Server image name

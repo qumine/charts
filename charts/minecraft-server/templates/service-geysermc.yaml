@@ -1,0 +1,36 @@
+{{- if .Values.integrations.geysermc.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "qumine.fullname" . }}-metrics"
+  labels: {{ include "qumine.labels" . | nindent 4 }}
+  {{- if .Values.integrations.geysermc.service.labels -}}
+  {{ toYaml .Values.integrations.geysermc.service.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.integrations.geysermc.service.annotations }}
+  annotations: {{ toYaml .Values.integrations.geysermc.service.annotations | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.integrations.geysermc.service.clusterIP }}
+  clusterIP: {{ .Values.integrations.geysermc.service.clusterIP }}
+  {{- end }}
+  {{- if .Values.integrations.geysermc.service.externalIPs }}
+  externalIPs: {{ toYaml .Values.integrations.geysermc.service.externalIPs | nindent 4 }}
+  {{- end }}
+  {{- if .Values.integrations.geysermc.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.integrations.geysermc.service.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.integrations.geysermc.service.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges: {{ toYaml .Values.integrations.geysermc.service.loadBalancerSourceRanges | nindent 4 }}
+  {{- end }}
+  ports:
+  - name: geysermc
+    port: {{ .Values.integrations.geysermc.service.port }}
+    protocol: UDP
+    targetPort: geysermc
+    {{- if and (eq .Values.integrations.geysermc.service.type "NodePort") (not (empty .Values.integrations.geysermc.service.nodePort)) }}
+    nodePort: {{ .Values.integrations.geysermc.service.nodePort  }}
+    {{- end }}
+  selector: {{ include "qumine.matchLabels" . | nindent 4 }}
+  type: {{ .Values.service.type }}
+{{- end -}}

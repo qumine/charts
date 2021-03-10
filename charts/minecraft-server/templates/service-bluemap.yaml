@@ -1,0 +1,36 @@
+{{- if .Values.integrations.bluemap.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "qumine.fullname" . }}-bluemap"
+  labels: {{ include "qumine.labels" . | nindent 4 }}
+  {{- if .Values.integrations.bluemap.service.labels -}}
+  {{ toYaml .Values.integrations.bluemap.service.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.integrations.bluemap.service.annotations }}
+  annotations: {{ toYaml .Values.integrations.bluemap.service.annotations | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.integrations.bluemap.service.clusterIP }}
+  clusterIP: {{ .Values.integrations.bluemap.service.clusterIP }}
+  {{- end }}
+  {{- if .Values.integrations.bluemap.service.externalIPs }}
+  externalIPs: {{ toYaml .Values.integrations.bluemap.service.externalIPs | nindent 4 }}
+  {{- end }}
+  {{- if .Values.integrations.bluemap.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.integrations.bluemap.service.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.integrations.bluemap.service.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges: {{ toYaml .Values.integrations.bluemap.service.loadBalancerSourceRanges | nindent 4 }}
+  {{- end }}
+  ports:
+  - name: bluemap
+    port: {{ .Values.integrations.bluemap.service.port }}
+    protocol: TCP
+    targetPort: bluemap
+    {{- if and (eq .Values.integrations.bluemap.service.type "NodePort") (not (empty .Values.integrations.bluemap.service.nodePort)) }}
+    nodePort: {{ .Values.integrations.bluemap.service.nodePort  }}
+    {{- end }}
+  selector: {{ include "qumine.matchLabels" . | nindent 4 }}
+  type: {{ .Values.integrations.bluemap.service.type }}
+{{- end -}}
