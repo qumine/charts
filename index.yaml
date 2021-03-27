@@ -1,6 +1,57 @@
 apiVersion: v1
 entries:
+  minecraft-server:
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: Minecraft Server
+    apiVersion: v2
+    appVersion: v0.1.0
+    created: "2021-03-27T21:22:12.688873411Z"
+    description: run any minecraft server inside of docker
+    digest: 0593f8ce06ad5867714e6864cdd32d900b37b3cb94752fc67115d8fd200b8b14
+    home: https://github.com/qumine/minecraft-server
+    icon: https://github.com/QuMine/charts/raw/master/charts/minecraft-server/icon.png
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: minecraft-server
+    sources:
+    - https://github.com/qumine/minecraft-server
+    urls:
+    - https://github.com/qumine/charts/releases/download/minecraft-server-0.1.0/minecraft-server-0.1.0.tgz
+    version: 0.1.0
   qumine-ingress:
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: QuMine Ingress
+    apiVersion: v1
+    appVersion: v0.6.2
+    created: "2021-03-27T21:22:12.781394251Z"
+    description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname inside of kubernetes
+    digest: c3a511cb54b511c647d113f1c3e85db64641ef0aca4f023d90c03f60b0b152b5
+    home: https://ingress.qumine.io/
+    icon: https://raw.githubusercontent.com/qumine/charts/master/charts/qumine-ingress/icon.png
+    keywords:
+    - qumine
+    - qumine-ingress
+    - minecraft
+    - minecraft-server
+    - ingress
+    kubeVersion: '>=v1.14.0'
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: qumine-ingress
+    sources:
+    - https://github.com/qumine/qumine-ingress
+    urls:
+    - https://github.com/qumine/charts/releases/download/qumine-ingress-0.6.2/qumine-ingress-0.6.2.tgz
+    version: 0.6.2
   - annotations:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Ingress
@@ -130,6 +181,31 @@ entries:
     - https://github.com/QuMine/charts/releases/download/qumine-server-0.0.1/qumine-server-0.0.1.tgz
     version: 0.0.1
   qumine-server-java:
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: QuMine Server (Java)
+    apiVersion: v2
+    appVersion: v0.0.5
+    created: "2021-03-27T21:22:12.919691055Z"
+    description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
+    digest: 8c4cecae5c3b9d58296ce3ca2dc67fd77be3ff8190e85c7bf46568eda72ce956
+    home: https://github.com/qumine/qumine-server-java
+    icon: https://github.com/QuMine/charts/raw/master/charts/qumine-server/icon.png
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine-server
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: qumine-server-java
+    sources:
+    - https://github.com/qumine/qumine-server-java
+    urls:
+    - https://github.com/qumine/charts/releases/download/qumine-server-java-0.0.5/qumine-server-java-0.0.5.tgz
+    version: 0.0.5
   - annotations:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: QuMine Server (Java)
