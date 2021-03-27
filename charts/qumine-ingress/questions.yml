@@ -2,29 +2,67 @@ categories:
 - games
 - gameserver
 questions:
-- variable: defaultImage
-  default: true
-  description: Use default Docker image
+- variable: qumine.port
+  default: 25565
+  description: Port for the server
+  type: int
+  required: true
+  label: Server Port
+  group: QuMine / General
+- variable: qumine.debug
+  default: false
+  description: Enable debugging
   type: boolean
-  label: Use Default Image
-  group: QuMine / Docker Images
-  show_subquestion_if: false
-  subquestions:
-  - variable: image.registry
-    default: docker.io
-    description: QuMine Image Registry
-    type: string
-    label: QuMine image name
-  - variable: image.repository
-    default: qumine/qumine-ingress
-    description: QuMine Image Repository
-    type: string
-    label: QuMine image name
-  - variable: image.tag
-    default: v0.6.1
-    description: ExternalDNS image tag
-    type: string
-    label: QuMine Image Tag
+  required: true
+  label: Debug Mode
+  group: QuMine / General
+
+- variable: qumine.type
+  default: DaemonSet
+  options:
+    - "DaemonSet"
+    - "Deployment"
+  description: The type of deployment to use
+  type: enum
+  required: true
+  label: Type of deployment
+  group: QuMine / Deployment
+- variable: qumine.deployment.replicas
+  show_if: "qumine.type=Deployment"
+  default: 2
+  description: The amount of replicas for the deployment
+  type: int
+  required: true
+  label: Replica count
+  group: QuMine / Deployment
+- variable: qumine.deployment.serviceType
+  show_if: "qumine.type=Deployment"
+  default: "LoadBalancer"
+  options:
+    - "LoadBalancer"
+    - "NodePort"
+    - "ClusterIP"
+  description: The service type for the ingress
+  type: enum
+  required: true
+  label: The service type for the ingress
+  group: QuMine / Deployment
+
+- variable: metrics.enabled
+  default: false
+  description: Enable metrics
+  type: boolean
+  required: true
+  label: Enable Metrics
+  group: QuMine / Integrations
+- variable: metrics.serviceMonitor.enabled
+  show_if: "metrics.enabled"
+  default: false
+  description: Enable Prometheus ServiceMonitor
+  type: boolean
+  required: true
+  label: Enable ServiceMonitor
+  group: QuMine / Integrations
 
 - variable: resources.requests.cpu
   default: 125m
@@ -55,64 +93,26 @@ questions:
   label: Memory Limit
   group: QuMine / Resources
 
-- variable: metrics.enabled
-  default: false
-  description: Enable metrics
+- variable: defaultImage
+  default: true
+  description: Use default Docker image
   type: boolean
-  required: true
-  label: Enable Metrics
-  group: QuMine / Integrations
-- variable: metrics.serviceMonitor.enabled
-  show_if: "metrics.enabled"
-  default: false
-  description: Enable Prometheus ServiceMonitor
-  type: boolean
-  required: true
-  label: Enable ServiceMonitor
-  group: QuMine / Integrations
-
-- variable: qumine.type
-  default: DaemonSet
-  options:
-    - "DaemonSet"
-    - "Deployment"
-  description: The type of deployment to use
-  type: enum
-  required: true
-  label: Type of deployment
-  group: QuMine / Deployment
-- variable: qumine.deployment.replicas
-  show_if: "qumine.type=Deployment"
-  default: 1
-  description: The amount of replicas for the deployment
-  type: int
-  required: true
-  label: Replica count
-  group: QuMine / Deployment
-- variable: qumine.deployment.serviceType
-  show_if: "qumine.type=Deployment"
-  default: "LoadBalancer"
-  options:
-    - "LoadBalancer"
-    - "NodePort"
-    - "ClusterIP"
-  description: The service type for the ingress
-  type: enum
-  required: true
-  label: The service type for the ingress
-  group: QuMine / Deployment
-
-- variable: qumine.port
-  default: 25565
-  description: Port for the server
-  type: int
-  required: true
-  label: Server Port
-  group: QuMine / General
-- variable: qumine.debug
-  default: false
-  description: Enable debugging
-  type: boolean
-  required: true
-  label: Debug Mode
-  group: QuMine / General
+  label: Use Default Image
+  group: QuMine / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image.registry
+    default: docker.io
+    description: QuMine Image Registry
+    type: string
+    label: QuMine image name
+  - variable: image.repository
+    default: qumine/qumine-ingress
+    description: QuMine Image Repository
+    type: string
+    label: QuMine image name
+  - variable: image.tag
+    default: v0.6.2
+    description: ExternalDNS image tag
+    type: string
+    label: QuMine Image Tag
