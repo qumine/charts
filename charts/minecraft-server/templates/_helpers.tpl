@@ -64,7 +64,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{ toYaml .Values.service.annotations }}
 {{- end }}
 {{- if .Values.integrations.qumineIngress.enabled }}
-integrations.qumineIngress.qumine.io/hostname: {{ .Values.integrations.qumineIngress.hostname | quote}}
+ingress.qumine.io/hostname: {{ .Values.integrations.qumineIngress.hostname | quote}}
 {{- end }}
 {{- end -}}
 

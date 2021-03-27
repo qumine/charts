@@ -423,7 +423,7 @@ resources:
 livenessProbe:
   httpGet:
     path: /health/live
-    port: http
+    port: metrics
   periodSeconds: 5
   timeoutSeconds: 1
   failureThreshold: 5
@@ -435,7 +435,7 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /health/ready
-    port: http
+    port: metrics
   periodSeconds: 5
   timeoutSeconds: 1
   failureThreshold: 5
@@ -447,7 +447,7 @@ readinessProbe:
 startupProbe:
   httpGet:
     path: /health/ready
-    port: http
+    port: metrics
   periodSeconds: 5
   failureThreshold: 24
 

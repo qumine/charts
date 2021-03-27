@@ -2,7 +2,7 @@ apiVersion: v2
 name: minecraft-server
 version: 0.1.0
 appVersion: v0.1.0
-description: QuMine Server Java is a docker container that wrapps the process of starting and upgrading minecraft servers.
+description: run any minecraft server inside of docker
 home: https://github.com/qumine/minecraft-server
 keywords:
 - games
@@ -18,4 +18,4 @@ icon: https://github.com/QuMine/charts/raw/master/charts/minecraft-server/icon.p
 engine: gotpl
 annotations:
   catalog.cattle.io/certified: qumine
-  catalog.cattle.io/display-name: "QuMine Server (Java)"
+  catalog.cattle.io/display-name: "Minecraft Server"
