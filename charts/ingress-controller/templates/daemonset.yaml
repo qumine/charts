@@ -1,14 +1,14 @@
-{{- if eq .Values.qumine.type "Deployment" }}
+{{- if eq .Values.qumine.type "DaemonSet" }}
+---
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: {{ template "qumine.fullname" . }}
   labels: {{ include "qumine.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.qumine.deployment.replicas }}
   selector:
     matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
-  strategy:
+  updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
     type: RollingUpdate
@@ -18,23 +18,18 @@ spec:
     spec:
 {{- include "qumine.imagePullSecrets" . | indent 6 }}
       containers:
-      - name: qumine-ingress
-        image: "{{ template "qumine.image" . }}"
+      - name: ingress-controller
+        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         {{- if .Values.resources }}
         resources: {{- toYaml .Values.resources | nindent 12 }}
         {{- end }}
-        env:
+        args:
         {{- if .Values.qumine.debug }}
-        - name: DEBUG
-          value: "true"
+          - --debug
         {{- end }}
         - name: PORT
           value: "{{ .Values.qumine.port }}"
-        args:
-        {{- if .Values.qumine.debug }}
-        - --debug
-        {{- end }}
         ports:
         - name: ingress
           containerPort: {{ .Values.qumine.port }}
@@ -54,5 +49,7 @@ spec:
 {{ toYaml . | indent 8 }}
       {{- end }}
       dnsPolicy: ClusterFirst
+      hostNetwork: true
       serviceAccountName: {{ template "qumine.fullname" . }}
+---
 {{- end -}}

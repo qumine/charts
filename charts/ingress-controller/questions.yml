@@ -107,7 +107,7 @@ questions:
     type: string
     label: QuMine image name
   - variable: image.repository
-    default: qumine/qumine-ingress
+    default: qumine/ingress-controller
     description: QuMine Image Repository
     type: string
     label: QuMine image name
