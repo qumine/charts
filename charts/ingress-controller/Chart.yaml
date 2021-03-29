@@ -5,6 +5,7 @@ appVersion: v0.7.0
 kubeVersion: ">=v1.18.0"
 description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
 keywords:
+- games
 - qumine
 - ingress-controller
 - minecraft

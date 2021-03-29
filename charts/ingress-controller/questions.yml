@@ -1,24 +1,28 @@
 categories:
 - games
-- gameserver
+- qumine
+- ingress-controller
+- minecraft
+- minecraft-server
+- ingress-controller
 questions:
-- variable: qumine.port
-  default: 25565
-  description: Port for the server
-  type: int
-  required: true
-  label: Server Port
-  group: QuMine / General
 - variable: qumine.debug
   default: false
   description: Enable debugging
   type: boolean
   required: true
   label: Debug Mode
-  group: QuMine / General
+  group: General
+- variable: qumine.port
+  default: 25565
+  description: Port for the server
+  type: int
+  required: true
+  label: Server Port
+  group: General
 
 - variable: qumine.type
-  default: DaemonSet
+  default: Deployment
   options:
     - "DaemonSet"
     - "Deployment"
@@ -26,7 +30,7 @@ questions:
   type: enum
   required: true
   label: Type of deployment
-  group: QuMine / Deployment
+  group: Deployment
 - variable: qumine.deployment.replicas
   show_if: "qumine.type=Deployment"
   default: 2
@@ -34,7 +38,7 @@ questions:
   type: int
   required: true
   label: Replica count
-  group: QuMine / Deployment
+  group: Deployment
 - variable: qumine.deployment.serviceType
   show_if: "qumine.type=Deployment"
   default: "LoadBalancer"
@@ -46,7 +50,7 @@ questions:
   type: enum
   required: true
   label: The service type for the ingress
-  group: QuMine / Deployment
+  group: Deployment
 
 - variable: metrics.enabled
   default: false
@@ -54,7 +58,7 @@ questions:
   type: boolean
   required: true
   label: Enable Metrics
-  group: QuMine / Integrations
+  group: Integrations
 - variable: metrics.serviceMonitor.enabled
   show_if: "metrics.enabled"
   default: false
@@ -62,7 +66,7 @@ questions:
   type: boolean
   required: true
   label: Enable ServiceMonitor
-  group: QuMine / Integrations
+  group: Integrations
 
 - variable: resources.requests.cpu
   default: 125m
@@ -70,35 +74,35 @@ questions:
   type: string
   required: true
   label: CPU Requests
-  group: QuMine / Resources
+  group: Resources
 - variable: resources.limits.cpu
   default: 250m
   description: CPU Limit
   type: string
   required: true
   label: CPU Limit
-  group: QuMine / Resources
+  group: Resources
 - variable: resources.requests.memory
   default: 256Mi
   description: Memory Requests
   type: string
   required: true
   label: Memory Requests
-  group: QuMine / Resources
+  group: Resources
 - variable: resources.limits.memory
   default: 512Mi
   description: Memory Limit
   type: string
   required: true
   label: Memory Limit
-  group: QuMine / Resources
+  group: Resources
 
 - variable: defaultImage
   default: true
   description: Use default Docker image
   type: boolean
   label: Use Default Image
-  group: QuMine / Docker Images
+  group: Docker Images
   show_subquestion_if: false
   subquestions:
   - variable: image.registry
