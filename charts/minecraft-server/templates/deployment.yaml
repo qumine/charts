@@ -34,7 +34,7 @@ spec:
       priorityClassName: {{ .Values.priorityClassName | quote }}
       {{- end }}
       containers:
-      - name: qumine
+      - name: minecraft-server
         image: "{{ template "qumine.image" . }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         args:
@@ -108,8 +108,8 @@ spec:
           {{- end }}
       {{- if .Values.integrations.bluemap.enabled }}
       - name: bluemap
-        image: qumine/integrations-bluemap:latest
-        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        image: "{{ template "qumine.integrations.bluemap.image" . }}"
+        imagePullPolicy: {{ .Values.image.integrations.bluemap.pullPolicy | quote }}
         ports:
         - name: bluemap
           containerPort: {{ .Values.integrations.bluemap.service.port }}
@@ -144,10 +144,10 @@ spec:
         resources: 
           limits:
             cpu: 500m
-            memory: 1000Mi
+            memory: 500Mi
           requests:
             cpu: 250m
-            memory: 500Mi
+            memory: 250Mi
         volumeMounts:
         - name: data
           mountPath: /data

@@ -8,12 +8,12 @@
 #     - myRegistryKeySecretName
 
 ## QuMine image version
-## ref: https://hub.docker.com/r/qumine/minecraft-server/tags/
+## ref: https://hub.docker.com/repository/docker/qumine/minecraft-server/tags
 ##
 image:
   registry: docker.io
   repository: qumine/minecraft-server
-  tag: v0.1.0
+  tag: v0.1.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -461,6 +461,26 @@ integrations:
   ## BlueMap
   bluemap:
     enabled: false
+
+    ## QuMine image version
+    ## ref: https://hub.docker.com/repository/docker/qumine/integrations-bluemap/tags
+    ##
+    image:
+      registry: docker.io
+      repository: integrations-bluemap
+      tag: 1.4.2
+      ## Specify a imagePullPolicy
+      ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+      ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+      ##
+      pullPolicy: IfNotPresent
+      ## Optionally specify an array of imagePullSecrets.
+      ## Secrets must be manually created in the namespace.
+      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+      ##
+      # pullSecrets:
+      #   - myRegistryKeySecretName
+    
     ## The hostname for the ingress
     hostname: ""
     ## Kubernetes svc configutarion
