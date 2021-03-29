@@ -109,7 +109,7 @@ spec:
       {{- if .Values.integrations.bluemap.enabled }}
       - name: bluemap
         image: "{{ template "qumine.integrations.bluemap.image" . }}"
-        imagePullPolicy: {{ .Values.image.integrations.bluemap.pullPolicy | quote }}
+        imagePullPolicy: {{ .Values.integrations.bluemap.image.pullPolicy | quote }}
         ports:
         - name: bluemap
           containerPort: {{ .Values.integrations.bluemap.service.port }}
