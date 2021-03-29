@@ -82,6 +82,11 @@ readinessProbe:
   failureThreshold: 6
   successThreshold: 1
 
+## priorityClassName
+## ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
+##
+# priorityClassName: ""
+
 ## Prometheus Exporter / Metrics
 ##
 metrics:

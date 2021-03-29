@@ -17,6 +17,9 @@ spec:
       labels: {{ include "qumine.labels" . | nindent 8 }}
     spec:
 {{- include "qumine.imagePullSecrets" . | indent 6 }}
+      {{- with .Values.priorityClassName }}
+      priorityClassName: {{ . }}
+      {{- end }}
       containers:
       - name: ingress-controller
         image: "{{ template "qumine.image" . }}"
