@@ -489,7 +489,7 @@ integrations:
       ## Kubernetes svc type
       ##
       type: ClusterIP
-      port: 8081
+      port: 9090
       ## Specify the nodePort value for the LoadBalancer and NodePort service types for the client port
       ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
       ##
