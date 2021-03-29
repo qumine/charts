@@ -33,6 +33,30 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: Minecraft Server
     apiVersion: v2
+    appVersion: v0.1.1
+    created: "2021-03-29T23:11:29.895876862Z"
+    description: run any minecraft server inside of docker
+    digest: 8b7d53c6e9fc99e1b6b9b35a4a37755a85d780fedf4c0e752476496c86c4d29c
+    home: https://github.com/qumine/minecraft-server
+    icon: https://github.com/QuMine/charts/raw/master/charts/minecraft-server/icon.png
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: minecraft-server
+    sources:
+    - https://github.com/qumine/minecraft-server
+    urls:
+    - https://github.com/qumine/charts/releases/download/minecraft-server-0.1.1/minecraft-server-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: Minecraft Server
+    apiVersion: v2
     appVersion: v0.1.0
     created: "2021-03-27T21:22:12.688873411Z"
     description: run any minecraft server inside of docker
