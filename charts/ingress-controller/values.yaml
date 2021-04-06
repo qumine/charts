@@ -1,7 +1,7 @@
 image:
   registry: docker.io
   repository: qumine/ingress-controller
-  tag: v0.7.0
+  tag: v0.8.0
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -62,7 +62,7 @@ resources:
 ##
 livenessProbe:
   httpGet:
-    path: /healthz
+    path: /health/live
     port: 8080
   initialDelaySeconds: 10
   periodSeconds: 10
@@ -74,7 +74,7 @@ livenessProbe:
 ##
 readinessProbe:
   httpGet:
-    path: /healthz
+    path: /health/ready
     port: 8080
   initialDelaySeconds: 5
   periodSeconds: 10

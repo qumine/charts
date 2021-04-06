@@ -21,7 +21,7 @@ questions:
   label: Server Port
   group: General
 
-- variable: qumine.type
+- variable: deploymentType
   default: Deployment
   options:
     - "DaemonSet"
@@ -116,7 +116,7 @@ questions:
     type: string
     label: QuMine image name
   - variable: image.tag
-    default: v0.6.2
+    default: v0.8.0
     description: ExternalDNS image tag
     type: string
     label: QuMine Image Tag
