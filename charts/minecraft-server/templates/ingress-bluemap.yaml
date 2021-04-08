@@ -1,5 +1,5 @@
 {{- if and .Values.integrations.bluemap.enabled (not (empty .Values.integrations.bluemap.hostname)) }}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: "{{ template "qumine.fullname" . }}-bluemap"
