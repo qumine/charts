@@ -5,33 +5,6 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: Ingress Controller
     apiVersion: v1
-    appVersion: v0.8.2
-    created: "2021-04-08T21:54:03.16168691Z"
-    description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
-    digest: d16c076bb3d6705579be6eb42193f516bd6eea71efac65870b43f68d8b36c07e
-    home: https://ingress.qumine.io/
-    icon: https://raw.githubusercontent.com/qumine/charts/master/charts/ingress-controller/icon.png
-    keywords:
-    - games
-    - qumine
-    - ingress-controller
-    - minecraft
-    - minecraft-server
-    - ingress-controller
-    kubeVersion: '>=v1.18.0'
-    maintainers:
-    - email: dev@quhive.dev
-      name: QuHive
-    name: ingress-controller
-    sources:
-    - https://github.com/qumine/ingress-controller
-    urls:
-    - https://github.com/qumine/charts/releases/download/ingress-controller-0.8.2/ingress-controller-0.8.2.tgz
-    version: 0.8.2
-  - annotations:
-      catalog.cattle.io/certified: qumine
-      catalog.cattle.io/display-name: Ingress Controller
-    apiVersion: v1
     appVersion: v0.8.1
     created: "2021-04-06T14:20:10.114812292Z"
     description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
