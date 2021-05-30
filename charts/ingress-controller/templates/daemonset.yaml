@@ -27,10 +27,11 @@ spec:
         {{- if .Values.resources }}
         resources: {{- toYaml .Values.resources | nindent 12 }}
         {{- end }}
-        {{- if .Values.qumine.debug }}
         args:
+        {{- if .Values.qumine.debug }}
           - --debug
         {{- end }}
+          - ""
       - name: PORT
         value: "{{ .Values.qumine.port }}"
         ports:
