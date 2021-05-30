@@ -31,9 +31,8 @@ spec:
         {{- if .Values.qumine.debug }}
           - --debug
         {{- end }}
-          - ""
-      - name: PORT
-        value: "{{ .Values.qumine.port }}"
+          - name: PORT
+            value: "{{ .Values.qumine.port }}"
         ports:
         - name: ingress
           containerPort: {{ .Values.qumine.port }}
