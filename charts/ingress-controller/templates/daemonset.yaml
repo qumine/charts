@@ -22,7 +22,7 @@ spec:
       {{- end }}
       containers:
       - name: ingress-controller
-        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         {{- if .Values.resources }}
         resources: {{- toYaml .Values.resources | nindent 12 }}
