@@ -395,7 +395,7 @@ service:
 ## Kubernetes Security Context
 ## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ## Example:
-##securityContext:
+## securityContext:
 ##  allowPrivilegeEscalation: false
 ##  readOnlyRootFilesystem: true
 ##  capabilities:

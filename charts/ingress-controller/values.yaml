@@ -22,8 +22,8 @@ qumine:
     replicas: 2
     serviceType: "LoadBalancer"
     loadBalancerIP:
-    #loadBalancerSourceRanges:
-    #externalTrafficPolicy: Cluster
+    # loadBalancerSourceRanges:
+    # externalTrafficPolicy: Cluster
   debug: false
 
   port: 25565
