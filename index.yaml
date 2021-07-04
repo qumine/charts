@@ -5,6 +5,32 @@ entries:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: Ingress Controller
     apiVersion: v2
+    appVersion: v0.8.3
+    created: "2021-07-04T17:26:09.654827036Z"
+    description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
+    digest: 9dc4ffd10d787d73c6457c9b79d4b3d7dcfc5e68bbbeac45b44ae03596647fce
+    home: https://ingress.qumine.io/
+    icon: https://raw.githubusercontent.com/qumine/charts/master/charts/ingress-controller/icon.png
+    keywords:
+    - games
+    - qumine
+    - ingress-controller
+    - minecraft
+    - minecraft-server
+    - ingress-controller
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: ingress-controller
+    sources:
+    - https://github.com/qumine/ingress-controller
+    urls:
+    - https://github.com/qumine/charts/releases/download/ingress-controller-0.8.3/ingress-controller-0.8.3.tgz
+    version: 0.8.3
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: Ingress Controller
+    apiVersion: v2
     appVersion: v0.8.2
     created: "2021-04-08T21:59:47.170656942Z"
     description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
@@ -82,6 +108,30 @@ entries:
     - https://github.com/qumine/charts/releases/download/ingress-controller-0.7.0/ingress-controller-0.7.0.tgz
     version: 0.7.0
   minecraft-server:
+  - annotations:
+      catalog.cattle.io/certified: qumine
+      catalog.cattle.io/display-name: Minecraft Server
+    apiVersion: v2
+    appVersion: v0.1.2
+    created: "2021-07-04T17:26:09.834855365Z"
+    description: run any minecraft server inside of docker
+    digest: 8ce692d3f719bdff6a34af56b76215130551592a15c56f14bd94e325c3e07e1d
+    home: https://github.com/qumine/minecraft-server
+    icon: https://github.com/QuMine/charts/raw/master/charts/minecraft-server/icon.png
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: minecraft-server
+    sources:
+    - https://github.com/qumine/minecraft-server
+    urls:
+    - https://github.com/qumine/charts/releases/download/minecraft-server-0.1.2/minecraft-server-0.1.2.tgz
+    version: 0.1.2
   - annotations:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: Minecraft Server
