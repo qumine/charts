@@ -11,3 +11,4 @@ subjects:
 - kind: ServiceAccount
   name: {{ template "qumine.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
+  

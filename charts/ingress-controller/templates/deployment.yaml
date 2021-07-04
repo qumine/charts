@@ -34,10 +34,6 @@ spec:
         {{- end }}
         - name: PORT
           value: "{{ .Values.qumine.port }}"
-        args:
-        {{- if .Values.qumine.debug }}
-        - --debug
-        {{- end }}
         ports:
         - name: ingress
           containerPort: {{ .Values.qumine.port }}

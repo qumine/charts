@@ -22,14 +22,15 @@ spec:
       {{- end }}
       containers:
       - name: ingress-controller
-        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        image: "{{ template "qumine.image" . }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         {{- if .Values.resources }}
         resources: {{- toYaml .Values.resources | nindent 12 }}
         {{- end }}
-        args:
+        env:
         {{- if .Values.qumine.debug }}
-          - --debug
+        - name: DEBUG
+          value: "true"
         {{- end }}
         - name: PORT
           value: "{{ .Values.qumine.port }}"

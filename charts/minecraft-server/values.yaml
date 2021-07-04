@@ -254,7 +254,7 @@ server:
     spawnProtection: "16"
     # Enables synchronous chunk writes.
     syncChunkWrites: "true"
-    # 
+    #
     textFilteringConfig: ""
     # Linux server performance improvements: optimized packet sending/receiving on Linux
     #   true - Enabled. Enable Linux packet sending/receiving optimization
@@ -284,26 +284,26 @@ server:
 ## Plugins to download. (comma-seperated list)
 ## Supported formats are:
 ##   GitHub: gh://user/repo:version
-##   
+##  
 ##
 plugins: ""
 
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ## If persistence is enabled, operator will create a PVC with mountPath /var/lib/backups
-persistence: 
+persistence:
   type: "EmptyDir"
 
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack). 
+  ##   GKE, AWS & OpenStack).
   ## Refer https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class-1
   ##
   storageClass: "-"
 
-  ## If you want to disable dynamic provisioning by setting storageClass to "-" above, 
-  ## and want to target a particular PV, provide name of the target volume 
+  ## If you want to disable dynamic provisioning by setting storageClass to "-" above,
+  ## and want to target a particular PV, provide name of the target volume
   volumeName: ""
 
   ## Only certain StorageClasses allow resizing PVs; Refer https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/
@@ -395,13 +395,13 @@ service:
 ## Kubernetes Security Context
 ## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ## Example:
-##securityContext:
+## securityContext:
 ##  allowPrivilegeEscalation: false
 ##  readOnlyRootFilesystem: true
 ##  capabilities:
 ##    drop: ["ALL"]
 securityContext: {}
-podSecurityContext: 
+podSecurityContext:
   fsGroup: 4242
 ##  runAsUser: 4242
 ##  runAsNonRoot: true
@@ -480,7 +480,7 @@ integrations:
       ##
       # pullSecrets:
       #   - myRegistryKeySecretName
-    
+   
     ## The hostname for the ingress
     hostname: ""
     ## Kubernetes svc configutarion

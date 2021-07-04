@@ -16,7 +16,7 @@ questions:
 - variable: server.type
   if: "server.eula == true"
   default: VANILLA
-  options: 
+  options:
   - CUSTOM
   - PAPERMC
   - STARTER
@@ -108,7 +108,7 @@ questions:
 - variable: server.properties.allowFlight
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
-  options: 
+  options:
   - "true"
   - "false"
   description: Allows users to use flight on the server while in Survival mode, if they have a mod that provides flight installed
@@ -119,7 +119,7 @@ questions:
 - variable: server.properties.allowNether
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Allows players to travel to the Nether
@@ -130,7 +130,7 @@ questions:
 - variable: server.properties.broadcastConsoleToOps
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Send console command outputs to all online operator
@@ -141,7 +141,7 @@ questions:
 - variable: server.properties.broadcastRconToOps
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Send rcon console command outputs to all online operators
@@ -152,7 +152,7 @@ questions:
 - variable: server.properties.difficulty
   if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: easy
-  options: 
+  options:
   - peaceful
   - easy
   - normal
@@ -165,7 +165,7 @@ questions:
 - variable: server.properties.enableCommandBlock
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
-  options: 
+  options:
   - "true"
   - "false"
   description: Enables command blocks
@@ -176,7 +176,7 @@ questions:
 - variable: server.properties.enableJmxMonitoring
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
-  options: 
+  options:
   - "true"
   - "false"
   description: Exposes an MBean with the Object name net.minecraft.server:type=Server and two attributes averageTickTime and tickTimes exposing the tick times in milliseconds
@@ -187,7 +187,7 @@ questions:
 - variable: server.properties.enableRcon
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
-  options: 
+  options:
   - "true"
   - "false"
   description: Enables remote access to the server console
@@ -198,7 +198,7 @@ questions:
 - variable: server.properties.enableStatus
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Makes the server appear as "online" on the server list
@@ -209,7 +209,7 @@ questions:
 - variable: server.properties.enableQuery
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
-  options: 
+  options:
   - "true"
   - "false"
   description: Enables GameSpy4 protocol server listener. Used to get information about server
@@ -228,7 +228,7 @@ questions:
 - variable: server.properties.enforceWhitelist
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Enforces the whitelist on the server
@@ -239,7 +239,7 @@ questions:
 - variable: server.properties.forceGamemode
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Force players to join in the default game mode
@@ -250,7 +250,7 @@ questions:
 - variable: server.properties.functionPermissionLevel
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "4"
-  options: 
+  options:
   - "1"
   - "2"
   - "3"
@@ -263,7 +263,7 @@ questions:
 - variable: server.properties.gamemode
   if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: survival
-  options: 
+  options:
   - survival
   - creative
   - adventure
@@ -276,7 +276,7 @@ questions:
 - variable: server.properties.generateStructures
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Defines whether structures (such as villages) can be generated
@@ -295,7 +295,7 @@ questions:
 - variable: server.properties.hardcore
   if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: If set to true, server difficulty is ignored and set to hard and players are set to spectator mode if they die
@@ -322,7 +322,7 @@ questions:
 - variable: server.properties.levelType
   if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "default"
-  options: 
+  options:
   - "default"
   - "flat"
   - "largeBiomes"
@@ -376,7 +376,7 @@ questions:
 - variable: server.properties.onlineMode
   if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Server checks connecting players against Minecraft account database
@@ -387,7 +387,7 @@ questions:
 - variable: server.properties.opPermissionLevel
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "4"
-  options: 
+  options:
   - "1"
   - "2"
   - "3"
@@ -408,7 +408,7 @@ questions:
 - variable: server.properties.preventProxyConnections
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "false"
-  options: 
+  options:
   - "true"
   - "false"
   description: If the ISP/AS sent from the server is different from the one from Mojang's authentication server, the player is kicked
@@ -419,7 +419,7 @@ questions:
 - variable: server.properties.pvp
   if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Enable PvP on the server. Players shooting themselves with arrows receive damage only if PvP is enabled
@@ -478,7 +478,7 @@ questions:
 - variable: server.properties.requireResourcePack
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: When this option is enabled (set to true), players will be prompted for a response and will be disconnected if they decline the required pack
@@ -505,7 +505,7 @@ questions:
 - variable: server.properties.snooperEnabled
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Sets whether the server sends snoop data regularly to http://snoop.minecraft.net
@@ -516,7 +516,7 @@ questions:
 - variable: server.properties.spawnAnimals
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Determines if animals can spawn.
@@ -527,7 +527,7 @@ questions:
 - variable: server.properties.spawnMonsters
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Determines if monsters can spawn.
@@ -538,7 +538,7 @@ questions:
 - variable: server.properties.spawnNpcs
   if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Determines if villagers can spawn.
@@ -557,7 +557,7 @@ questions:
 - variable: server.properties.syncChunkWrites
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Enables synchronous chunk writes.
@@ -568,7 +568,7 @@ questions:
 - variable: server.properties.textFilteringConfig
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: ""
-  description: 
+  description:
   type: string
   required: true
   label: text-filtering-config
@@ -576,7 +576,7 @@ questions:
 - variable: server.properties.useNativeTransport
   if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "true"
-  options: 
+  options:
   - "true"
   - "false"
   description: Linux server performance improvements
@@ -595,7 +595,7 @@ questions:
 - variable: server.properties.whiteList
   if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
   default: "false"
-  options: 
+  options:
   - "true"
   - "false"
   description: Enables a whitelist on the server
@@ -645,7 +645,7 @@ questions:
   type: boolean
   label: Retain PVC
   group: Persistence
-- variable: persistence.volumeName 
+- variable: persistence.volumeName
   if: "server.eula == true && persistence.type == \"ExistingPVC\""
   default: ""
   description: "If not empty, uses the specified existing PVC instead of creating new one"
