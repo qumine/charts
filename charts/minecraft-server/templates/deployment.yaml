@@ -113,7 +113,7 @@ spec:
         ports:
         - name: bluemap
           containerPort: {{ .Values.integrations.bluemap.service.port }}
-        resources: 
+        resources:
           limits:
             cpu: 500m
             memory: 500Mi
@@ -141,7 +141,7 @@ spec:
         - name: geysermc
           containerPort: {{ .Values.integrations.geysermc.service.port }}
           protocol: UDP
-        resources: 
+        resources:
           limits:
             cpu: 500m
             memory: 500Mi
