@@ -120,4 +120,3 @@ questions:
     description: ExternalDNS image tag
     type: string
     label: QuMine Image Tag
-    

@@ -13,7 +13,7 @@
 image:
   registry: docker.io
   repository: qumine/minecraft-server
-  tag: v0.1.2
+  tag: v0.1.3
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -284,7 +284,7 @@ server:
 ## Plugins to download. (comma-seperated list)
 ## Supported formats are:
 ##   GitHub: gh://user/repo:version
-##  
+##
 ##
 plugins: ""
 
@@ -480,7 +480,7 @@ integrations:
       ##
       # pullSecrets:
       #   - myRegistryKeySecretName
-   
+
     ## The hostname for the ingress
     hostname: ""
     ## Kubernetes svc configutarion

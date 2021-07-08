@@ -23,7 +23,6 @@ questions:
   - TRAVERTINE
   - VANILLA
   - WATERFALL
-  - YATOPIA
   description: The type of minecraft server to install
   type: enum
   required: true
@@ -69,28 +68,28 @@ questions:
   group: Server
 
 - variable: server.whitelist
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: ""
   description: Players to add to the initial whitelist. (comma seperated)
   type: string
   label: Whitelist
   group: Initial Players
 - variable: server.whitelistOverride
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: false
   description: Override the whitelist.json if it already exists
   type: boolean
   label: Whitelist Override
   group: Initial Players
 - variable: server.ops
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: ""
   description: Players to add to the initial ops list. (comma seperated)
   type: string
   label: OPs
   group: Initial Players
 - variable: server.opsOverride
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: false
   description: Override the ops.json if it already exists
   type: boolean
@@ -98,7 +97,7 @@ questions:
   group: Initial Players
 
 - variable: server.propertiesAdvanced
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: false
   description: Show advanced options
   type: boolean
@@ -106,7 +105,7 @@ questions:
   label: Advanced Options
   group: Server Properties
 - variable: server.properties.allowFlight
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "false"
   options:
   - "true"
@@ -117,7 +116,7 @@ questions:
   label: broadcast-console-to-ops
   group: Server Properties
 - variable: server.properties.allowNether
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -128,7 +127,7 @@ questions:
   label: allow-nether
   group: Server Properties
 - variable: server.properties.broadcastConsoleToOps
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -139,7 +138,7 @@ questions:
   label: broadcast-console-to-ops
   group: Server Properties
 - variable: server.properties.broadcastRconToOps
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -150,7 +149,7 @@ questions:
   label: broadcast-rcon-to-ops
   group: Server Properties
 - variable: server.properties.difficulty
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: easy
   options:
   - peaceful
@@ -163,7 +162,7 @@ questions:
   label: difficulty
   group: Server Properties
 - variable: server.properties.enableCommandBlock
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "false"
   options:
   - "true"
@@ -174,7 +173,7 @@ questions:
   label: enable-command-block
   group: Server Properties
 - variable: server.properties.enableJmxMonitoring
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "false"
   options:
   - "true"
@@ -185,7 +184,7 @@ questions:
   label: enable-rcon
   group: Server Properties
 - variable: server.properties.enableRcon
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "false"
   options:
   - "true"
@@ -196,7 +195,7 @@ questions:
   label: enable-rcon
   group: Server Properties
 - variable: server.properties.enableStatus
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -207,7 +206,7 @@ questions:
   label: enable-status
   group: Server Properties
 - variable: server.properties.enableQuery
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "false"
   options:
   - "true"
@@ -218,7 +217,7 @@ questions:
   label: enable-query
   group: Server Properties
 - variable: server.properties.entityBroadcastRangePercentage
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "100"
   description: Controls how close entities need to be before being sent to clients
   type: string
@@ -226,7 +225,7 @@ questions:
   label: entity-broadcast-range-percentage
   group: Server Properties
 - variable: server.properties.enforceWhitelist
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -237,7 +236,7 @@ questions:
   label: enforce-whitelist
   group: Server Properties
 - variable: server.properties.forceGamemode
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -248,7 +247,7 @@ questions:
   label: force-gamemode
   group: Server Properties
 - variable: server.properties.functionPermissionLevel
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "4"
   options:
   - "1"
@@ -261,7 +260,7 @@ questions:
   label: function-permissionlevel
   group: Server Properties
 - variable: server.properties.gamemode
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: survival
   options:
   - survival
@@ -274,7 +273,7 @@ questions:
   label: gamemode
   group: Server Properties
 - variable: server.properties.generateStructures
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "true"
   options:
   - "true"
@@ -285,7 +284,7 @@ questions:
   label: generate-structures
   group: Server Properties
 - variable: server.properties.generatorSettings
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: ""
   description: The settings used to customize world generation
   type: string
@@ -293,7 +292,7 @@ questions:
   label: generator-settings
   group: Server Properties
 - variable: server.properties.hardcore
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -304,7 +303,7 @@ questions:
   label: hardcore
   group: Server Properties
 - variable: server.properties.levelName
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "world"
   description: The "level-name" value is used as the world name and its folder name
   type: string
@@ -312,7 +311,7 @@ questions:
   label: level-name
   group: Server Properties
 - variable: server.properties.levelSeed
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: ""
   description: Sets a world seed for the player's world, as in Singleplayer. The world generates with a random seed if left blank
   type: string
@@ -320,7 +319,7 @@ questions:
   label: level-seed
   group: Server Properties
 - variable: server.properties.levelType
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "default"
   options:
   - "default"
@@ -334,7 +333,7 @@ questions:
   label: level-type
   group: Server Properties
 - variable: server.properties.maxPlayers
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "20"
   description: The maximum number of players that can play on the server at the same time. Note that more players on the server consume more resources
   type: string
@@ -342,7 +341,7 @@ questions:
   label: max-players
   group: Server Properties
 - variable: server.properties.maxTickTime
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "60000"
   description: The maximum number of milliseconds a single tick may take before the server watchdog stops the server with the message
   type: string
@@ -350,7 +349,7 @@ questions:
   label: max-tick-time
   group: Server Properties
 - variable: server.properties.maxWorldSize
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "29999984"
   description: This sets the maximum possible size in blocks, expressed as a radius, that the world border can obtain
   type: string
@@ -358,7 +357,7 @@ questions:
   label: max-world-size
   group: Server Properties
 - variable: server.properties.motd
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "A Minecraft Server"
   description: This is the message that is displayed in the server list of the client, below the name
   type: string
@@ -366,7 +365,7 @@ questions:
   label: motd
   group: Server Properties
 - variable: server.properties.networkCompressionThreshold
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "256"
   description: By default it allows packets that are n-1 bytes big to go normally, but a packet of n bytes or more gets compressed down
   type: string
@@ -374,7 +373,7 @@ questions:
   label: network-compression-threshold
   group: Server Properties
 - variable: server.properties.onlineMode
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -385,7 +384,7 @@ questions:
   label: online-mode
   group: Server Properties
 - variable: server.properties.opPermissionLevel
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "4"
   options:
   - "1"
@@ -398,7 +397,7 @@ questions:
   label: op-permission-level
   group: Server Properties
 - variable: server.properties.playerIdleTimeout
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "0"
   description: If non-zero, players are kicked from the server if they are idle for more than that many minutes
   type: string
@@ -406,7 +405,7 @@ questions:
   label: player-idle-timeout
   group: Server Properties
 - variable: server.properties.preventProxyConnections
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "false"
   options:
   - "true"
@@ -417,7 +416,7 @@ questions:
   label: prevent-proxy-connections
   group: Server Properties
 - variable: server.properties.pvp
-  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -428,7 +427,7 @@ questions:
   label: pvp
   group: Server Properties
 - variable: server.properties.query.port
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "25565"
   description: Sets the port for the query server (see enableQuery)
   type: string
@@ -436,7 +435,7 @@ questions:
   label: query.port
   group: Server Properties
 - variable: server.properties.rateLimit
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: ""
   description: Sets the maximum amount of packets a user can send before getting kicked. Setting to 0 disables this feature
   type: string
@@ -444,7 +443,7 @@ questions:
   label: rate-limit
   group: Server Properties
 - variable: server.properties.rcon.password
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: ""
   description: Sets the password for RCON
   type: string
@@ -452,7 +451,7 @@ questions:
   label: rcon.password
   group: Server Properties
 - variable: server.properties.rcon.port
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "25575"
   description: Sets the RCON network port
   type: string
@@ -460,7 +459,7 @@ questions:
   label: rcon.port
   group: Server Properties
 - variable: server.properties.resourcePack
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: ""
   description: Optional URI to a resource pack. The player may choose to use it
   type: string
@@ -468,7 +467,7 @@ questions:
   label: resource-pack
   group: Server Properties
 - variable: server.properties.resourcePack
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: ""
   description: Optional SHA-1 digest of the resource pack, in lowercase hexadecimal. It is recommended to specify this
   type: string
@@ -476,7 +475,7 @@ questions:
   label: resource-pack-sha1
   group: Server Properties
 - variable: server.properties.requireResourcePack
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "true"
   options:
   - "true"
@@ -487,7 +486,7 @@ questions:
   label: require-resource-pack
   group: Server Properties
 - variable: server.properties.serverIp
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: ""
   description: The player should set this if they want the server to bind to a particular IP
   type: string
@@ -495,7 +494,7 @@ questions:
   label: server-port
   group: Server Properties
 - variable: server.properties.serverPort
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "25565"
   description: Changes the port the server is hosting (listening) on
   type: string
@@ -503,7 +502,7 @@ questions:
   label: server-port
   group: Server Properties
 - variable: server.properties.snooperEnabled
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "true"
   options:
   - "true"
@@ -514,7 +513,7 @@ questions:
   label: snooper-enabled
   group: Server Properties
 - variable: server.properties.spawnAnimals
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "true"
   options:
   - "true"
@@ -525,7 +524,7 @@ questions:
   label: spawn-animals
   group: Server Properties
 - variable: server.properties.spawnMonsters
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "true"
   options:
   - "true"
@@ -536,7 +535,7 @@ questions:
   label: spawn-monsters
   group: Server Properties
 - variable: server.properties.spawnNpcs
-  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"VANILLA\" || server.type == \"PAPERMC\")"
   default: "true"
   options:
   - "true"
@@ -547,7 +546,7 @@ questions:
   label: spawn-npcs
   group: Server Properties
 - variable: server.properties.spawnProtection
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "16"
   description: Determines the side length of the square spawn protection area as 2x+1
   type: string
@@ -555,7 +554,7 @@ questions:
   label: spawn-protection
   group: Server Properties
 - variable: server.properties.syncChunkWrites
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -566,7 +565,7 @@ questions:
   label: sync-chunk-writes
   group: Server Properties
 - variable: server.properties.textFilteringConfig
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: ""
   description:
   type: string
@@ -574,7 +573,7 @@ questions:
   label: text-filtering-config
   group: Server Properties
 - variable: server.properties.useNativeTransport
-  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && server.propertiesAdvanced == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "true"
   options:
   - "true"
@@ -585,7 +584,7 @@ questions:
   label: use-native-transport
   group: Server Properties
 - variable: server.properties.viewDistance
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "10"
   description: Sets the amount of world data the server sends the client, measured in chunks in each direction of the player
   type: string
@@ -593,7 +592,7 @@ questions:
   label: view-distance
   group: Server Properties
 - variable: server.properties.whiteList
-  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
   default: "false"
   options:
   - "true"
@@ -605,7 +604,7 @@ questions:
   group: Server Properties
 
 - variable: plugins
-  if: "server.eula == true && (server.type == \"PAPERMC\" || server.type == \"YATOPIA\")"
+  if: "server.eula == true && (server.type == \"PAPERMC\")"
   default: ""
   description: Plugins to automatically install and update. (comma seperated)
   type: multiline
@@ -729,21 +728,21 @@ questions:
   group: Integrations
 
 - variable: resources.requests.cpu
-  default: 250m
+  default: 500m
   description: CPU Requests
   type: string
   required: true
   label: CPU Requests
   group: Resources
 - variable: resources.limits.cpu
-  default: 1000m
+  default: 500m
   description: CPU Limit
   type: string
   required: true
   label: CPU Limit
   group: Resources
 - variable: resources.requests.memory
-  default: 1000Mi
+  default: 2000Mi
   description: Memory Requests
   type: string
   required: true
@@ -776,7 +775,7 @@ questions:
     type: string
     label: Image Repository
   - variable: image.tag
-    default: v0.1.2
+    default: v0.1.3
     description: Image tag
     type: string
     label: Image tag

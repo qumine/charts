@@ -120,4 +120,3 @@ metrics:
     ##
     # selector:
     #   prometheus: my-prometheus
-    
