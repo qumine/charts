@@ -17,14 +17,11 @@ You can then run `helm search repo qumine` to see the charts.
 
 ## Charts
 
+* [ingress-controller](https://github.com/qumine/charts/tree/master/charts/ingress-controller)
 * [minecraft-server](https://github.com/qumine/charts/tree/master/charts/minecraft-server)
-
-* [qumine-ingress](https://github.com/qumine/charts/tree/master/charts/qumine-ingress)
-* [qumine-server](https://github.com/qumine/charts/tree/master/charts/qumine-server)
-* [qumine-server-java](https://github.com/qumine/charts/tree/master/charts/qumine-server-java)
 
 ```bash
 helm install --name your-release qumine/qumine-server
 ```
 
-Also see [helm hub](https://hub.helm.sh/charts/qumine) for a complete list.
+Also see [Artifact Hub](https://artifacthub.io/packages/search?org=qumine&sort=relevance&page=1) for a complete list.
