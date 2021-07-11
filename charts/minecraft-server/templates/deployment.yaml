@@ -33,6 +33,9 @@ spec:
       {{- if .Values.priorityClassName }}
       priorityClassName: {{ .Values.priorityClassName | quote }}
       {{- end }}
+      {{- if .Values.extraInitContainers }}
+      initContainers: {{ toYaml .Values.extraInitContainers | nindent 8 }}
+      {{- end }}
       containers:
       - name: minecraft-server
         image: "{{ template "qumine.image" . }}"
@@ -126,13 +129,13 @@ spec:
       {{- end }}
       {{- if .Values.integrations.geysermc.enabled }}
       - name: geysermc
-        image: docker.k8.network/library/geyser-mc:latest
-        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        image: "{{ template "qumine.integrations.geysermc.image" . }}"
+        imagePullPolicy: {{ .Values.integrations.geysermc.image.pullPolicy | quote }}
         env:
         - name: BEDROCK_PORT
           value: "{{ .Values.integrations.geysermc.service.port }}"
         - name: GEYSER_FLOODGATE_KEY_FILE
-          value: /data/plugins/floodgate-bukkit/public-key.pem
+          value: /data/plugins/floodgate/key.pem
         - name: REMOTE_ADDRESS
           value: 127.0.0.1
         - name: REMOTE_AUTH_TYPE

@@ -13,7 +13,7 @@
 image:
   registry: docker.io
   repository: qumine/minecraft-server
-  tag: v0.1.3
+  tag: v0.1.4
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -48,6 +48,8 @@ server:
   starterJarURL: "https://github.com/Yoosk/ServerStarter/releases/download/v2.1.0/serverstarter-2.1.0.jar"
   # The url for the ServerStarter server-setup-config file.
   starterConfigURL: ""
+  # Whether AIKAR's optimized flags should be used or not
+  useAikarFlags: false
 
   properties:
     # Allows users to use flight on the server while in Survival mode, if they have a mod that provides flight installed.
@@ -457,68 +459,13 @@ extraVolumes: []
 ## Configure extra volumeMounts
 extraVolumeMounts: []
 
+## Containers, which are run before the app containers are started.
+extraInitContainers: []
+# - name: init-myservice
+#   image: busybox
+#   command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+
 integrations:
-  ## BlueMap
-  bluemap:
-    enabled: false
-
-    ## QuMine image version
-    ## ref: https://hub.docker.com/repository/docker/qumine/integrations-bluemap/tags
-    ##
-    image:
-      registry: docker.io
-      repository: qumine/integrations-bluemap
-      tag: 1.4.2
-      ## Specify a imagePullPolicy
-      ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-      ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
-      ##
-      pullPolicy: IfNotPresent
-      ## Optionally specify an array of imagePullSecrets.
-      ## Secrets must be manually created in the namespace.
-      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-      ##
-      # pullSecrets:
-      #   - myRegistryKeySecretName
-
-    ## The hostname for the ingress
-    hostname: ""
-    ## Kubernetes svc configutarion
-    ##
-    service:
-      ## Kubernetes svc type
-      ##
-      type: ClusterIP
-      port: 9090
-      ## Specify the nodePort value for the LoadBalancer and NodePort service types for the client port
-      ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
-      ##
-      # nodePort:
-      ## Static clusterIP or None for headless services
-      ##
-      # clusterIP: ""
-      ## External IP list to use with ClusterIP service type
-      ##
-      externalIPs: []
-      ## Use loadBalancerIP to request a specific static IP,
-      ## otherwise leave blank
-      ##
-      # loadBalancerIP:
-      ## Address that are allowed when svc is LoadBalancer
-      ##
-      loadBalancerSourceRanges: []
-      ## Provide any additional annotations which may be required. This can be used to
-      ## set the LoadBalancer service type to internal only.
-      ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
-      ##
-      annotations: {}
-
-      ## Provide any additional labels which may be required. This can be used to
-      ## have qumine show up in `kubectl cluster-info`
-      ##  kubernetes.io/cluster-service: "true"
-      ##  kubernetes.io/name: "qumine"
-      labels: {}
-
   ## QuMine-Ingress
   qumineIngress:
     enabled: false
@@ -595,9 +542,90 @@ integrations:
       # selector:
       #   prometheus: my-prometheus
 
+  ## BlueMap
+  bluemap:
+    enabled: false
+
+    ## QuMine image version
+    ## ref: https://hub.docker.com/repository/docker/qumine/integrations-bluemap/tags
+    ##
+    image:
+      registry: docker.io
+      repository: qumine/integrations-bluemap
+      tag: 1.4.2
+      ## Specify a imagePullPolicy
+      ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+      ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+      ##
+      pullPolicy: IfNotPresent
+      ## Optionally specify an array of imagePullSecrets.
+      ## Secrets must be manually created in the namespace.
+      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+      ##
+      # pullSecrets:
+      #   - myRegistryKeySecretName
+
+    ## The hostname for the ingress
+    hostname: ""
+    ## Kubernetes svc configutarion
+    ##
+    service:
+      ## Kubernetes svc type
+      ##
+      type: ClusterIP
+      port: 9090
+      ## Specify the nodePort value for the LoadBalancer and NodePort service types for the client port
+      ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
+      ##
+      # nodePort:
+      ## Static clusterIP or None for headless services
+      ##
+      # clusterIP: ""
+      ## External IP list to use with ClusterIP service type
+      ##
+      externalIPs: []
+      ## Use loadBalancerIP to request a specific static IP,
+      ## otherwise leave blank
+      ##
+      # loadBalancerIP:
+      ## Address that are allowed when svc is LoadBalancer
+      ##
+      loadBalancerSourceRanges: []
+      ## Provide any additional annotations which may be required. This can be used to
+      ## set the LoadBalancer service type to internal only.
+      ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
+      ##
+      annotations: {}
+
+      ## Provide any additional labels which may be required. This can be used to
+      ## have qumine show up in `kubectl cluster-info`
+      ##  kubernetes.io/cluster-service: "true"
+      ##  kubernetes.io/name: "qumine"
+      labels: {}
+
   ## GeyserMC
   geysermc:
     enabled: false
+
+    ## GeyserMC image version
+    ## ref: https://hub.docker.com/repository/docker/qumine/integrations-bluemap/tags
+    ##
+    image:
+      registry: docker.io
+      repository: infinytum/geyser-mc
+      tag: latest
+      ## Specify a imagePullPolicy
+      ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+      ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+      ##
+      pullPolicy: IfNotPresent
+      ## Optionally specify an array of imagePullSecrets.
+      ## Secrets must be manually created in the namespace.
+      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+      ##
+      # pullSecrets:
+      #   - myRegistryKeySecretName
+
     ## Kubernetes svc configutarion
     ##
     service:

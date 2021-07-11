@@ -123,21 +123,44 @@ imagePullSecrets:
 {{- define "qumine.plugins" -}}
 {{- $plugins := .Values.plugins -}}
 {{- if .Values.integrations.metrics.enabled }}
-{{- $plugins = print "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.4.0/minecraft-prometheus-exporter-2.4.0.jar," .Values.plugins -}}
+{{- $plugins = print "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.4.2/minecraft-prometheus-exporter-2.4.2.jar," .Values.plugins -}}
 {{- end}}
 {{- if .Values.integrations.geysermc.enabled }}
-{{- $plugins = print "https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar," .Values.plugins -}}
+{{- $plugins = print "https://ci.opencollab.dev//job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/spigot/target/floodgate-spigot.jar," .Values.plugins -}}
 {{- end}}
 {{- print $plugins -}}
 {{- end -}}
 
 {{/*
-Return the proper External DNS image name
+Return the proper bluemap DNS image name
 */}}
 {{- define "qumine.integrations.bluemap.image" -}}
 {{- $registryName := .Values.integrations.bluemap.image.registry -}}
 {{- $repositoryName := .Values.integrations.bluemap.image.repository -}}
 {{- $tag := .Values.integrations.bluemap.image.tag | toString -}}
+{{/*
+Helm 2.11 supports the assignment of a value to a variable defined in a different scope,
+but Helm 2.9 and 2.10 doesn't support it, so we need to implement this if-else logic.
+Also, we can't use a single if because lazy evaluation is not an option
+*/}}
+{{- if .Values.global }}
+    {{- if .Values.global.imageRegistry }}
+        {{- printf "%s/%s:%s" .Values.global.imageRegistry $repositoryName $tag -}}
+    {{- else -}}
+        {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
+    {{- end -}}
+{{- else -}}
+    {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Return the proper GeyserMC image name
+*/}}
+{{- define "qumine.integrations.geysermc.image" -}}
+{{- $registryName := .Values.integrations.geysermc.image.registry -}}
+{{- $repositoryName := .Values.integrations.geysermc.image.repository -}}
+{{- $tag := .Values.integrations.geysermc.image.tag | toString -}}
 {{/*
 Helm 2.11 supports the assignment of a value to a variable defined in a different scope,
 but Helm 2.9 and 2.10 doesn't support it, so we need to implement this if-else logic.

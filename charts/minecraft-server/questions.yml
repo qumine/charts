@@ -66,6 +66,14 @@ questions:
   required: true
   label: Starter Config URL
   group: Server
+- variable: server.useAikarFlags
+  if: "server.eula == true && (server.type != \"CUSTOM\" && server.type != \"STARTER\")"
+  default: false
+  description: Whether AIKAR's optimized flags should be used or not
+  type: boolean
+  required: true
+  label: AIKAR flags
+  group: Server
 
 - variable: server.whitelist
   if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
@@ -775,7 +783,7 @@ questions:
     type: string
     label: Image Repository
   - variable: image.tag
-    default: v0.1.3
+    default: v0.1.4
     description: Image tag
     type: string
     label: Image tag
