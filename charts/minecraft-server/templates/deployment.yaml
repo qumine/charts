@@ -115,7 +115,7 @@ spec:
         imagePullPolicy: {{ .Values.integrations.bluemap.image.pullPolicy | quote }}
         ports:
         - name: bluemap
-          containerPort: {{ .Values.integrations.bluemap.service.port }}
+          containerPort: 8081
         resources:
           limits:
             cpu: 500m
@@ -131,18 +131,9 @@ spec:
       - name: geysermc
         image: "{{ template "qumine.integrations.geysermc.image" . }}"
         imagePullPolicy: {{ .Values.integrations.geysermc.image.pullPolicy | quote }}
-        env:
-        - name: BEDROCK_PORT
-          value: "{{ .Values.integrations.geysermc.service.port }}"
-        - name: GEYSER_FLOODGATE_KEY_FILE
-          value: /data/plugins/floodgate/key.pem
-        - name: REMOTE_ADDRESS
-          value: 127.0.0.1
-        - name: REMOTE_AUTH_TYPE
-          value: floodgate
         ports:
         - name: geysermc
-          containerPort: {{ .Values.integrations.geysermc.service.port }}
+          containerPort: 19132
           protocol: UDP
         resources:
           limits:
