@@ -122,14 +122,15 @@ imagePullSecrets:
 
 
 {{- define "qumine.additionalFiles" -}}
-{{- print (.Values.additionalFiles | join ",") -}}
+{{- print (join "," .Values.additionalFiles) -}}
 {{- end -}}
 
 {{- define "qumine.plugins" -}}
-{{- $plugins := (.Values.plugins | join ",") -}}
+{{- $plugins := join "," .Values.plugins -}}
 {{- if .Values.integrations.metrics.enabled }}
-{{- $plugins = print "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.4.2/minecraft-prometheus-exporter-2.4.2.jar," .Values.plugins -}}
+{{- $plugins = print "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.4.2/minecraft-prometheus-exporter-2.4.2.jar," $plugins -}}
 {{- end}}
+{{- print $plugins -}}
 {{- end -}}
 
 {{/*

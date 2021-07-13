@@ -17,5 +17,4 @@ maintainers:
 icon: https://github.com/QuMine/charts/raw/master/charts/minecraft-server/icon.png
 engine: gotpl
 annotations:
-  catalog.cattle.io/certified: qumine
   catalog.cattle.io/display-name: "Minecraft Server"
