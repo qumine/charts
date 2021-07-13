@@ -15,7 +15,8 @@ spec:
         backend:
           service:
             name: "{{ template "qumine.fullname" . }}-bluemap"
-            port: {{ .Values.integrations.bluemap.service.port }}
+            port:
+              number: {{ .Values.integrations.bluemap.service.port }}
   tls:
   - hosts:
     - {{ .Values.integrations.bluemap.hostname }}
