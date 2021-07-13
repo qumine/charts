@@ -35,9 +35,9 @@ spec:
       {{- end }}
       initContainers:
       {{- if .Values.integrations.templates.enabled }}
-      {{- range $name, $template := .Values.integrations.templates }}
-      - name: {{ $name }}
-        image: {{ $template }}
+      {{- range $key, $value := .Values.integrations.templates.templates }}
+      - name: {{ $key }}
+        image: {{ $value }}
       {{- end }}
       {{- end }}
       {{- if .Values.extraInitContainers }}
