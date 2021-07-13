@@ -289,9 +289,7 @@ server:
 ##   HTTP: https://website.com/test.zip
 ##
 ##
-additionalFiles:
-  - test
-  - test2
+additionalFiles: []
 
 ## Plugins to download. (comma-seperated list)
 ## Supported formats are:
@@ -488,7 +486,7 @@ integrations:
 
   ## Prometheus Exporter / Metrics
   metrics:
-    enabled: true
+    enabled: false
     ## Metrics exporter pod Annotation and Labels
     ##
     # podAnnotations:
