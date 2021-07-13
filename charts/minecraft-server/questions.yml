@@ -674,7 +674,7 @@ questions:
   description: Enable BlueMap integration
   type: boolean
   required: true
-  label: BlueMap
+  label: Enable BlueMap
   group: Integrations
 - variable: integrations.bluemap.hostname
   if: "server.eula == true && integrations.bluemap.enabled == true"
@@ -753,7 +753,7 @@ questions:
 - variable: integrations.templates.templates
   if: "server.eula == true && integrations.templates.enabled == true"
   description: Templates (must be docker images)
-  type: array
+  type: map[string]
   required: true
   label: Templates
   group: Integrations

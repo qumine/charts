@@ -410,15 +410,15 @@ service:
 ##  readOnlyRootFilesystem: true
 ##  capabilities:
 ##    drop: ["ALL"]
-securityContext: {}
-podSecurityContext:
-  fsGroup: 4242
-  runAsUser: 4242
-  runAsNonRoot: true
+securityContext:
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: true
   capabilities:
     drop: ["ALL"]
+podSecurityContext:
+  fsGroup: 4242
+  runAsUser: 4242
+  runAsNonRoot: true
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
@@ -678,4 +678,4 @@ integrations:
   ## Templates
   templates:
     enabled: false
-    templates: []
+    templates: {}
