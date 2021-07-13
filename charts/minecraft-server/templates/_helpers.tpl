@@ -120,6 +120,11 @@ imagePullSecrets:
 {{- end -}}
 {{- end -}}
 
+
+{{- define "qumine.additionalFiles" -}}
+{{- print (.Values.additionalFiles | join ",") -}}
+{{- end -}}
+
 {{- define "qumine.plugins" -}}
 {{- $plugins := (.Values.plugins | join ",") -}}
 {{- if .Values.integrations.metrics.enabled }}
