@@ -121,7 +121,7 @@ imagePullSecrets:
 {{- end -}}
 
 {{- define "qumine.plugins" -}}
-{{- $plugins := join "," .Values.plugins -}}
+{{- $plugins := (.Values.plugins | join ",") -}}
 {{- if .Values.integrations.metrics.enabled }}
 {{- $plugins = print "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.4.2/minecraft-prometheus-exporter-2.4.2.jar," .Values.plugins -}}
 {{- end}}

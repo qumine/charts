@@ -75,8 +75,10 @@ spec:
         - name: SERVER_VERSION
           value: {{ .Values.server.version }}
         {{- end }}
+        {{- if .Values.additionalFiles }}
         - name: ADDITIONAL_FILES
           value: "{{- join "," .Values.additionalFiles }}"
+        {{- end }}
         - name: SERVER_PLUGINS
           value: "{{ template "qumine.plugins" . }}"
         - name: SERVER_WHITE_LIST
