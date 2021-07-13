@@ -76,7 +76,6 @@ questions:
   group: Server
 - variable: additionalFiles
   if: "server.eula == true"
-  default: ""
   description: Additional files to automatically download and extract. (comma seperated)
   type: array[string]
   label: Additional files
