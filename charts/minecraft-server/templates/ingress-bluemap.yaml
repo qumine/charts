@@ -13,8 +13,9 @@ spec:
       paths:
       - pathType: ImplementationSpecific
         backend:
-          serviceName: "{{ template "qumine.fullname" . }}-bluemap"
-          servicePort: {{ .Values.integrations.bluemap.service.port }}
+          service:
+            name: "{{ template "qumine.fullname" . }}-bluemap"
+            port: {{ .Values.integrations.bluemap.service.port }}
   tls:
   - hosts:
     - {{ .Values.integrations.bluemap.hostname }}
