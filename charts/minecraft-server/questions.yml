@@ -74,6 +74,14 @@ questions:
   required: true
   label: AIKAR flags
   group: Server
+- variable: additionalFiles
+  if: "server.eula == true"
+  default: ""
+  description: Additional files to automatically download and extract. (comma seperated)
+  type: multiline
+  label: Additional files
+  group: Server
+
 
 - variable: server.whitelist
   if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
@@ -734,6 +742,21 @@ questions:
   required: true
   label: GeyserMC Service Port
   group: Integrations
+- variable: integrations.templates.enabled
+  if: "server.eula == true"
+  default: false
+  description: Enable Templates integration
+  type: boolean
+  required: true
+  label: Enable Templates
+  group: Integrations
+- variable: integrations.templates.templates
+  if: "server.eula == true && integrations.templates.enabled == true"
+  description: Templates (must be docker images)
+  type: array
+  required: true
+  label: Templates
+  group: Integrations
 
 - variable: resources.requests.cpu
   default: 500m
@@ -783,7 +806,7 @@ questions:
     type: string
     label: Image Repository
   - variable: image.tag
-    default: v0.1.5
+    default: v0.1.6
     description: Image tag
     type: string
     label: Image tag

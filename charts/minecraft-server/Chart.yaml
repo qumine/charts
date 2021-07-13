@@ -1,7 +1,7 @@
 apiVersion: v2
 name: minecraft-server
-version: 0.1.5
-appVersion: v0.1.5
+version: 0.1.6
+appVersion: v0.1.6
 description: run any minecraft server inside of docker
 home: https://github.com/qumine/minecraft-server
 keywords:

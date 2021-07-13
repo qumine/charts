@@ -69,7 +69,7 @@ ingress.qumine.io/hostname: {{ .Values.integrations.qumineIngress.hostname | quo
 {{- end -}}
 
 {{/*
-Return the proper External DNS image name
+Return the proper  image name
 */}}
 {{- define "qumine.image" -}}
 {{- $registryName := .Values.image.registry -}}
