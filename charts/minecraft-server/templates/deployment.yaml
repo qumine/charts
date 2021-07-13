@@ -77,7 +77,7 @@ spec:
         {{- end }}
         {{- if .Values.additionalFiles }}
         - name: ADDITIONAL_FILES
-          value: "{{- join "," .Values.additionalFiles }}"
+          value: "{{- join \",\" .Values.additionalFiles }}"
         {{- end }}
         - name: SERVER_PLUGINS
           value: "{{ template "qumine.plugins" . }}"
