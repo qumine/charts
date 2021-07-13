@@ -76,7 +76,7 @@ questions:
   group: Server
 - variable: additionalFiles
   if: "server.eula == true"
-  description: Additional files to automatically download and extract. (comma seperated)
+  description: Additional files to automatically download and extract.
   type: array[string]
   label: Additional files
   group: Server
@@ -620,9 +620,8 @@ questions:
 
 - variable: plugins
   if: "server.eula == true && (server.type == \"PAPERMC\")"
-  default: ""
-  description: Plugins to automatically install and update. (comma seperated)
-  type: multiline
+  description: Plugins to automatically install and update.
+  type: array[string]
   label: Plugins
   group: Plugins
 
@@ -716,7 +715,7 @@ questions:
 - variable: integrations.geysermc.enabled
   if: "server.eula == true"
   default: false
-  description: Enable GeyserMC integration (will install https://github.com/GeyserMC/Floodgate plugin)
+  description: Enable GeyserMC integration
   type: boolean
   required: true
   label: Enable GeyserMC

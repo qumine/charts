@@ -76,7 +76,7 @@ spec:
           value: {{ .Values.server.version }}
         {{- end }}
         - name: ADDITIONAL_FILES
-          value: "{{ .Values.additionalFiles }}"
+          value: "{{- join "," .Values.additionalFiles }}"
         - name: SERVER_PLUGINS
           value: "{{ template "qumine.plugins" . }}"
         - name: SERVER_WHITE_LIST
@@ -151,9 +151,6 @@ spec:
           requests:
             cpu: 250m
             memory: 250Mi
-        volumeMounts:
-        - name: data
-          mountPath: /data
       {{- end }}
       volumes:
       - name: data

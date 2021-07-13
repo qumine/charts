@@ -289,14 +289,14 @@ server:
 ##   HTTP: https://website.com/test.zip
 ##
 ##
-additionalFiles: ""
+additionalFiles: []
 
 ## Plugins to download. (comma-seperated list)
 ## Supported formats are:
 ##   GitHub: gh://user/repo:version
 ##
 ##
-plugins: ""
+plugins: []
 
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ## If persistence is enabled, operator will create a PVC with mountPath /var/lib/backups
