@@ -74,6 +74,13 @@ questions:
   required: true
   label: AIKAR flags
   group: Server
+- variable: additionalFiles
+  if: "server.eula == true"
+  description: Additional files to automatically download and extract.
+  type: array[string]
+  label: Additional files
+  group: Server
+
 
 - variable: server.whitelist
   if: "server.eula == true && (server.type == \"CUSTOM\" || server.type == \"PAPERMC\" || server.type == \"STARTER\" || server.type == \"VANILLA\")"
@@ -613,9 +620,8 @@ questions:
 
 - variable: plugins
   if: "server.eula == true && (server.type == \"PAPERMC\")"
-  default: ""
-  description: Plugins to automatically install and update. (comma seperated)
-  type: multiline
+  description: Plugins to automatically install and update.
+  type: array[string]
   label: Plugins
   group: Plugins
 
@@ -666,7 +672,7 @@ questions:
   description: Enable BlueMap integration
   type: boolean
   required: true
-  label: BlueMap
+  label: Enable BlueMap
   group: Integrations
 - variable: integrations.bluemap.hostname
   if: "server.eula == true && integrations.bluemap.enabled == true"
@@ -709,7 +715,7 @@ questions:
 - variable: integrations.geysermc.enabled
   if: "server.eula == true"
   default: false
-  description: Enable GeyserMC integration (will install https://github.com/GeyserMC/Floodgate plugin)
+  description: Enable GeyserMC integration
   type: boolean
   required: true
   label: Enable GeyserMC
@@ -733,6 +739,21 @@ questions:
   type: int
   required: true
   label: GeyserMC Service Port
+  group: Integrations
+- variable: integrations.templates.enabled
+  if: "server.eula == true"
+  default: false
+  description: Enable Templates integration
+  type: boolean
+  required: true
+  label: Enable Templates
+  group: Integrations
+- variable: integrations.templates.templates
+  if: "server.eula == true && integrations.templates.enabled == true"
+  description: Templates (must be docker images)
+  type: map[string]
+  required: true
+  label: Templates
   group: Integrations
 
 - variable: resources.requests.cpu
@@ -783,7 +804,7 @@ questions:
     type: string
     label: Image Repository
   - variable: image.tag
-    default: v0.1.5
+    default: v0.1.6
     description: Image tag
     type: string
     label: Image tag

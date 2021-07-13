@@ -33,8 +33,15 @@ spec:
       {{- if .Values.priorityClassName }}
       priorityClassName: {{ .Values.priorityClassName | quote }}
       {{- end }}
+      initContainers:
+      {{- if .Values.integrations.templates.enabled }}
+      {{- range $key, $value := .Values.integrations.templates.templates }}
+      - name: {{ $key }}
+        image: {{ $value }}
+      {{- end }}
+      {{- end }}
       {{- if .Values.extraInitContainers }}
-      initContainers: {{ toYaml .Values.extraInitContainers | nindent 8 }}
+      {{ toYaml .Values.extraInitContainers | nindent 6 }}
       {{- end }}
       containers:
       - name: minecraft-server
@@ -68,6 +75,8 @@ spec:
         - name: SERVER_VERSION
           value: {{ .Values.server.version }}
         {{- end }}
+        - name: ADDITIONAL_FILES
+          value: "{{ template "qumine.additionalFiles" . }}"
         - name: SERVER_PLUGINS
           value: "{{ template "qumine.plugins" . }}"
         - name: SERVER_WHITE_LIST
@@ -142,9 +151,6 @@ spec:
           requests:
             cpu: 250m
             memory: 250Mi
-        volumeMounts:
-        - name: data
-          mountPath: /data
       {{- end }}
       volumes:
       - name: data
