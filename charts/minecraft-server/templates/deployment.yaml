@@ -38,6 +38,7 @@ spec:
       {{- range $key, $value := .Values.integrations.templates.templates }}
       - name: {{ $key }}
         image: {{ $value }}
+        imagePullPolicy: {{ .Values.integrations.templates.pullPolicy | quote }}
         volumeMounts:
         - name: data
           mountPath: /data

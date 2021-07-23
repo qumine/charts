@@ -1,8 +1,8 @@
 apiVersion: v2
 name: minecraft-server
-version: 0.1.6
-appVersion: v0.1.6
-description: run any minecraft server inside of docker
+version: 0.1.7
+appVersion: v0.1.7
+description: Docker Minecraft Server image with support for Plugins etc.
 home: https://github.com/qumine/minecraft-server
 keywords:
 - games
@@ -14,7 +14,7 @@ sources:
 maintainers:
 - name: QuHive
   email: dev@quhive.dev
-icon: https://github.com/QuMine/charts/raw/master/charts/minecraft-server/icon.png
+icon: https://avatars.githubusercontent.com/u/73256940?s=200&v=4
 engine: gotpl
 annotations:
   catalog.cattle.io/display-name: "Minecraft Server"
