@@ -1,6 +1,7 @@
 # QuMine / Charts
 
 [![](https://github.com/qumine/charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com/qumine/charts/actions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=qumine_minecraft-server&metric=alert_status)](https://sonarcloud.io/dashboard?id=qumine_charts)
 
 ## Usage
 
