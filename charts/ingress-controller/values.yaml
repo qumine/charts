@@ -125,7 +125,7 @@ readinessProbe:
 integrations:
   ## Prometheus Exporter / Metrics
   metrics:
-    enabled: true
+    enabled: false
     ## Metrics exporter pod Annotation and Labels
     ##
     # podAnnotations:

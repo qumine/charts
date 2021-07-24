@@ -1,5 +1,4 @@
-{{- if and .Values.metrics.enabled .Values.metrics.serviceMonitor.enabled }}
-apiVersion: monitoring.coreos.com/v1
+{{- if .Values.integrations.metrics.enabled }}apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "qumine.fullname" . }}
@@ -8,10 +7,10 @@ spec:
   endpoints:
   - port: metrics
     path: /metrics
-    {{- with .Values.metrics.serviceMonitor.interval }}
+    {{- with .Values.integrations.metrics.serviceMonitor.interval }}
     interval: {{ . }}
     {{- end }}
-    {{- with .Values.metrics.serviceMonitor.scrapeTimeout }}
+    {{- with .Values.integrations.metrics.serviceMonitor.scrapeTimeout }}
     scrapeTimeout: {{ . }}
     {{- end }}
   namespaceSelector:
