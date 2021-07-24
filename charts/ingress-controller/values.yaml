@@ -29,7 +29,7 @@ qumine:
       ## Kubernetes svc type
       ##
       type: ClusterIP
-      port: 19132
+      port: 25565
       ## Specify the nodePort value for the LoadBalancer and NodePort service types for the client port
       ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
       ##
@@ -57,8 +57,7 @@ qumine:
       ## have qumine show up in `kubectl cluster-info`
       ##  kubernetes.io/cluster-service: "true"
       ##  kubernetes.io/name: "qumine"
-      labels:
-        geysermc: "true"
+      labels: {}
 
 ## Affinity for pod assignment (this value is evaluated as a template)
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
