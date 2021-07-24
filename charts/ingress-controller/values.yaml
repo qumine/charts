@@ -193,6 +193,29 @@ integrations:
       # selector:
       #   prometheus: my-prometheus
 
+  ## GeyserMC
+  geysermc:
+    enabled: false
+
+    ## GeyserMC image version
+    ## ref: https://hub.docker.com/repository/docker/qumine/integrations-bluemap/tags
+    ##
+    image:
+      registry: docker.io
+      repository: qumine/integrations-geysermc
+      tag: 775
+      ## Specify a imagePullPolicy
+      ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+      ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+      ##
+      pullPolicy: Always
+      ## Optionally specify an array of imagePullSecrets.
+      ## Secrets must be manually created in the namespace.
+      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+      ##
+      # pullSecrets:
+      #   - myRegistryKeySecretName
+
     ## Kubernetes svc configutarion
     ##
     service:
