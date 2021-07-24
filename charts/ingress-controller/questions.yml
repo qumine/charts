@@ -74,6 +74,18 @@ questions:
   required: true
   label: Enable GeyserMC
   group: Integrations
+- variable: integrations.geysermc.service.type
+  if: "integrations.geysermc.enabled == true"
+  default: "ClusterIP"
+  options:
+    - "ClusterIP"
+    - "LoadBalancer"
+    - "NodePort"
+  description: GeyserMC Service Type
+  type: enum
+  required: true
+  label: GeyserMC Service Type
+  group: Integrations
 - variable: integrations.geysermc.service.port
   if: "integrations.geysermc.enabled == true"
   default: 19132
