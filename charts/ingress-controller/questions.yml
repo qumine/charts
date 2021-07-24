@@ -52,20 +52,35 @@ questions:
   label: The service type for the ingress
   group: Deployment
 
-- variable: metrics.enabled
+- variable: integrations.metrics.enabled
   default: false
-  description: Enable metrics
+  description: Enable Prometheus/Metrics integration
   type: boolean
   required: true
   label: Enable Metrics
   group: Integrations
-- variable: metrics.serviceMonitor.enabled
-  show_if: "metrics.enabled"
+- variable: integrations.metrics.serviceMonitor.enabled
+  if: "integrations.metrics.enabled == true"
   default: false
   description: Enable Prometheus ServiceMonitor
   type: boolean
   required: true
   label: Enable ServiceMonitor
+  group: Integrations
+- variable: integrations.geysermc.enabled
+  default: false
+  description: Enable GeyserMC integration
+  type: boolean
+  required: true
+  label: Enable GeyserMC
+  group: Integrations
+- variable: integrations.geysermc.service.port
+  if: "integrations.geysermc.enabled == true"
+  default: 19132
+  description: GeyserMC Service Port
+  type: int
+  required: true
+  label: GeyserMC Service Port
   group: Integrations
 
 - variable: resources.requests.cpu
