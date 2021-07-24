@@ -1,32 +1,34 @@
-{{- if eq .Values.qumine.type "Deployment" }}
----
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ template "qumine.fullname" . }}
   labels: {{ include "qumine.labels" . | nindent 4 }}
-spec:
-{{- if (or (eq .Values.qumine.deployment.serviceType "ClusterIP") (empty .Values.qumine.deployment.serviceType)) }}
-  type: ClusterIP
-{{- else if eq .Values.qumine.deployment.serviceType "LoadBalancer" }}
-  type: {{ .Values.qumine.deployment.serviceType }}
-  {{- if .Values.qumine.deployment.loadBalancerIP }}
-  loadBalancerIP: {{ .Values.qumine.deployment.loadBalancerIP }}
+  {{- if .Values.qumine.deployment.service.labels -}}
+  {{ toYaml .Values.qumine.deployment.service.labels | nindent 4 }}
   {{- end }}
-  {{- if .Values.qumine.deployment.loadBalancerSourceRanges }}
-  loadBalancerSourceRanges:
-{{ toYaml .Values.qumine.deployment.loadBalancerSourceRanges | indent 4 }}
-  {{- end -}}
-{{- else }}
-  type: {{ .Values.qumine.deployment.serviceType }}
-{{- end }}
-  {{- if .Values.qumine.deployment.externalTrafficPolicy }}
-  externalTrafficPolicy: {{ .Values.qumine.deployment.externalTrafficPolicy }}
+  {{- if .Values.qumine.deployment.service.annotations }}
+  annotations: {{ toYaml .Values.qumine.deployment.service.annotations | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.qumine.deployment.service.clusterIP }}
+  clusterIP: {{ .Values.qumine.deployment.service.clusterIP }}
+  {{- end }}
+  {{- if .Values.qumine.deployment.service.externalIPs }}
+  externalIPs: {{ toYaml .Values.qumine.deployment.service.externalIPs | nindent 4 }}
+  {{- end }}
+  {{- if .Values.qumine.deployment.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.qumine.deployment.service.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.qumine.deployment.service.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges: {{ toYaml .Values.qumine.deployment.service.loadBalancerSourceRanges | nindent 4 }}
   {{- end }}
   ports:
-  - name: ingress
-    port: {{ .Values.qumine.port }}
-    targetPort: ingress
+  - name: minecraft
+    port: {{ .Values.qumine.deployment.service.port }}
     protocol: TCP
+    targetPort: minecraft
+    {{- if and (eq .Values.qumine.deployment.service.type "NodePort") (not (empty .Values.qumine.deployment.service.nodePort)) }}
+    nodePort: {{ .Values.qumine.deployment.service.nodePort  }}
+    {{- end }}
   selector: {{ include "qumine.matchLabels" . | nindent 4 }}
-{{- end -}}
+  type: {{ .Values.qumine.deployment.service.type }}

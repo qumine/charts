@@ -15,18 +15,50 @@ image:
   #   - myRegistryKeySecretName
 
 qumine:
+  debug: false
+  port: 25565
+
   type: "DaemonSet"
   daemonset:
     metricsPort: "8080"
   deployment:
     replicas: 2
-    serviceType: "LoadBalancer"
-    loadBalancerIP:
-    # loadBalancerSourceRanges:
-    # externalTrafficPolicy: Cluster
-  debug: false
+    ## Kubernetes svc configutarion
+    ##
+    service:
+      ## Kubernetes svc type
+      ##
+      type: ClusterIP
+      port: 19132
+      ## Specify the nodePort value for the LoadBalancer and NodePort service types for the client port
+      ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
+      ##
+      # nodePort:
+      ## Static clusterIP or None for headless services
+      ##
+      # clusterIP: ""
+      ## External IP list to use with ClusterIP service type
+      ##
+      externalIPs: []
+      ## Use loadBalancerIP to request a specific static IP,
+      ## otherwise leave blank
+      ##
+      # loadBalancerIP:
+      ## Address that are allowed when svc is LoadBalancer
+      ##
+      loadBalancerSourceRanges: []
+      ## Provide any additional annotations which may be required. This can be used to
+      ## set the LoadBalancer service type to internal only.
+      ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
+      ##
+      annotations: {}
 
-  port: 25565
+      ## Provide any additional labels which may be required. This can be used to
+      ## have qumine show up in `kubectl cluster-info`
+      ##  kubernetes.io/cluster-service: "true"
+      ##  kubernetes.io/name: "qumine"
+      labels:
+        geysermc: "true"
 
 ## Affinity for pod assignment (this value is evaluated as a template)
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity

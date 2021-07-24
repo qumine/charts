@@ -39,18 +39,26 @@ questions:
   required: true
   label: Replica count
   group: Deployment
-- variable: qumine.deployment.serviceType
+- variable: qumine.deployment.service.type
   show_if: "qumine.type=Deployment"
-  default: "LoadBalancer"
+  default: "ClusterIP"
   options:
+    - "ClusterIP"
     - "LoadBalancer"
     - "NodePort"
-    - "ClusterIP"
-  description: The service type for the ingress
+  description: Ingress Service Type
   type: enum
   required: true
-  label: The service type for the ingress
-  group: Deployment
+  label: Ingress Service Type
+  group: Integrations
+- variable: qumine.deployment.service.port
+  show_if: "qumine.type=Deployment"
+  default: 25565
+  description: Ingress Service Port
+  type: int
+  required: true
+  label: Ingress Service Port
+  group: Integrations
 
 - variable: integrations.metrics.enabled
   default: false
