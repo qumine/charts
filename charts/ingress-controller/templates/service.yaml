@@ -28,6 +28,12 @@ spec:
     port: {{ .Values.qumine.port }}
     targetPort: ingress
     protocol: TCP
+  {{- if .Values.integrations.geysermc.enabled }}
+  - name: geysermc
+    port: {{ .Values.integrations.geysermc.service.port }}
+    protocol: UDP
+    targetPort: geysermc
+  {{- end -}}
   selector: {{ include "qumine.matchLabels" . | nindent 4 }}
 {{- end -}}
 {{- if .Values.metrics.enabled }}
