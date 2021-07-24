@@ -2,31 +2,6 @@ apiVersion: v1
 entries:
   ingress-controller:
   - annotations:
-      catalog.cattle.io/display-name: Ingress Controller
-    apiVersion: v2
-    appVersion: v0.8.4
-    created: "2021-07-24T00:57:51.466379748Z"
-    description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
-    digest: e5e2e30e37294573de385347658fa6e3e60510d87895199d82b169a68fe04f9f
-    home: https://ingress.qumine.io/
-    icon: https://avatars.githubusercontent.com/u/73256940?s=200&v=4
-    keywords:
-    - games
-    - qumine
-    - ingress-controller
-    - minecraft
-    - minecraft-server
-    - ingress-controller
-    maintainers:
-    - email: dev@quhive.dev
-      name: QuHive
-    name: ingress-controller
-    sources:
-    - https://github.com/qumine/ingress-controller
-    urls:
-    - https://github.com/qumine/charts/releases/download/ingress-controller-0.8.4/ingress-controller-0.8.4.tgz
-    version: 0.8.4
-  - annotations:
       catalog.cattle.io/certified: qumine
       catalog.cattle.io/display-name: Ingress Controller
     apiVersion: v2
@@ -133,29 +108,6 @@ entries:
     - https://github.com/qumine/charts/releases/download/ingress-controller-0.7.0/ingress-controller-0.7.0.tgz
     version: 0.7.0
   minecraft-server:
-  - annotations:
-      catalog.cattle.io/display-name: Minecraft Server
-    apiVersion: v2
-    appVersion: v0.1.7
-    created: "2021-07-23T21:23:20.149807314Z"
-    description: Docker Minecraft Server image with support for Plugins etc.
-    digest: 55c06a65a68002fe71f7de5ec2fe3c4225ac810cdca96543f4323359fba96425
-    home: https://github.com/qumine/minecraft-server
-    icon: https://avatars.githubusercontent.com/u/73256940?s=200&v=4
-    keywords:
-    - games
-    - game-server
-    - minecraft
-    - qumine
-    maintainers:
-    - email: dev@quhive.dev
-      name: QuHive
-    name: minecraft-server
-    sources:
-    - https://github.com/qumine/minecraft-server
-    urls:
-    - https://github.com/qumine/charts/releases/download/minecraft-server-0.1.7/minecraft-server-0.1.7.tgz
-    version: 0.1.7
   - annotations:
       catalog.cattle.io/display-name: Minecraft Server
     apiVersion: v2
