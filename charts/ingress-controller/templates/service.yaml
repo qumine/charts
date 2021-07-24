@@ -23,10 +23,10 @@ spec:
   loadBalancerSourceRanges: {{ toYaml .Values.qumine.deployment.service.loadBalancerSourceRanges | nindent 4 }}
   {{- end }}
   ports:
-  - name: minecraft
+  - name: ingress
     port: {{ .Values.qumine.deployment.service.port }}
     protocol: TCP
-    targetPort: minecraft
+    targetPort: ingress
     {{- if and (eq .Values.qumine.deployment.service.type "NodePort") (not (empty .Values.qumine.deployment.service.nodePort)) }}
     nodePort: {{ .Values.qumine.deployment.service.nodePort  }}
     {{- end }}
