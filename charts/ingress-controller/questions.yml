@@ -50,7 +50,7 @@ questions:
   type: enum
   required: true
   label: Ingress Service Type
-  group: Integrations
+  group: Deployment
 - variable: qumine.deployment.service.port
   show_if: "qumine.type=Deployment"
   default: 25565
@@ -58,7 +58,7 @@ questions:
   type: int
   required: true
   label: Ingress Service Port
-  group: Integrations
+  group: Deployment
 
 - variable: integrations.metrics.enabled
   default: false
