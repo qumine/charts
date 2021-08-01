@@ -1,6 +1,6 @@
 apiVersion: v2
 name: minecraft-server
-version: 0.1.700
+version: 0.1.701
 appVersion: v0.1.7
 description: Docker Minecraft Server image with support for Plugins etc.
 home: https://github.com/qumine/minecraft-server

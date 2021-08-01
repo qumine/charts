@@ -461,7 +461,7 @@ readinessProbe:
 startupProbe:
   httpGet:
     path: /health/ready
-    port: metrics
+    port: http
   periodSeconds: 5
   failureThreshold: 24
 
