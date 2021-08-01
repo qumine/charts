@@ -105,6 +105,8 @@ spec:
         ports:
         - name: minecraft
           containerPort: {{ .Values.service.port }}
+        - name: http
+          containerPort: 8080
         - name: metrics
           containerPort: {{ .Values.integrations.metrics.service.port }}
         readinessProbe: {{ toYaml .Values.readinessProbe | nindent 10 }}

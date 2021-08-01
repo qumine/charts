@@ -437,7 +437,7 @@ resources:
 livenessProbe:
   httpGet:
     path: /health/live
-    port: metrics
+    port: http
   periodSeconds: 5
   timeoutSeconds: 1
   failureThreshold: 5
@@ -449,7 +449,7 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /health/ready
-    port: metrics
+    port: http
   periodSeconds: 5
   timeoutSeconds: 1
   failureThreshold: 5
@@ -499,7 +499,7 @@ integrations:
       ## Kubernetes svc type
       ##
       type: ClusterIP
-      port: 8080
+      port: 9225
       ## Specify the nodePort value for the LoadBalancer and NodePort service types for the client port
       ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
       ##
