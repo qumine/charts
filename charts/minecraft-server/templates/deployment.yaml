@@ -100,7 +100,7 @@ spec:
           value: {{ $value | quote }}
         {{- end }}
         {{- if .Values.extraEnv }}
-        {{- toYaml .Values.extraEnv | nindent 10 }}
+        {{- toYaml .Values.extraEnv | nindent 8 }}
         {{- end }}
         ports:
         - name: minecraft
