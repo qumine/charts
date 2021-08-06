@@ -757,6 +757,7 @@ questions:
   group: Integrations
 
 - variable: resources.requests.cpu
+  if: "server.eula == true"
   default: 500m
   description: CPU Requests
   type: string
@@ -764,6 +765,7 @@ questions:
   label: CPU Requests
   group: Resources
 - variable: resources.limits.cpu
+  if: "server.eula == true"
   default: 500m
   description: CPU Limit
   type: string
@@ -771,6 +773,7 @@ questions:
   label: CPU Limit
   group: Resources
 - variable: resources.requests.memory
+  if: "server.eula == true"
   default: 2000Mi
   description: Memory Requests
   type: string
@@ -778,6 +781,7 @@ questions:
   label: Memory Requests
   group: Resources
 - variable: resources.limits.memory
+  if: "server.eula == true"
   default: 2000Mi
   description: Memory Limit
   type: string
@@ -786,6 +790,7 @@ questions:
   group: Resources
 
 - variable: defaultImage
+  if: "server.eula == true"
   default: true
   description: Use default Docker image
   type: boolean
