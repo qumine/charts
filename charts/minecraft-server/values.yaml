@@ -465,11 +465,12 @@ startupProbe:
   periodSeconds: 5
   failureThreshold: 24
 
-## Configure extra volumes
-extraVolumes: []
-
-## Configure extra volumeMounts
-extraVolumeMounts: []
+extraVolumeMounts:
+- name: tmp
+  mountPath: /tmp
+extraVolumes:
+- name: tmp
+  emptyDir: {}
 
 ## Containers, which are run before the app containers are started.
 extraInitContainers: []

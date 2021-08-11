@@ -122,7 +122,7 @@ spec:
         - name: data
           mountPath: /data
           {{- if .Values.extraVolumeMounts }}
-          {{- toYaml .Values.extraVolumeMounts | nindent 10 }}
+          {{- toYaml .Values.extraVolumeMounts | nindent 8 }}
           {{- end }}
       {{- if .Values.integrations.bluemap.enabled }}
       - name: bluemap
@@ -141,6 +141,9 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data
+          {{- if .Values.extraVolumeMounts }}
+          {{- toYaml .Values.extraVolumeMounts | nindent 8 }}
+          {{- end }}
       {{- end }}
       {{- if .Values.integrations.geysermc.enabled }}
       - name: geysermc
@@ -157,6 +160,12 @@ spec:
           requests:
             cpu: 250m
             memory: 250Mi
+        volumeMounts:
+        - name: data
+          mountPath: /data
+          {{- if .Values.extraVolumeMounts }}
+          {{- toYaml .Values.extraVolumeMounts | nindent 8 }}
+          {{- end }}
       {{- end }}
       volumes:
       - name: data
@@ -172,5 +181,5 @@ spec:
         {{- end }}
         {{- if .Values.extraVolumes }}
         # Extra volume(s)
-        {{- toYaml .Values.extraVolumes | nindent 8 }}
+        {{- toYaml .Values.extraVolumes | nindent 6 }}
         {{- end }}
