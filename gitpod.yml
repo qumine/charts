@@ -1,0 +1,14 @@
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: false
+    addComment: false
+    addBadge: true
+image:
+  file: ./.devcontainer/Dockerfile
+  context: ./.devcontainer
+tasks:
+  - before: git config --global user.email $GIT_COMMITTER_EMAIL
