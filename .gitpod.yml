@@ -8,7 +8,7 @@ github:
     addComment: true
     addBadge: true
 image:
-  file: ./.devcontainer/Dockerfile
+  file: Dockerfile
   context: ./.devcontainer
 tasks:
   - before: git config --global user.email $GIT_COMMITTER_EMAIL
