@@ -140,7 +140,7 @@ spec:
             memory: 250Mi
         volumeMounts:
         - name: data
-          mountPath: /data
+          mountPath: /home/qumine/data
           {{- if .Values.extraVolumeMounts }}
           {{- toYaml .Values.extraVolumeMounts | nindent 8 }}
           {{- end }}
