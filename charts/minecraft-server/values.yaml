@@ -44,6 +44,10 @@ server:
   forceUpdate: false
   # The version of server to download/start.
   customURL: "latest"
+  # The custom command to execute
+  customCommand: "java"
+  # The version of server to download/start.
+  customArgs: "-jar,server.jar,nogui"
   # The url for the ServerStarter jar file.
   starterJarURL: "https://github.com/Yoosk/ServerStarter/releases/download/v2.1.0/serverstarter-2.1.0.jar"
   # The url for the ServerStarter server-setup-config file.

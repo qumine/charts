@@ -70,6 +70,10 @@ spec:
         {{- if (eq .Values.server.type "CUSTOM") }}
         - name: SERVER_CUSTOM_URL
           value: {{ .Values.server.customURL }}
+        - name: SERVER_CUSTOM_COMMAND
+          value: {{ .Values.server.customCommand }}
+        - name: SERVER_CUSTOM_ARGS
+          value: {{ .Values.server.customArgs }}
         {{- else if (eq .Values.server.type "STARTER") }}
         - name: SERVER_STARTER_JAR_URL
           value: {{ .Values.server.starterJarURL }}

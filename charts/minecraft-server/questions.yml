@@ -51,6 +51,22 @@ questions:
   required: true
   label: Custom URL
   group: Server
+- variable: server.customCommand
+  if: "server.eula == true && server.type == \"CUSTOM\""
+  default: "java"
+  description: The download URL for the custom server.jar to install
+  type: string
+  required: true
+  label: Custom URL
+  group: Server
+- variable: server.customArgs
+  if: "server.eula == true && server.type == \"CUSTOM\""
+  default: "-jar,server.jar,nogui"
+  description: The download URL for the custom server.jar to install
+  type: string
+  required: true
+  label: Custom URL
+  group: Server
 - variable: server.starterJarURL
   if: "server.eula == true && server.type == \"STARTER\""
   default: https://github.com/Yoosk/ServerStarter/releases/download/v2.1.0/serverstarter-2.1.0.jar
