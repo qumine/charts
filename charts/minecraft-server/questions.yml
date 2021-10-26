@@ -825,7 +825,7 @@ questions:
     type: string
     label: Image Repository
   - variable: image.tag
-    default: v0.1.8
+    default: v0.1.9
     description: Image tag
     type: string
     label: Image tag
