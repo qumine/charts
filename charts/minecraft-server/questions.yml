@@ -54,18 +54,18 @@ questions:
 - variable: server.customCommand
   if: "server.eula == true && server.type == \"CUSTOM\""
   default: "java"
-  description: The download URL for the custom server.jar to install
+  description: The custom command to execute
   type: string
   required: true
-  label: Custom URL
+  label: Custom Command
   group: Server
 - variable: server.customArgs
   if: "server.eula == true && server.type == \"CUSTOM\""
   default: "-jar,server.jar,nogui"
-  description: The download URL for the custom server.jar to install
+  description: Custom args passed to the customCommand
   type: string
   required: true
-  label: Custom URL
+  label: Custom Args
   group: Server
 - variable: server.starterJarURL
   if: "server.eula == true && server.type == \"STARTER\""
