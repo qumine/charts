@@ -134,7 +134,7 @@ spec:
         imagePullPolicy: {{ .Values.integrations.bluemap.image.pullPolicy | quote }}
         ports:
         - name: bluemap
-          containerPort: 8081
+          containerPort: 9090
         resources:
           limits:
             cpu: 500m
