@@ -162,6 +162,29 @@ entries:
       catalog.cattle.io/display-name: Minecraft Server
     apiVersion: v2
     appVersion: v0.1.9
+    created: "2021-11-26T09:08:25.476007068Z"
+    description: Docker Minecraft Server image with support for Plugins etc.
+    digest: 727213b1cd50c73e2850f01a5edc495e875cc0c863de0f011710cbe0a23077f9
+    home: https://github.com/qumine/minecraft-server
+    icon: https://avatars.githubusercontent.com/u/73256940?s=200&v=4
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: minecraft-server
+    sources:
+    - https://github.com/qumine/minecraft-server
+    urls:
+    - https://github.com/qumine/charts/releases/download/minecraft-server-0.1.902/minecraft-server-0.1.902.tgz
+    version: 0.1.902
+  - annotations:
+      catalog.cattle.io/display-name: Minecraft Server
+    apiVersion: v2
+    appVersion: v0.1.9
     created: "2021-10-28T20:58:02.275314929Z"
     description: Docker Minecraft Server image with support for Plugins etc.
     digest: 370808aa86ee3f620e01057c2ed5737958eea402e2284df4a1734afcd54f7038
