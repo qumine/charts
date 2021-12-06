@@ -83,6 +83,10 @@ spec:
         - name: SERVER_VERSION
           value: {{ .Values.server.version }}
         {{- end }}
+        {{- if .Values.server.useAikarFlags }}
+        - name: USE_AIKAR_FLAGS
+          value: "true"
+        {{- end }}
         - name: ADDITIONAL_FILES
           value: "{{ template "qumine.additionalFiles" . }}"
         - name: SERVER_PLUGINS
