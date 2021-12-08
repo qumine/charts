@@ -1,6 +1,6 @@
 apiVersion: v2
 name: ingress-controller
-version: 0.8.400
+version: 0.8.401
 appVersion: v0.8.4
 description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
 home: https://ingress.qumine.io/
