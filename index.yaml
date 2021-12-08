@@ -5,6 +5,31 @@ entries:
       catalog.cattle.io/display-name: Ingress Controller
     apiVersion: v2
     appVersion: v0.8.4
+    created: "2021-12-08T19:15:11.763472977Z"
+    description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
+    digest: 19f8aafac330e8cb65a2c560ff1cbaad5796c5ea6a6f29949d43d278340b9088
+    home: https://ingress.qumine.io/
+    icon: https://avatars.githubusercontent.com/u/73256940?s=200&v=4
+    keywords:
+    - games
+    - qumine
+    - ingress-controller
+    - minecraft
+    - minecraft-server
+    - ingress-controller
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: ingress-controller
+    sources:
+    - https://github.com/qumine/ingress-controller
+    urls:
+    - https://github.com/qumine/charts/releases/download/ingress-controller-0.8.401/ingress-controller-0.8.401.tgz
+    version: 0.8.401
+  - annotations:
+      catalog.cattle.io/display-name: Ingress Controller
+    apiVersion: v2
+    appVersion: v0.8.4
     created: "2021-08-01T22:23:35.303133948Z"
     description: Kubernetes ingress controller for routing Minecraft connections based on the requested hostname
     digest: 94a899d138f5374365ac606862b6b8082d35e51d34fd6c03bb32bc7095f131f2
@@ -158,6 +183,29 @@ entries:
     - https://github.com/qumine/charts/releases/download/ingress-controller-0.7.0/ingress-controller-0.7.0.tgz
     version: 0.7.0
   minecraft-server:
+  - annotations:
+      catalog.cattle.io/display-name: Minecraft Server
+    apiVersion: v2
+    appVersion: v0.1.11
+    created: "2021-12-08T19:15:11.993235558Z"
+    description: Docker Minecraft Server image with support for Plugins etc.
+    digest: b0e2ab6a73506819976b51bc98de7cb928086d741d26190bc759f80845eadc9d
+    home: https://github.com/qumine/minecraft-server
+    icon: https://avatars.githubusercontent.com/u/73256940?s=200&v=4
+    keywords:
+    - games
+    - game-server
+    - minecraft
+    - qumine
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: minecraft-server
+    sources:
+    - https://github.com/qumine/minecraft-server
+    urls:
+    - https://github.com/qumine/charts/releases/download/minecraft-server-0.1.1102/minecraft-server-0.1.1102.tgz
+    version: 0.1.1102
   - annotations:
       catalog.cattle.io/display-name: Minecraft Server
     apiVersion: v2
