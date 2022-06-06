@@ -13,7 +13,7 @@
 image:
   registry: docker.io
   repository: qumine/minecraft-server
-  tag: v0.1.11
+  tag: v0.1.12
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -630,7 +630,7 @@ integrations:
     image:
       registry: docker.io
       repository: qumine/integrations-geysermc
-      tag: 956
+      tag: 1105
       ## Specify a imagePullPolicy
       ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
       ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
