@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: "{{ template "qumine.fullname" . }}-bluemap"
-  labels: {{ include "qumine.labels" . | nindent 4 }}
+  labels: {{ include "qumine.podLabels" . | nindent 4 }}
   {{- if .Values.integrations.bluemap.service.labels -}}
   {{ toYaml .Values.integrations.bluemap.service.labels | nindent 4 }}
   {{- end }}

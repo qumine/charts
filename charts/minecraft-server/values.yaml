@@ -348,6 +348,13 @@ replicas: 1
 # upgrade strategy (e.g. Recreate or RollingUpdate)
 strategy: Recreate
 
+## Annotations for the deployment
+##
+labels: {}
+## Annotations for the deployment
+##
+annotations: {}
+
 ## Affinity for pod assignment (this value is evaluated as a template)
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 ##
@@ -362,11 +369,11 @@ nodeSelector: {}
 tolerations: []
 ## Annotations for qumine pods
 ##
-podAnnotations: {}
-## Additional labels for the pod(s).
-##
 podLabels: {}
 ## Pod priority class name
+##
+podAnnotations: {}
+## Additional labels for the pod(s).
 ##
 priorityClassName: ""
 

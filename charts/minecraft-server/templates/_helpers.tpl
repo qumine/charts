@@ -33,12 +33,19 @@ Create chart name and version as used by the chart label.
 
 {{/* Helm required labels */}}
 {{- define "qumine.labels" -}}
-app.kubernetes.io/name: {{ template "qumine.name" . }}
 helm.sh/chart: {{ template "qumine.chart" . }}
+app.kubernetes.io/name: {{ template "qumine.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels }}
+{{- end }}
+{{- end -}}
+
+{{/* annotations */}}
+{{- define "qumine.annotations" -}}
+{{- if .Values.annotations }}
+{{ toYaml .Values.annotations }}
 {{- end }}
 {{- end -}}
 
@@ -46,6 +53,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- define "qumine.matchLabels" -}}
 app.kubernetes.io/name: {{ template "qumine.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}
+
+{{/* Helm required labels */}}
+{{- define "qumine.podLabels" -}}
+helm.sh/chart: {{ template "qumine.chart" . }}
+app.kubernetes.io/name: {{ template "qumine.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if .Values.podLabels }}
+{{ toYaml .Values.podLabels }}
+{{- end }}
 {{- end -}}
 
 {{/* podAnnotations */}}

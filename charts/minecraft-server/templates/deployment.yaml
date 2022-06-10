@@ -3,6 +3,10 @@ kind: Deployment
 metadata:
   name: {{ template "qumine.fullname" . }}
   labels: {{ include "qumine.labels" . | nindent 4 }}
+  annotations:
+    {{- if .Values.annotations }}
+    {{- include "qumine.annotations" . | trim | nindent 4 }}
+    {{- end }}
 spec:
   replicas: {{ .Values.replicas }}
   strategy:
@@ -11,7 +15,7 @@ spec:
     matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
   template:
     metadata:
-      labels: {{ include "qumine.labels" . | nindent 8 }}
+      labels: {{ include "qumine.podLabels" . | nindent 8 }}
       annotations:
         {{- if or .Values.podAnnotations .Values.integrations.metrics.enabled }}
         {{- include "qumine.podAnnotations" . | trim | nindent 8 }}
