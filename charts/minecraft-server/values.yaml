@@ -345,8 +345,14 @@ extraEnv: []
 ##
 replicas: 1
 
-# upgrade strategy (e.g. Recreate or RollingUpdate)
-strategy: Recreate
+# upgrade strategy
+strategy:
+  type: Recreate
+
+  # type: RollingUpdate
+  # rollingUpdate:
+  #   maxSurge: 2
+  #   maxUnavailable: 1
 
 ## Annotations for the deployment
 ##

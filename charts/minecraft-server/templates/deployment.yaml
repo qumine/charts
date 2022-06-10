@@ -9,8 +9,7 @@ metadata:
     {{- end }}
 spec:
   replicas: {{ .Values.replicas }}
-  strategy:
-    type: {{ .Values.strategy }}
+  strategy: {{ toYaml .Values.strategy | nindent 4 }}
   selector:
     matchLabels: {{ include "qumine.matchLabels" . | nindent 6 }}
   template:
