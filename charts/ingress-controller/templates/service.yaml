@@ -19,6 +19,9 @@ spec:
   {{- if .Values.qumine.deployment.service.loadBalancerIP }}
   loadBalancerIP: {{ .Values.qumine.deployment.service.loadBalancerIP }}
   {{- end }}
+  {{- if .Values.qumine.deployment.service.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.qumine.deployment.service.ipFamilyPolicy }}
+  {{- end }}
   {{- if .Values.qumine.deployment.service.loadBalancerSourceRanges }}
   loadBalancerSourceRanges: {{ toYaml .Values.qumine.deployment.service.loadBalancerSourceRanges | nindent 4 }}
   {{- end }}
